@@ -1,0 +1,44 @@
+func Album1Handler(c echo.Context) error {
+	Album1 := AmpgoFind("albumalpha", "fl1", "None", "None")
+	return c.JSON(http.StatusOK, Album1)
+}
+
+func Album2Handler(c echo.Context) error {
+	Album2 := AmpgoFind("albumalpha", "fl2", "None", "None")
+	return c.JSON(http.StatusOK, Album2)
+}
+
+func Album3Handler(c echo.Context) error {
+	Album3 := AmpgoFind("albumalpha", "fl3", "None", "None")
+	return c.JSON(http.StatusOK, Album3)
+}
+
+func Album4Handler(c echo.Context) error {
+	Album4 := AmpgoFind("albumalpha", "fl4", "None", "None")
+	return c.JSON(http.StatusOK, Album4)
+}
+
+func Album5Handler(c echo.Context) error {
+	Album5 := AmpgoFind("albumalpha", "fl5", "None", "None")
+	return c.JSON(http.StatusOK, Album5)
+}
+
+func Album6Handler(c echo.Context) error {
+	Album6 := AmpgoFind("albumalpha", "fl6", "None", "None")
+	return c.JSON(http.StatusOK, Album6)
+}
+
+func Album7Handler(c echo.Context) error {
+	Album7 := AmpgoFind("albumalpha", "fl7", "None", "None")
+	return c.JSON(http.StatusOK, Album7)
+}
+
+func Album8Handler(c echo.Context) error {
+	Album8 := AmpgoFind("albumalpha", "fl8", "None", "None")
+	return c.JSON(http.StatusOK, Album8)
+}
+
+func Album9Handler(c echo.Context) error {
+	Album9 := AmpgoFind("albumalpha", "fl9", "None", "None")
+	return c.JSON(http.StatusOK, Album9)
+}

@@ -1,0 +1,1 @@
+let e=document.getElementById("Next");e.addEventListener("click",()=>{fetch("http://192.168.0.94:8181/Next")});let t=document.getElementById("Stop");t.addEventListener("click",()=>{fetch("http://192.168.0.94:8181/Stop")});let n=document.getElementById("Previous");n.addEventListener("click",()=>{fetch("http://192.168.0.94:8181/Previous")});
