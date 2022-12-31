@@ -37,7 +37,6 @@ var OffSet int = ConvertSTR(OFFSET)
 func SetUp() {
 	StartSetupLogging()
 	ti := time.Now()
-	fmt.Println(ti)
 	log.Println(ti)
 	runtime.GOMAXPROCS(runtime.NumCPU())
 	var addr string = os.Getenv("AMPGO_MEDIA_METADATA_PATH")

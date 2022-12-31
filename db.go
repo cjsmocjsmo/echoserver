@@ -3,12 +3,15 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
+
 	// "github.com/bogem/id3v2"
 	// "github.com/disintegration/imaging"
+	"time"
+
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"time"
 )
 
 func Close(client *mongo.Client, ctx context.Context, cancel context.CancelFunc) {
@@ -48,7 +51,7 @@ func AmpgoFindOne(db string, coll string, filtertype string, filterstring string
 	err = collection.FindOne(context.Background(), filter).Decode(&results)
 	if err != nil {
 		fmt.Println("AmpgoFindOne: find one has fucked up")
-		fmt.Println(err)
+		log.Println(err)
 	}
 	return results
 }
@@ -68,7 +71,7 @@ func AmpgoFind(dbb string, collb string, filtertype string, filterstring string)
 	var results []map[string]string //all albums for artist to include double entries
 	if err = cur.All(context.TODO(), &results); err != nil {
 		fmt.Println("AmpgoFind: cur.All has fucked up")
-		fmt.Println(err)
+		log.Println(err)
 	}
 	return results
 }
@@ -135,11 +138,11 @@ func GetAllMP3Objects() (Main2SL []JsonMP3) {
 	collection := client.Database("maindb").Collection("mp3s")
 	cur, err := collection.Find(context.Background(), filter)
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 	}
 	if err = cur.All(context.Background(), &Main2SL); err != nil {
 		fmt.Println("GetAllMP3Objects: cur.All has failed")
-		fmt.Println(err)
+		log.Println(err)
 	}
 	return
 }
@@ -152,11 +155,11 @@ func GetAllJPGObjects() (Main2S []JsonJPG) {
 	collection := client.Database("maindb").Collection("jpgs")
 	cur, err := collection.Find(context.Background(), filter)
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 	}
 	if err = cur.All(context.Background(), &Main2S); err != nil {
 		fmt.Println("GetAllJPGObjects: cur.All has failed")
-		fmt.Println(err)
+		log.Println(err)
 	}
 	return
 }
@@ -188,7 +191,7 @@ func gArtistInfo(Art string) map[string]string {
 	err = collection.FindOne(context.Background(), filter).Decode(&ArtInfo)
 	if err != nil {
 		fmt.Println("gArtistInfo: has failed")
-		fmt.Println(err)
+		log.Println(err)
 	}
 	return ArtInfo
 }
@@ -203,7 +206,7 @@ func gAlbumInfo(Alb string) map[string]string {
 	err = collection.FindOne(context.Background(), filter).Decode(&AlbInfo)
 	if err != nil {
 		fmt.Println("gAlbumInfo: has failed")
-		fmt.Println(err)
+		log.Println(err)
 	}
 	return AlbInfo
 }
@@ -236,7 +239,7 @@ func GetMainDbMeta() []map[string]string {
 	CheckError(err, "GetMainDbMeta: allIdx has failed")
 	var letters []map[string]string
 	if err = cur.All(context.TODO(), &letters); err != nil {
-		fmt.Println(err)
+		log.Println(err)
 	}
 	return letters
 }
@@ -250,7 +253,7 @@ func ArtViewFindOne(db string, coll string, filtertype string, filterstring stri
 	var results ArtVIEW
 	err = collection.FindOne(context.Background(), filter).Decode(&results)
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 	}
 	return results
 }

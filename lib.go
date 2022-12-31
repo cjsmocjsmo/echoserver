@@ -33,7 +33,7 @@ func ConvertSTR(astring string) int {
 func CheckError(err error, msg string) {
 	if err != nil {
 		fmt.Println(msg)
-		fmt.Println(err)
+		log.Println(err)
 		log.Println(msg)
 		log.Println(err)
 		panic(err)
@@ -45,7 +45,7 @@ func StartSetupLogging() string {
 	// If the file doesn't exist, create it or append to the file
 	file, err := os.OpenFile(logtxtfile, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 	}
 	log.SetOutput(file)
 	fmt.Println("Logging started")
@@ -118,18 +118,12 @@ func Read_Album_ID_List(apath string) {
 	// log.Printf("%s : Read_File_pages complete", apath)
 }
 
-
-
 func UpdateMainDB(m2 JsonMP3, pagenum int) {
 	artid := gArtistInfo(m2.Tags_artist)
 	artID := artid["ArtistID"]
-	fmt.Println("this is artID")
-	fmt.Println(artID)
 
 	albid := gAlbumInfo(m2.Tags_album)
 	albID := albid["AlbumID"]
-	fmt.Println("this is albID")
-	fmt.Println(albID)
 
 	page := strconv.Itoa(pagenum)
 
@@ -277,7 +271,7 @@ func AlbPipeline(DAlb map[string]string, page int, idx int) (MyAlbview AlbVieW2)
 func CreateRandomPicsDB() {
 	// var BulkImages []map[string]string = []map[string]string{}
 
-	alljpgobj := GetAllJPGObjects()  //[]JsonJPG
+	alljpgobj := GetAllJPGObjects()             //[]JsonJPG
 	numpics := os.Getenv("AMPGO_NUM_RAND_PICS") // AMPGO_NUM_RAND_PICS=25
 	npics, err := strconv.Atoi(numpics)
 	CheckError(err, "strconv numpics has failed")
@@ -317,7 +311,7 @@ func CreateRandomPicsDB() {
 		_, err2 := InsertOne(client, ctx, "coverart", "coverartpages", result)
 		CheckError(err2, "CreateRandomPicsDB: coverart insertion has failed")
 	}
-	return 
+	return
 }
 
 //////////////////////////////////////////////////////////////////////////
