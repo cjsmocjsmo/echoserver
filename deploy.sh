@@ -1,3 +1,5 @@
+docker-compose down && \
+git pull && \
 sudo rm -rf $HOME/PISTUFF && \
 mkdir $HOME/PISTUFF && \
 mkdir $HOME/PISTUFF/Ampgologs && \
