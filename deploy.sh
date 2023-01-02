@@ -1,4 +1,4 @@
-rm -rf $HOME/PISTUFF && \
+sudo rm -rf $HOME/PISTUFF && \
 mkdir $HOME/PISTUFF && \
 mkdir $HOME/PISTUFF/Ampgologs && \
 touch $HOME/PISTUFF/Ampgologs/ampgo_setup_log.txt && \
