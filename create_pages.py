@@ -5,8 +5,8 @@ import re
 import json
 from pprint import pprint
 
-APATH = "/media/charliepi/FOO/music/music"
-METAPATH = "/media/charliepi/FOO/music/metadata/"
+APATH = "/media/pi/FOO/music/music"
+METAPATH = "/media/pi/FOO/music/metadata/"
 
 class SortMusicFiles:
 
@@ -68,7 +68,7 @@ if __name__ == "__main__":
     
     MF = MusicFiles()
     MF.main()
-    # media = "/media/charliepi/FOO/music"  #os.getenv("AMPGO_MEDIA_PATH") + "/"
-    # meta = "/home/charliepi/Music/" #os.getenv("AMPGO_MEDIA_METADATA_PATH") + "/"
+    # media = "/media/pi/FOO/music"  #os.getenv("AMPGO_MEDIA_PATH") + "/"
+    # meta = "/home/pi/Music/" #os.getenv("AMPGO_MEDIA_METADATA_PATH") + "/"
     smf = SortMusicFiles()
     smf.main()
