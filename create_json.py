@@ -141,9 +141,14 @@ class MusicFiles:
         Dir, Filename = os.path.split(afile)
         jpgpath = Dir + "/Folder.jpg"
         if os.path.exists(jpgpath):
-            return True, jpgpath
+            return True
         else:
             return False
+
+    def pic_path(self, afile):
+        Dir, Filename = os.path.split(afile)
+        return Dir + "/Folder.jpg"
+
 
     def img_size(self, afile):
         with Image.open(afile) as img_s:
@@ -228,9 +233,10 @@ class MusicFiles:
             meta['Album_first'] = tags.Album[:1]
             meta['Song_first'] = tags.Song[:1]
             meta['Play_length'] = str(self.play_length(afile))
-            bo, boo = self.check_jpg(afile)
-            if bo:
-                meta["Img_base64_str"] = self.img_to_base64(boo)
+            boo = self.check_jpg(afile)
+            ppath = self.pic_path(afile)
+            if boo:
+                meta["Img_base64_str"] = self.img_to_base64(ppath)
             else:
                 meta["Img_base64_str"] = "None"
         return meta
