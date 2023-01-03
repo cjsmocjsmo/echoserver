@@ -2,8 +2,8 @@ version: "3.3"
 
 services:
   db:
-    image: andresvidal/rpi3-mongodb3
-    # image: mongo:4.4.0
+    # image: andresvidal/rpi3-mongodb3
+    image: mongo:4.4.0
     # image: arm64v8/mongo
     container_name: "mongo_container"
     volumes:
@@ -53,39 +53,34 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/pi/PISTUFF/Data/db
-      # device: /home/charliepi/PISTUFF/Data/db
+      device: /home/charliepi/PISTUFF/Data/db
       o: bind
 
   ampgovol:
     driver: local
     driver_opts:
       type: none
-      device: /media/pi/FOO/music/music
-      # device: /media/charliepi/FOO/music/music
+      device: /media/charliepi/FOO/music/music
       o: bind
 
   ampgometavol:
     driver: local
     driver_opts:
       type: none
-      device: /media/pi/FOO/music/metadata
-      # device: /media/charliepi/FOO/music/metadata
+      device: /media/charliepi/FOO/music/metadata
       o: bind
 
   ampgopicvol:
     driver: local
     driver_opts:
       type: none
-      device: /home/pi/PISTUFF/Thumbnails
-      # device: /home/charliepi/PISTUFF/Thumbnails
+      device: /home/charliepi/PISTUFF/Thumbnails
       o: bind
 
   ampgologvol:
     driver: local
     driver_opts:
       type: none
-      device: /home/pi/PISTUFF/Ampgologs
-      # device: /home/charliepi/PISTUFF/Ampgologs
+      device: /home/charliepi/PISTUFF/Ampgologs
       o: bind
 
