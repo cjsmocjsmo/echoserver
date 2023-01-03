@@ -14,8 +14,8 @@ from mutagen.mp3 import MP3
 
 from pprint import pprint
 
-APATH = "/media/charliepi/FOO/music/music"
-METAPATH = "/media/charliepi/FOO/music/metadata/"
+APATH = "/home/teresa/Music/music"
+METAPATH = "/home/teresa/Music/metadata/"
 
 class MP3Tags:
 	Track = None
