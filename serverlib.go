@@ -7,6 +7,7 @@ import (
 	"math/rand"
 	"net/http"
 	"strconv"
+	"strings"
 
 	// "strings"
 	"regexp"
@@ -170,67 +171,69 @@ func randomPicsHandler(c echo.Context) error {
 func ArtistsForFirstLetterHandler(c echo.Context) error {
 	fl := c.QueryParam("firstletter")
 	fmt.Println(fl)
-	log.Println("ArtistsForFirstLetterHandler")
-	log.Println(fl)
-	r, _ := regexp.Compile("artist([1-9]+)")
+	
+	// r, _ := regexp.Compile("artist([1-9]+)")
 	var firstletter string
 	switch {
-	case r.MatchString("artist1"):
+	case strings.Contains("1", fl):
 		firstletter = "fl1"
-	case r.MatchString("artist2"):
+	case strings.Contains("2", fl):
 		firstletter = "fl2"
-	case r.MatchString("artist3"):
+	case strings.Contains("3", fl):
 		firstletter = "fl3"
-	case r.MatchString("artist4"):
+	case strings.Contains("4", fl):
 		firstletter = "fl4"
-	case r.MatchString("artist5"):
+	case strings.Contains("5", fl):
 		firstletter = "fl5"
-	case r.MatchString("artist6"):
+	case strings.Contains("6", fl):
 		firstletter = "fl6"
-	case r.MatchString("artist7"):
+	case strings.Contains("7", fl):
 		firstletter = "fl7"
-	case r.MatchString("artist8"):
+	case strings.Contains("8", fl):
 		firstletter = "fl8"
-	case r.MatchString("artist9"):
+	case strings.Contains("9", fl):
 		firstletter = "fl9"
 	default:
 		firstletter = fl
 	}
-
-	allArtist := AmpgoFind("artistalpha", firstletter, "None", "None")
+	log.Println("ArtistsForFirstLetterHandler")
+	log.Println(firstletter)
+	allArtist := AmpgoFind("artistalpha", firstletter, "", "")
 	return c.JSON(http.StatusOK, allArtist)
 }
 
 func AlbumsForFirstLetterHandler(c echo.Context) error {
 	fl := c.QueryParam("firstletter")
 	fmt.Println(fl)
-	log.Println("AlbumForFirstLetterHandler")
-	log.Println(fl)
-	r, _ := regexp.Compile("album([1-9]+)")
+	
+	// r, _ := regexp.Compile("album([1-9]+)")
 	var firstletter string
 	switch {
-	case r.MatchString("album1"):
+	case strings.Contains("1", fl):
 		firstletter = "fl1"
-	case r.MatchString("album2"):
+	case strings.Contains("2", fl):
 		firstletter = "fl2"
-	case r.MatchString("album3"):
+	case strings.Contains("3", fl):
 		firstletter = "fl3"
-	case r.MatchString("album4"):
+	case strings.Contains("4", fl):
 		firstletter = "fl4"
-	case r.MatchString("album5"):
+	case strings.Contains("5", fl):
 		firstletter = "fl5"
-	case r.MatchString("album6"):
+	case strings.Contains("6", fl):
 		firstletter = "fl6"
-	case r.MatchString("album7"):
+	case strings.Contains("7", fl):
 		firstletter = "fl7"
-	case r.MatchString("album8"):
+	case strings.Contains("8", fl):
 		firstletter = "fl8"
-	case r.MatchString("album9"):
+	case strings.Contains("9", fl):
 		firstletter = "fl9"
 	default:
 		firstletter = fl
 	}
-	allAlbum := AmpgoFind("albumalpha", firstletter, "None", "None")
+	log.Println("AlbumForFirstLetterHandler")
+	log.Println(firstletter)
+
+	allAlbum := AmpgoFind("albumalpha", firstletter, "", "")
 	return c.JSON(http.StatusOK, allAlbum)
 }
 
