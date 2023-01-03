@@ -228,9 +228,9 @@ class MusicFiles:
             meta['Album_first'] = tags.Album[:1]
             meta['Song_first'] = tags.Song[:1]
             meta['Play_length'] = str(self.play_length(afile))
-            boo = self.check_jpg(afile)
-            if boo[0]:
-                meta["Img_base64_str"] = self.img_to_base64(boo[1])
+            bo, boo = self.check_jpg(afile)
+            if bo:
+                meta["Img_base64_str"] = self.img_to_base64(boo)
             else:
                 meta["Img_base64_str"] = "None"
         return meta
