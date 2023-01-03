@@ -170,6 +170,8 @@ func randomPicsHandler(c echo.Context) error {
 func ArtistsForFirstLetterHandler(c echo.Context) error {
 	fl := c.QueryParam("firstletter")
 	fmt.Println(fl)
+	log.Println("ArtistsForFirstLetterHandler")
+	log.Println(fl)
 	r, _ := regexp.Compile("artist([1-9]+)")
 	var firstletter string
 	switch {
@@ -202,6 +204,8 @@ func ArtistsForFirstLetterHandler(c echo.Context) error {
 func AlbumsForFirstLetterHandler(c echo.Context) error {
 	fl := c.QueryParam("firstletter")
 	fmt.Println(fl)
+	log.Println("AlbumForFirstLetterHandler")
+	log.Println(fl)
 	r, _ := regexp.Compile("album([1-9]+)")
 	var firstletter string
 	switch {
