@@ -14,7 +14,7 @@ services:
       - 27017:27017
 
   ampgoserver:
-    image: ampgo:0.3.25
+    image: ampgo:0.3.26
     build: .
     environment:
       - AMPGO_SETUP=1
@@ -83,6 +83,6 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/teresapi/PISTUFF/Ampgologs
+      device: /home/teresa/PISTUFF/Ampgologs
       o: bind
 
