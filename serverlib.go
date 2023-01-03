@@ -164,6 +164,26 @@ func randomPicsHandler(c echo.Context) error {
 ///////////////////////////////////////////////////
 ///////////////////////////////////////////////////
 
+func artistsForFirstLetterHandler(c echo.Context) error {
+	firstletter := c.QueryParam("firstletter")
+	allArtist := AmpgoFind("artistalpha", firstletter, "None", "None")
+	return c.JSON(http.StatusOK, allArtist)
+}
+
+func albumsForFirstLetterHandler(c echo.Context) error {
+	firstletter := c.QueryParam("firstletter")
+	allAlbum := AmpgoFind("albumalpha", firstletter, "None", "None")
+	return c.JSON(http.StatusOK, allAlbum)
+}
+
+func songsForFirstLetterHandler(c echo.Context) error {
+	firstletter := c.QueryParam("firstletter")
+	allSong := AmpgoFind("songalpha", firstletter, "None", "None")
+	return c.JSON(http.StatusOK, allSong)
+}
+
+
+
 func ArtistFirstLetterHandler(c echo.Context) error {
 	artistAlphaAll := AmpgoFind("artistalpha", "artistalphalist", "None", "None")
 	return c.JSON(http.StatusOK, artistAlphaAll)
