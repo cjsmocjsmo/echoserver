@@ -53,34 +53,36 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/charliepi/PISTUFF/Data/db
+      device: /home/teresa/PISTUFF/Data/db
       o: bind
 
   ampgovol:
     driver: local
     driver_opts:
       type: none
-      device: /media/charliepi/FOO/music/music
+      # device: /media/charliepi/FOO/music/music
+      device: /home/teresa/Music/music
       o: bind
 
   ampgometavol:
     driver: local
     driver_opts:
       type: none
-      device: /media/charliepi/FOO/music/metadata
+      # device: /media/teresa/FOO/music/metadata
+      device: /home/teresa/Music/metadata
       o: bind
 
   ampgopicvol:
     driver: local
     driver_opts:
       type: none
-      device: /home/charliepi/PISTUFF/Thumbnails
+      device: /home/teresa/PISTUFF/Thumbnails
       o: bind
 
   ampgologvol:
     driver: local
     driver_opts:
       type: none
-      device: /home/charliepi/PISTUFF/Ampgologs
+      device: /home/teresapi/PISTUFF/Ampgologs
       o: bind
 
