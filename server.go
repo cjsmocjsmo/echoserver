@@ -19,7 +19,7 @@ func main() {
 	e.GET("/randomPics", randomPicsHandler)
 
 	e.GET("/artistFirstLetter", ArtistFirstLetterHandler)
-	e.GET("/artistsForFirstLetter", artistsForFirstLetterHandler)
+	e.GET("/artistsForFirstLetter", ArtistsForFirstLetterHandler)
 	e.GET("/artist1", Artist1Handler)
 	e.GET("/artist2", Artist2Handler)
 	e.GET("/artist3", Artist3Handler)
@@ -57,7 +57,7 @@ func main() {
 	e.GET("/artistZ", ArtistZHandler)
 
 	e.GET("/albumFirstLetter", AlbumFirstLetterHandler)
-	e.GET("/albumsForFirstLetter", albumsForFirstLetterHandler)
+	e.GET("/albumsForFirstLetter", AlbumsForFirstLetterHandler)
 	e.GET("/album1", Album1Handler)
 	e.GET("/album2", Album2Handler)
 	e.GET("/album3", Album3Handler)
@@ -95,7 +95,7 @@ func main() {
 	e.GET("/albumZ", AlbumZHandler)
 
 	e.GET("/songFirstLetter", SongFirstLetterHandler)
-	e.GET("/songsForFirstLetter", songsForFirstLetterHandler)
+	e.GET("/songsForFirstLetter", SongsForFirstLetterHandler)
 	e.GET("/song1", Song1Handler)
 	e.GET("/song2", Song2Handler)
 	e.GET("/song3", Song3Handler)

@@ -7,6 +7,7 @@ import (
 	"math/rand"
 	"net/http"
 	"strconv"
+
 	// "strings"
 	"regexp"
 	"time"
@@ -166,7 +167,7 @@ func randomPicsHandler(c echo.Context) error {
 ///////////////////////////////////////////////////
 ///////////////////////////////////////////////////
 
-func artistsForFirstLetterHandler(c echo.Context) error {
+func ArtistsForFirstLetterHandler(c echo.Context) error {
 	fl := c.QueryParam("firstletter")
 	fmt.Println(fl)
 	r, _ := regexp.Compile("artist([1-9]+)")
@@ -198,7 +199,7 @@ func artistsForFirstLetterHandler(c echo.Context) error {
 	return c.JSON(http.StatusOK, allArtist)
 }
 
-func albumsForFirstLetterHandler(c echo.Context) error {
+func AlbumsForFirstLetterHandler(c echo.Context) error {
 	fl := c.QueryParam("firstletter")
 	fmt.Println(fl)
 	r, _ := regexp.Compile("album([1-9]+)")
@@ -229,7 +230,7 @@ func albumsForFirstLetterHandler(c echo.Context) error {
 	return c.JSON(http.StatusOK, allAlbum)
 }
 
-func songsForFirstLetterHandler(c echo.Context) error {
+func SongsForFirstLetterHandler(c echo.Context) error {
 	fl := c.QueryParam("firstletter")
 	fmt.Println(fl)
 	r, _ := regexp.Compile("song([1-9]+)")
