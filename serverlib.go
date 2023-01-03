@@ -7,6 +7,8 @@ import (
 	"math/rand"
 	"net/http"
 	"strconv"
+	// "strings"
+	"regexp"
 	"time"
 
 	"github.com/labstack/echo/v4"
@@ -165,24 +167,98 @@ func randomPicsHandler(c echo.Context) error {
 ///////////////////////////////////////////////////
 
 func artistsForFirstLetterHandler(c echo.Context) error {
-	firstletter := c.QueryParam("firstletter")
+	fl := c.QueryParam("firstletter")
+	fmt.Println(fl)
+	r, _ := regexp.Compile("artist([1-9]+)")
+	var firstletter string
+	switch {
+	case r.MatchString("artist1"):
+		firstletter = "fl1"
+	case r.MatchString("artist2"):
+		firstletter = "fl2"
+	case r.MatchString("artist3"):
+		firstletter = "fl3"
+	case r.MatchString("artist4"):
+		firstletter = "fl4"
+	case r.MatchString("artist5"):
+		firstletter = "fl5"
+	case r.MatchString("artist6"):
+		firstletter = "fl6"
+	case r.MatchString("artist7"):
+		firstletter = "fl7"
+	case r.MatchString("artist8"):
+		firstletter = "fl8"
+	case r.MatchString("artist9"):
+		firstletter = "fl9"
+	default:
+		firstletter = fl
+	}
+
 	allArtist := AmpgoFind("artistalpha", firstletter, "None", "None")
 	return c.JSON(http.StatusOK, allArtist)
 }
 
 func albumsForFirstLetterHandler(c echo.Context) error {
-	firstletter := c.QueryParam("firstletter")
+	fl := c.QueryParam("firstletter")
+	fmt.Println(fl)
+	r, _ := regexp.Compile("album([1-9]+)")
+	var firstletter string
+	switch {
+	case r.MatchString("album1"):
+		firstletter = "fl1"
+	case r.MatchString("album2"):
+		firstletter = "fl2"
+	case r.MatchString("album3"):
+		firstletter = "fl3"
+	case r.MatchString("album4"):
+		firstletter = "fl4"
+	case r.MatchString("album5"):
+		firstletter = "fl5"
+	case r.MatchString("album6"):
+		firstletter = "fl6"
+	case r.MatchString("album7"):
+		firstletter = "fl7"
+	case r.MatchString("album8"):
+		firstletter = "fl8"
+	case r.MatchString("album9"):
+		firstletter = "fl9"
+	default:
+		firstletter = fl
+	}
 	allAlbum := AmpgoFind("albumalpha", firstletter, "None", "None")
 	return c.JSON(http.StatusOK, allAlbum)
 }
 
 func songsForFirstLetterHandler(c echo.Context) error {
-	firstletter := c.QueryParam("firstletter")
+	fl := c.QueryParam("firstletter")
+	fmt.Println(fl)
+	r, _ := regexp.Compile("song([1-9]+)")
+	var firstletter string
+	switch {
+	case r.MatchString("song1"):
+		firstletter = "fl1"
+	case r.MatchString("song2"):
+		firstletter = "fl2"
+	case r.MatchString("song3"):
+		firstletter = "fl3"
+	case r.MatchString("song4"):
+		firstletter = "fl4"
+	case r.MatchString("song5"):
+		firstletter = "fl5"
+	case r.MatchString("song6"):
+		firstletter = "fl6"
+	case r.MatchString("song7"):
+		firstletter = "fl7"
+	case r.MatchString("song8"):
+		firstletter = "fl8"
+	case r.MatchString("song9"):
+		firstletter = "fl9"
+	default:
+		firstletter = fl
+	}
 	allSong := AmpgoFind("songalpha", firstletter, "None", "None")
 	return c.JSON(http.StatusOK, allSong)
 }
-
-
 
 func ArtistFirstLetterHandler(c echo.Context) error {
 	artistAlphaAll := AmpgoFind("artistalpha", "artistalphalist", "None", "None")
