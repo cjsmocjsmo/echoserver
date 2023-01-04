@@ -8,8 +8,6 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
-
-	// "strings"
 	"regexp"
 	"time"
 
@@ -198,7 +196,7 @@ func ArtistsForFirstLetterHandler(c echo.Context) error {
 	}
 	log.Println("ArtistsForFirstLetterHandler")
 	log.Println(firstletter)
-	allArtist := AmpgoFind("artistalpha", firstletter, "", "")
+	allArtist := AmpgoFind("artistalpha", firstletter, "None", "None")
 	return c.JSON(http.StatusOK, allArtist)
 }
 
@@ -233,7 +231,7 @@ func AlbumsForFirstLetterHandler(c echo.Context) error {
 	log.Println("AlbumForFirstLetterHandler")
 	log.Println(firstletter)
 
-	allAlbum := AmpgoFind("albumalpha", firstletter, "", "")
+	allAlbum := AmpgoFind("albumalpha", firstletter, "None", "None")
 	return c.JSON(http.StatusOK, allAlbum)
 }
 
@@ -264,6 +262,8 @@ func SongsForFirstLetterHandler(c echo.Context) error {
 	default:
 		firstletter = fl
 	}
+	log.Println("SongsForFirstLetterHandler")
+	log.Println(firstletter)
 	allSong := AmpgoFind("songalpha", firstletter, "None", "None")
 	return c.JSON(http.StatusOK, allSong)
 }
