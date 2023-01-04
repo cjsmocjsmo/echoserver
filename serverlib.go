@@ -6,9 +6,9 @@ import (
 	"log"
 	"math/rand"
 	"net/http"
+	"regexp"
 	"strconv"
 	"strings"
-	"regexp"
 	"time"
 
 	"github.com/labstack/echo/v4"
@@ -168,9 +168,6 @@ func randomPicsHandler(c echo.Context) error {
 
 func ArtistsForFirstLetterHandler(c echo.Context) error {
 	fl := c.QueryParam("firstletter")
-	fmt.Println(fl)
-	
-	// r, _ := regexp.Compile("artist([1-9]+)")
 	var firstletter string
 	switch {
 	case strings.Contains("1", fl):
@@ -202,9 +199,6 @@ func ArtistsForFirstLetterHandler(c echo.Context) error {
 
 func AlbumsForFirstLetterHandler(c echo.Context) error {
 	fl := c.QueryParam("firstletter")
-	fmt.Println(fl)
-	
-	// r, _ := regexp.Compile("album([1-9]+)")
 	var firstletter string
 	switch {
 	case strings.Contains("1", fl):
@@ -230,14 +224,12 @@ func AlbumsForFirstLetterHandler(c echo.Context) error {
 	}
 	log.Println("AlbumForFirstLetterHandler")
 	log.Println(firstletter)
-
 	allAlbum := AmpgoFind("albumalpha", firstletter, "None", "None")
 	return c.JSON(http.StatusOK, allAlbum)
 }
 
 func SongsForFirstLetterHandler(c echo.Context) error {
 	fl := c.QueryParam("firstletter")
-	fmt.Println(fl)
 	r, _ := regexp.Compile("song([1-9]+)")
 	var firstletter string
 	switch {
