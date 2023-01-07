@@ -520,71 +520,157 @@ func SongFirst() string {
 	defer Close(client, ctx, cancel)
 
 	All1 := AmpgoFind("maindb", "maindb", "Song_first", "1")
-	for _, a1 := range All1 {
-		_, err = InsertOne(client, ctx, "songalpha", "fl1", a1)
+	a1 := len(All1)
+	for _, a11 := range All1 {
+		newmap := make(map[string]string)
+		newmap["songID"] = a11["File_id"]
+		newmap["song"] = a11["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "fl1", newmap)
 		CheckError(err, "SongFirst: a insertion has failed")
 	}
-	a1 := len(All1)
+
+	All2 := AmpgoFind("maindb", "maindb", "Song_first", "2")
+	a2 := len(All2)
+	for _, a22 := range All2 {
+		newmap := make(map[string]string)
+		newmap["songID"] = a22["File_id"]
+		newmap["song"] = a22["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "fl2", newmap)
+		CheckError(err, "SongFirst: a insertion has failed")
+	}
 
 	All3 := AmpgoFind("maindb", "maindb", "Song_first", "3")
-	for _, a3 := range All3 {
-		_, err = InsertOne(client, ctx, "songalpha", "fl3", a3)
+	a3 := len(All3)
+	for _, a33 := range All3 {
+		newmap := make(map[string]string)
+		newmap["songID"] = a33["File_id"]
+		newmap["song"] = a33["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "fl3", newmap)
 		CheckError(err, "SongFirst: a insertion has failed")
 	}
-	a3 := len(All3)
+
+	All4 := AmpgoFind("maindb", "maindb", "Song_first", "4")
+	a4 := len(All4)
+	for _, a44 := range All4 {
+		newmap := make(map[string]string)
+		newmap["songID"] = a44["File_id"]
+		newmap["song"] = a44["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "fl4", newmap)
+		CheckError(err, "SongFirst: a insertion has failed")
+	}
+
+	All5 := AmpgoFind("maindb", "maindb", "Song_first", "5")
+	a5 := len(All5)
+	for _, a55 := range All5 {
+		newmap := make(map[string]string)
+		newmap["songID"] = a55["File_id"]
+		newmap["song"] = a55["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "fl5", newmap)
+		CheckError(err, "SongFirst: a insertion has failed")
+	}
+
+	All6 := AmpgoFind("maindb", "maindb", "Song_first", "6")
+	a6 := len(All6)
+	for _, a66 := range All6 {
+		newmap := make(map[string]string)
+		newmap["songID"] = a66["File_id"]
+		newmap["song"] = a66["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "fl6", newmap)
+		CheckError(err, "SongFirst: a insertion has failed")
+	}
 
 	All7 := AmpgoFind("maindb", "maindb", "Song_first", "7")
-	for _, a7 := range All7 {
-		_, err = InsertOne(client, ctx, "songalpha", "fl7", a7)
+	a7 := len(All7)
+	for _, a77 := range All7 {
+		newmap := make(map[string]string)
+		newmap["songID"] = a77["File_id"]
+		newmap["song"] = a77["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "fl7", newmap)
 		CheckError(err, "SongFirst: a insertion has failed")
 	}
-	a7 := len(All7)
+	
+
+	All8 := AmpgoFind("maindb", "maindb", "Song_first", "8")
+	a8 := len(All8)
+	for _, a88 := range All8 {
+		newmap := make(map[string]string)
+		newmap["songID"] = a88["File_id"]
+		newmap["song"] = a88["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "fl8", newmap)
+		CheckError(err, "SongFirst: a insertion has failed")
+	}
 
 	All9 := AmpgoFind("maindb", "maindb", "Song_first", "9")
-	for _, a9 := range All9 {
-		_, err = InsertOne(client, ctx, "songalpha", "fl9", a9)
+	a9 := len(All9)
+	for _, a99 := range All9 {
+		newmap := make(map[string]string)
+		newmap["songID"] = a99["File_id"]
+		newmap["song"] = a99["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "fl9", newmap)
 		CheckError(err, "SongFirst: a insertion has failed")
 	}
-	a9 := len(All9)
+	
 
 	aAll := AmpgoFind("maindb", "maindb", "Song_first", "A")
 	for _, a := range aAll {
-		_, err = InsertOne(client, ctx, "songalpha", "A", a)
+		newmap := make(map[string]string)
+		newmap["songID"] = a["File_id"]
+		newmap["song"] = a["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "A", newmap)
 		CheckError(err, "SongFirst: a insertion has failed")
 	}
 	aa := len(aAll)
 
 	bAll := AmpgoFind("maindb", "maindb", "Song_first", "B")
+	bb := len(bAll)
 	for _, b := range bAll {
-		_, err = InsertOne(client, ctx, "songalpha", "B", b)
+		newmap := make(map[string]string)
+		newmap["songID"] = b["File_id"]
+		newmap["song"] = b["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "B", newmap)
 		CheckError(err, "SongFirst: b insertion has failed")
 	}
-	bb := len(bAll)
+	
 
 	cAll := AmpgoFind("maindb", "maindb", "Song_first", "C")
+	cc := len(cAll)
 	for _, c := range cAll {
-		_, err = InsertOne(client, ctx, "songalpha", "C", c)
+		newmap := make(map[string]string)
+		newmap["songID"] = c["File_id"]
+		newmap["song"] = c["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "C", newmap)
 		CheckError(err, "SongFirst: c insertion has failed")
 	}
-	cc := len(cAll)
+	
 
 	dAll := AmpgoFind("maindb", "maindb", "Song_first", "D")
+	dd := len(dAll)
 	for _, d := range dAll {
-		_, err = InsertOne(client, ctx, "songalpha", "D", d)
+		newmap := make(map[string]string)
+		newmap["songID"] = d["File_id"]
+		newmap["song"] = d["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "D", newmap)
 		CheckError(err, "SongFirst: d insertion has failed")
 	}
-	dd := len(dAll)
+	
 
 	eAll := AmpgoFind("maindb", "maindb", "Song_first", "E")
+	ee := len(eAll)
 	for _, e := range eAll {
-		_, err = InsertOne(client, ctx, "songalpha", "E", e)
+		newmap := make(map[string]string)
+		newmap["songID"] = e["File_id"]
+		newmap["song"] = e["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "E", newmap)
 		CheckError(err, "SongFirst: e insertion has failed")
 	}
-	ee := len(eAll)
+	
 
 	fAll := AmpgoFind("maindb", "maindb", "Song_first", "F")
 	for _, f := range fAll {
-		_, err = InsertOne(client, ctx, "songalpha", "F", f)
+		newmap := make(map[string]string)
+		newmap["songID"] = f["File_id"]
+		newmap["song"] = f["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "F", newmap)
 		CheckError(err, "SongFirst: f insertion has failed")
 	}
 	ff := len(fAll)
@@ -592,144 +678,204 @@ func SongFirst() string {
 	gAll := AmpgoFind("maindb", "maindb", "Song_first", "G")
 	gg := len(gAll)
 	for _, g := range gAll {
-		_, err = InsertOne(client, ctx, "songalpha", "G", g)
+		newmap := make(map[string]string)
+		newmap["songID"] = g["File_id"]
+		newmap["song"] = g["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "G", newmap)
 		CheckError(err, "SongFirst: g insertion has failed")
 	}
 
 	hAll := AmpgoFind("maindb", "maindb", "Song_first", "H")
 	hh := len(hAll)
 	for _, h := range hAll {
-		_, err = InsertOne(client, ctx, "songalpha", "H", h)
+		newmap := make(map[string]string)
+		newmap["songID"] = h["File_id"]
+		newmap["song"] = h["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "H", newmap)
 		CheckError(err, "SongFirst: h insertion has failed")
 	}
 
 	iAll := AmpgoFind("maindb", "maindb", "Song_first", "I")
 	ii := len(iAll)
 	for _, i := range iAll {
-		_, err = InsertOne(client, ctx, "songalpha", "I", i)
+		newmap := make(map[string]string)
+		newmap["songID"] = i["File_id"]
+		newmap["song"] = i["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "I", newmap)
 		CheckError(err, "SongFirst: i insertion has failed")
 	}
 
 	jAll := AmpgoFind("maindb", "maindb", "Song_first", "J")
 	jj := len(jAll)
 	for _, j := range jAll {
-		_, err = InsertOne(client, ctx, "songalpha", "J", j)
+		newmap := make(map[string]string)
+		newmap["songID"] = j["File_id"]
+		newmap["song"] = j["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "J", newmap)
 		CheckError(err, "SongFirst: j insertion has failed")
 	}
 
 	kAll := AmpgoFind("maindb", "maindb", "Song_first", "K")
 	kk := len(kAll)
 	for _, k := range kAll {
-		_, err = InsertOne(client, ctx, "songalpha", "K", k)
+		newmap := make(map[string]string)
+		newmap["songID"] = k["File_id"]
+		newmap["song"] = k["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "K", newmap)
 		CheckError(err, "SongFirst: k insertion has failed")
 	}
 
 	lAll := AmpgoFind("maindb", "maindb", "Song_first", "L")
 	ll := len(lAll)
 	for _, l := range lAll {
-		_, err = InsertOne(client, ctx, "songalpha", "L", l)
+		newmap := make(map[string]string)
+		newmap["songID"] = l["File_id"]
+		newmap["song"] = l["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "L", newmap)
 		CheckError(err, "SongFirst: l insertion has failed")
 	}
 
 	mAll := AmpgoFind("maindb", "maindb", "Song_first", "M")
 	mm := len(mAll)
 	for _, m := range mAll {
-		_, err = InsertOne(client, ctx, "songalpha", "M", m)
+		newmap := make(map[string]string)
+		newmap["songID"] = m["File_id"]
+		newmap["song"] = m["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "M", newmap)
 		CheckError(err, "SongFirst: m insertion has failed")
 	}
 
 	nAll := AmpgoFind("maindb", "maindb", "Song_first", "N")
 	nn := len(nAll)
 	for _, n := range nAll {
-		_, err = InsertOne(client, ctx, "songalpha", "N", n)
+		newmap := make(map[string]string)
+		newmap["songID"] = n["File_id"]
+		newmap["song"] = n["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "N", newmap)
 		CheckError(err, "SongFirst: n insertion has failed")
 	}
 
 	oAll := AmpgoFind("maindb", "maindb", "Song_first", "O")
 	oo := len(oAll)
 	for _, o := range oAll {
-		_, err = InsertOne(client, ctx, "songalpha", "O", o)
+		newmap := make(map[string]string)
+		newmap["songID"] = o["File_id"]
+		newmap["song"] = o["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "O", newmap)
 		CheckError(err, "SongFirst: o insertion has failed")
 	}
 
 	pAll := AmpgoFind("maindb", "maindb", "Song_first", "P")
 	pp := len(pAll)
 	for _, p := range pAll {
-		_, err = InsertOne(client, ctx, "songalpha", "P", p)
+		newmap := make(map[string]string)
+		newmap["songID"] = p["File_id"]
+		newmap["song"] = p["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "P", newmap)
 		CheckError(err, "SongFirst: p insertion has failed")
 	}
 
 	qAll := AmpgoFind("maindb", "maindb", "Song_first", "Q")
 	qq := len(qAll)
 	for _, q := range qAll {
-		_, err = InsertOne(client, ctx, "songalpha", "Q", q)
+		newmap := make(map[string]string)
+		newmap["songID"] = q["File_id"]
+		newmap["song"] = q["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "Q", newmap)
 		CheckError(err, "SongFirst: q insertion has failed")
 	}
 
 	rAll := AmpgoFind("maindb", "maindb", "Song_first", "R")
 	rr := len(rAll)
 	for _, r := range rAll {
-		_, err = InsertOne(client, ctx, "songalpha", "R", r)
+		newmap := make(map[string]string)
+		newmap["songID"] = r["File_id"]
+		newmap["song"] = r["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "R", newmap)
 		CheckError(err, "SongFirst: r insertion has failed")
 	}
 
 	sAll := AmpgoFind("maindb", "maindb", "Song_first", "S")
 	ss := len(sAll)
 	for _, s := range sAll {
-		_, err = InsertOne(client, ctx, "songalpha", "S", s)
+		newmap := make(map[string]string)
+		newmap["songID"] = s["File_id"]
+		newmap["song"] = s["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "S", newmap)
 		CheckError(err, "SongFirst: s insertion has failed")
 	}
 
 	tAll := AmpgoFind("maindb", "maindb", "Song_first", "T")
 	tt := len(tAll)
 	for _, t := range tAll {
-		_, err = InsertOne(client, ctx, "songalpha", "T", t)
+		newmap := make(map[string]string)
+		newmap["songID"] = t["File_id"]
+		newmap["song"] = t["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "T", newmap)
 		CheckError(err, "SongFirst: t insertion has failed")
 	}
 
 	uAll := AmpgoFind("maindb", "maindb", "Song_first", "U")
 	uu := len(uAll)
 	for _, u := range uAll {
-		_, err = InsertOne(client, ctx, "songalpha", "U", u)
+		newmap := make(map[string]string)
+		newmap["songID"] = u["File_id"]
+		newmap["song"] = u["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "U", newmap)
 		CheckError(err, "SongFirst: u insertion has failed")
 	}
 
 	vAll := AmpgoFind("maindb", "maindb", "Song_first", "V")
 	vv := len(vAll)
 	for _, v := range vAll {
-		_, err = InsertOne(client, ctx, "songalpha", "V", v)
+		newmap := make(map[string]string)
+		newmap["songID"] = v["File_id"]
+		newmap["song"] = v["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "V", newmap)
 		CheckError(err, "SongFirst: v insertion has failed")
 	}
 
 	wAll := AmpgoFind("maindb", "maindb", "Song_first", "W")
 	ww := len(wAll)
 	for _, w := range wAll {
-		_, err = InsertOne(client, ctx, "songalpha", "W", w)
+		newmap := make(map[string]string)
+		newmap["songID"] = w["File_id"]
+		newmap["song"] = w["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "W", newmap)
 		CheckError(err, "SongFirst: w insertion has failed")
 	}
 
 	xAll := AmpgoFind("maindb", "maindb", "Song_first", "X")
 	xx := len(xAll)
 	for _, x := range xAll {
-		_, err = InsertOne(client, ctx, "songalpha", "X", x)
+		newmap := make(map[string]string)
+		newmap["songID"] = x["File_id"]
+		newmap["song"] = x["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "X", newmap)
 		CheckError(err, "SongFirst: x insertion has failed")
 	}
 
 	yAll := AmpgoFind("maindb", "maindb", "Song_first", "Y")
 	yy := len(yAll)
 	for _, y := range yAll {
-		_, err = InsertOne(client, ctx, "songalpha", "Y", y)
+		newmap := make(map[string]string)
+		newmap["songID"] = y["File_id"]
+		newmap["song"] = y["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "Y", newmap)
 		CheckError(err, "SongFirst: y insertion has failed")
 	}
 
 	zAll := AmpgoFind("maindb", "maindb", "Song_first", "Z")
 	zz := len(zAll)
 	for _, z := range zAll {
-		_, err = InsertOne(client, ctx, "songalpha", "Z", z)
+		newmap := make(map[string]string)
+		newmap["songID"] = z["File_id"]
+		newmap["song"] = z["Tags_song"]
+		_, err = InsertOne(client, ctx, "songalpha", "Z", newmap)
 		CheckError(err, "SongFirst: z insertion has failed")
 	}
 	tot := 0
-	tototal := []int{a1, a3, a7, a9, aa, bb, cc, dd, ee, ff, gg, hh, ii,
+	tototal := []int{a1, a2, a3, a4, a5, a6, a7, a8, a9, aa, bb, cc, dd, ee, ff, gg, hh, ii,
 		jj, kk, ll, mm, nn, oo, pp, qq, rr, ss, tt, uu, vv, ww, xx, yy, zz,
 	}
 	for _, v := range tototal {
