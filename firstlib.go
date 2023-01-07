@@ -524,7 +524,7 @@ func SongFirst() string {
 	for _, a11 := range All1 {
 		newmap := make(map[string]string)
 		newmap["songID"] = a11["File_id"]
-		newmap["song"] = a11["Tags_song"]
+		newmap["song"] = a11["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "fl1", newmap)
 		CheckError(err, "SongFirst: a insertion has failed")
 	}
@@ -534,7 +534,7 @@ func SongFirst() string {
 	for _, a22 := range All2 {
 		newmap := make(map[string]string)
 		newmap["songID"] = a22["File_id"]
-		newmap["song"] = a22["Tags_song"]
+		newmap["song"] = a22["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "fl2", newmap)
 		CheckError(err, "SongFirst: a insertion has failed")
 	}
@@ -544,7 +544,7 @@ func SongFirst() string {
 	for _, a33 := range All3 {
 		newmap := make(map[string]string)
 		newmap["songID"] = a33["File_id"]
-		newmap["song"] = a33["Tags_song"]
+		newmap["song"] = a33["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "fl3", newmap)
 		CheckError(err, "SongFirst: a insertion has failed")
 	}
@@ -554,7 +554,7 @@ func SongFirst() string {
 	for _, a44 := range All4 {
 		newmap := make(map[string]string)
 		newmap["songID"] = a44["File_id"]
-		newmap["song"] = a44["Tags_song"]
+		newmap["song"] = a44["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "fl4", newmap)
 		CheckError(err, "SongFirst: a insertion has failed")
 	}
@@ -564,7 +564,7 @@ func SongFirst() string {
 	for _, a55 := range All5 {
 		newmap := make(map[string]string)
 		newmap["songID"] = a55["File_id"]
-		newmap["song"] = a55["Tags_song"]
+		newmap["song"] = a55["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "fl5", newmap)
 		CheckError(err, "SongFirst: a insertion has failed")
 	}
@@ -574,7 +574,7 @@ func SongFirst() string {
 	for _, a66 := range All6 {
 		newmap := make(map[string]string)
 		newmap["songID"] = a66["File_id"]
-		newmap["song"] = a66["Tags_song"]
+		newmap["song"] = a66["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "fl6", newmap)
 		CheckError(err, "SongFirst: a insertion has failed")
 	}
@@ -584,7 +584,7 @@ func SongFirst() string {
 	for _, a77 := range All7 {
 		newmap := make(map[string]string)
 		newmap["songID"] = a77["File_id"]
-		newmap["song"] = a77["Tags_song"]
+		newmap["song"] = a77["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "fl7", newmap)
 		CheckError(err, "SongFirst: a insertion has failed")
 	}
@@ -595,7 +595,7 @@ func SongFirst() string {
 	for _, a88 := range All8 {
 		newmap := make(map[string]string)
 		newmap["songID"] = a88["File_id"]
-		newmap["song"] = a88["Tags_song"]
+		newmap["song"] = a88["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "fl8", newmap)
 		CheckError(err, "SongFirst: a insertion has failed")
 	}
@@ -605,7 +605,7 @@ func SongFirst() string {
 	for _, a99 := range All9 {
 		newmap := make(map[string]string)
 		newmap["songID"] = a99["File_id"]
-		newmap["song"] = a99["Tags_song"]
+		newmap["song"] = a99["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "fl9", newmap)
 		CheckError(err, "SongFirst: a insertion has failed")
 	}
@@ -615,7 +615,7 @@ func SongFirst() string {
 	for _, a := range aAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = a["File_id"]
-		newmap["song"] = a["Tags_song"]
+		newmap["song"] = a["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "A", newmap)
 		CheckError(err, "SongFirst: a insertion has failed")
 	}
@@ -626,7 +626,7 @@ func SongFirst() string {
 	for _, b := range bAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = b["File_id"]
-		newmap["song"] = b["Tags_song"]
+		newmap["song"] = b["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "B", newmap)
 		CheckError(err, "SongFirst: b insertion has failed")
 	}
@@ -637,7 +637,7 @@ func SongFirst() string {
 	for _, c := range cAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = c["File_id"]
-		newmap["song"] = c["Tags_song"]
+		newmap["song"] = c["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "C", newmap)
 		CheckError(err, "SongFirst: c insertion has failed")
 	}
@@ -648,7 +648,7 @@ func SongFirst() string {
 	for _, d := range dAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = d["File_id"]
-		newmap["song"] = d["Tags_song"]
+		newmap["song"] = d["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "D", newmap)
 		CheckError(err, "SongFirst: d insertion has failed")
 	}
@@ -659,7 +659,7 @@ func SongFirst() string {
 	for _, e := range eAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = e["File_id"]
-		newmap["song"] = e["Tags_song"]
+		newmap["song"] = e["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "E", newmap)
 		CheckError(err, "SongFirst: e insertion has failed")
 	}
@@ -669,7 +669,7 @@ func SongFirst() string {
 	for _, f := range fAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = f["File_id"]
-		newmap["song"] = f["Tags_song"]
+		newmap["song"] = f["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "F", newmap)
 		CheckError(err, "SongFirst: f insertion has failed")
 	}
@@ -680,7 +680,7 @@ func SongFirst() string {
 	for _, g := range gAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = g["File_id"]
-		newmap["song"] = g["Tags_song"]
+		newmap["song"] = g["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "G", newmap)
 		CheckError(err, "SongFirst: g insertion has failed")
 	}
@@ -690,7 +690,7 @@ func SongFirst() string {
 	for _, h := range hAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = h["File_id"]
-		newmap["song"] = h["Tags_song"]
+		newmap["song"] = h["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "H", newmap)
 		CheckError(err, "SongFirst: h insertion has failed")
 	}
@@ -700,7 +700,7 @@ func SongFirst() string {
 	for _, i := range iAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = i["File_id"]
-		newmap["song"] = i["Tags_song"]
+		newmap["song"] = i["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "I", newmap)
 		CheckError(err, "SongFirst: i insertion has failed")
 	}
@@ -710,7 +710,7 @@ func SongFirst() string {
 	for _, j := range jAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = j["File_id"]
-		newmap["song"] = j["Tags_song"]
+		newmap["song"] = j["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "J", newmap)
 		CheckError(err, "SongFirst: j insertion has failed")
 	}
@@ -720,7 +720,7 @@ func SongFirst() string {
 	for _, k := range kAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = k["File_id"]
-		newmap["song"] = k["Tags_song"]
+		newmap["song"] = k["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "K", newmap)
 		CheckError(err, "SongFirst: k insertion has failed")
 	}
@@ -730,7 +730,7 @@ func SongFirst() string {
 	for _, l := range lAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = l["File_id"]
-		newmap["song"] = l["Tags_song"]
+		newmap["song"] = l["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "L", newmap)
 		CheckError(err, "SongFirst: l insertion has failed")
 	}
@@ -740,7 +740,7 @@ func SongFirst() string {
 	for _, m := range mAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = m["File_id"]
-		newmap["song"] = m["Tags_song"]
+		newmap["song"] = m["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "M", newmap)
 		CheckError(err, "SongFirst: m insertion has failed")
 	}
@@ -750,7 +750,7 @@ func SongFirst() string {
 	for _, n := range nAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = n["File_id"]
-		newmap["song"] = n["Tags_song"]
+		newmap["song"] = n["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "N", newmap)
 		CheckError(err, "SongFirst: n insertion has failed")
 	}
@@ -760,7 +760,7 @@ func SongFirst() string {
 	for _, o := range oAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = o["File_id"]
-		newmap["song"] = o["Tags_song"]
+		newmap["song"] = o["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "O", newmap)
 		CheckError(err, "SongFirst: o insertion has failed")
 	}
@@ -770,7 +770,7 @@ func SongFirst() string {
 	for _, p := range pAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = p["File_id"]
-		newmap["song"] = p["Tags_song"]
+		newmap["song"] = p["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "P", newmap)
 		CheckError(err, "SongFirst: p insertion has failed")
 	}
@@ -780,7 +780,7 @@ func SongFirst() string {
 	for _, q := range qAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = q["File_id"]
-		newmap["song"] = q["Tags_song"]
+		newmap["song"] = q["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "Q", newmap)
 		CheckError(err, "SongFirst: q insertion has failed")
 	}
@@ -790,7 +790,7 @@ func SongFirst() string {
 	for _, r := range rAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = r["File_id"]
-		newmap["song"] = r["Tags_song"]
+		newmap["song"] = r["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "R", newmap)
 		CheckError(err, "SongFirst: r insertion has failed")
 	}
@@ -800,7 +800,7 @@ func SongFirst() string {
 	for _, s := range sAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = s["File_id"]
-		newmap["song"] = s["Tags_song"]
+		newmap["song"] = s["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "S", newmap)
 		CheckError(err, "SongFirst: s insertion has failed")
 	}
@@ -810,7 +810,7 @@ func SongFirst() string {
 	for _, t := range tAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = t["File_id"]
-		newmap["song"] = t["Tags_song"]
+		newmap["song"] = t["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "T", newmap)
 		CheckError(err, "SongFirst: t insertion has failed")
 	}
@@ -820,7 +820,7 @@ func SongFirst() string {
 	for _, u := range uAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = u["File_id"]
-		newmap["song"] = u["Tags_song"]
+		newmap["song"] = u["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "U", newmap)
 		CheckError(err, "SongFirst: u insertion has failed")
 	}
@@ -830,7 +830,7 @@ func SongFirst() string {
 	for _, v := range vAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = v["File_id"]
-		newmap["song"] = v["Tags_song"]
+		newmap["song"] = v["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "V", newmap)
 		CheckError(err, "SongFirst: v insertion has failed")
 	}
@@ -840,7 +840,7 @@ func SongFirst() string {
 	for _, w := range wAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = w["File_id"]
-		newmap["song"] = w["Tags_song"]
+		newmap["song"] = w["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "W", newmap)
 		CheckError(err, "SongFirst: w insertion has failed")
 	}
@@ -850,7 +850,7 @@ func SongFirst() string {
 	for _, x := range xAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = x["File_id"]
-		newmap["song"] = x["Tags_song"]
+		newmap["song"] = x["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "X", newmap)
 		CheckError(err, "SongFirst: x insertion has failed")
 	}
@@ -860,7 +860,7 @@ func SongFirst() string {
 	for _, y := range yAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = y["File_id"]
-		newmap["song"] = y["Tags_song"]
+		newmap["song"] = y["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "Y", newmap)
 		CheckError(err, "SongFirst: y insertion has failed")
 	}
@@ -870,7 +870,7 @@ func SongFirst() string {
 	for _, z := range zAll {
 		newmap := make(map[string]string)
 		newmap["songID"] = z["File_id"]
-		newmap["song"] = z["Tags_song"]
+		newmap["song"] = z["Song"]
 		_, err = InsertOne(client, ctx, "songalpha", "Z", newmap)
 		CheckError(err, "SongFirst: z insertion has failed")
 	}
