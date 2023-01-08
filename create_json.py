@@ -163,8 +163,7 @@ class MusicFiles:
 
     def copy_thumbnail(self, newpath, afile):
         with Image.open(afile) as image:
-            image.convert("RGB")
-            image.save(newpath, "JPEG")
+            image.save(newpath)
 
     def calc_md5(self, afile):
         md5 = hashlib.md5(afile.encode('utf-8')).hexdigest()
@@ -214,7 +213,7 @@ class MusicFiles:
             meta['File_delem'] = "None"
             newImagePath = THUMBPATH + dsplitlist[1] + "_-_" + dsplitlist[2] + ext
             self.copy_thumbnail(newImagePath, afile)
-            meta['ThumbPath'] = "/root/static/" + dsplitlist[1] + "_-_" + dsplitlist[2] + ext
+            meta['ThumbPath'] = "/root/static/" + dsplitlist[1] + "_-_" + dsplitlist[2] + ".png"
             # meta["Img_base64_str"] = self.img_to_base64(afile)
             return meta
         else:
