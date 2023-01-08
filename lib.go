@@ -147,7 +147,7 @@ func UpdateMainDB(m2 JsonMP3, pagenum int) {
 	// Doko.Genre = m2["genre"]
 	Doko["Index"] = m2.Index
 	Doko["Play_length"] = m2.Play_length
-	Doko["Img_base64_str"] = m2.Img_base64_str
+	Doko["Img_base64_str"] = "data:image/png;base64," + m2.Img_base64_str
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
 	CheckError(err, "UpdateMainDB: Connections has failed")
 	defer Close(client, ctx, cancel)
