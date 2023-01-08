@@ -211,7 +211,7 @@ class MusicFiles:
             meta['Jpg_width'] = str(width)
             meta['Jpg_height'] = str(height)
             meta['File_delem'] = "None"
-            newImagePath = THUMBPATH + dsplitlist[1] + "_-_" + dsplitlist[2] + ext
+            newImagePath = THUMBPATH + dsplitlist[1] + "_-_" + dsplitlist[2] + ".png"
             self.copy_thumbnail(newImagePath, afile)
             meta['ThumbPath'] = "/root/static/" + dsplitlist[1] + "_-_" + dsplitlist[2] + ".png"
             # meta["Img_base64_str"] = self.img_to_base64(afile)
