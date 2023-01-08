@@ -163,7 +163,7 @@ class MusicFiles:
 
     def copy_thumbnail(self, newpath, afile):
         with Image.open(afile) as image:
-            image.save(newpath)
+            image.save(newpath, "JPEG")
 
     def calc_md5(self, afile):
         md5 = hashlib.md5(afile.encode('utf-8')).hexdigest()
