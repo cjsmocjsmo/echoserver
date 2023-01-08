@@ -46,7 +46,7 @@ type AlbVieW2 struct {
 	Songs          []map[string]string `bson:"songs"`
 	AlbumPage      string              `bson:"albumpage"`
 	NumSongs       string              `bson:"numsongs"`
-	Img_base64_str string              `bson:"img_base64_str"`
+	Thumb_path     string              `bson:"thumbpath"`
 	Idx            string              `bson:"idx"`
 	// PicHttpAddr string              `bson:"picHttpAddr"`
 }
@@ -127,15 +127,15 @@ type JsonPage struct {
 	PageList []JsonMP3 `bson:"PageList"`
 }
 
-type Imageinfomap struct {
-	Dirpath       string `bson:"dirpath"`
-	Filename      string `bson:"filename"`
-	Imagesize     string `bson:"imagesize"`
-	ImageHttpAddr string `bson:"imageHttpAddr"`
-	Index         string `bson:"index"`
-	IType         string `bson:"itype"`
-	Page          string `bson:"page"`
-}
+// type Imageinfomap struct {
+// 	Dirpath       string `bson:"dirpath"`
+// 	Filename      string `bson:"filename"`
+// 	Imagesize     string `bson:"imagesize"`
+// 	ImageHttpAddr string `bson:"imageHttpAddr"`
+// 	Index         string `bson:"index"`
+// 	IType         string `bson:"itype"`
+// 	Page          string `bson:"page"`
+// }
 
 type Fjpg struct {
 	exists bool
