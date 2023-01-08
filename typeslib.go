@@ -59,7 +59,7 @@ type AmpgoRandomPlaylistData struct {
 }
 
 type ARID struct {
-	Artist string `bson:"Artist"`
+	Artist   string `bson:"Artist"`
 	ArtistID string `bson:"ArtistID"`
 }
 
@@ -68,7 +68,7 @@ type ArtID struct {
 }
 
 type ALID struct {
-	Album string `bson:"Album"`
+	Album   string `bson:"Album"`
 	AlbumID string `bson:"AlbumID"`
 }
 
@@ -77,49 +77,49 @@ type AlbID struct {
 }
 
 type JsonJPG struct {
-	BaseDir        string `bson:"BaseDir"`
-	Full_Filename  string `bson:"Full_Filename"`
-	File_Size      string `bson:"File_Size"`
-	Ext            string `bson:"Ext"`
-	Filename       string `bson:"Filename"`
-	Dir_catagory   string `bson:"Dir_catagory"`
-	Dir_artist     string `bson:"Dir_artist"`
-	Dir_album      string `bson:"Dir_album"`
-	Index          string `bson:"Index"`
-	Dir_delem      string `bson:"Dir_delem"`
-	File_id        string `bson:"File_id"`
-	Jpg_width      string `bson:"Jpg_width"`
-	Jpg_height     string `bson:"Jpg_height"`
-	File_delem     string `bson:"File_delem"`
-	Img_base64_str string `bson:"Img_base64_str"`
+	BaseDir       string `bson:"BaseDir"`
+	Full_Filename string `bson:"Full_Filename"`
+	File_Size     string `bson:"File_Size"`
+	Ext           string `bson:"Ext"`
+	Filename      string `bson:"Filename"`
+	Dir_catagory  string `bson:"Dir_catagory"`
+	Dir_artist    string `bson:"Dir_artist"`
+	Dir_album     string `bson:"Dir_album"`
+	Index         string `bson:"Index"`
+	Dir_delem     string `bson:"Dir_delem"`
+	File_id       string `bson:"File_id"`
+	Jpg_width     string `bson:"Jpg_width"`
+	Jpg_height    string `bson:"Jpg_height"`
+	File_delem    string `bson:"File_delem"`
+	ThumbPath     string `bson:"ThumbPath"`
 }
 
 type JsonMP3 struct {
-	BaseDir        string `bson:"BaseDir"`
-	Full_Filename  string `bson:"Full_Filename"`
-	File_Size      string `bson:"File_Size"`
-	Ext            string `bson:"Ext"`
-	Dir            string `bson:"Dir"`
-	Filename       string `bson:"Filename"`
-	Dir_catagory   string `bson:"Dir_catagory"`
-	Dir_artist     string `bson:"Dir_artist"`
-	Dir_album      string `bson:"Dir_album"`
-	Dir_delem      string `bson:"Dir_delem"`
-	File_delem     string `bson:"File_delem"`
-	Track          string `bson:"Track"`
-	File_artist    string `bson:"File_artist"`
-	File_album     string `bson:"File_album"`
-	File_song      string `bson:"File_song"`
-	Index          string `bson:"Index"`
-	File_id        string `bson:"File_id"`
-	Tags_artist    string `bson:"Tags_artist"`
-	Tags_album     string `bson:"Tags_album"`
-	Tags_song      string `bson:"Tags_song"`
-	Artist_first   string `bson:"Artist_first"`
-	Album_first    string `bson:"Album_first"`
-	Song_first     string `bson:"Song_first"`
-	Img_base64_str string `bson:"Img_base64_str"`
-	Play_length    string `bson:"Play_length"`
+	BaseDir       string `bson:"BaseDir"`
+	Full_Filename string `bson:"Full_Filename"`
+	File_Size     string `bson:"File_Size"`
+	Ext           string `bson:"Ext"`
+	Dir           string `bson:"Dir"`
+	Filename      string `bson:"Filename"`
+	Dir_catagory  string `bson:"Dir_catagory"`
+	Dir_artist    string `bson:"Dir_artist"`
+	Dir_album     string `bson:"Dir_album"`
+	Dir_delem     string `bson:"Dir_delem"`
+	File_delem    string `bson:"File_delem"`
+	Track         string `bson:"Track"`
+	File_artist   string `bson:"File_artist"`
+	File_album    string `bson:"File_album"`
+	File_song     string `bson:"File_song"`
+	Index         string `bson:"Index"`
+	File_id       string `bson:"File_id"`
+	Tags_artist   string `bson:"Tags_artist"`
+	Tags_album    string `bson:"Tags_album"`
+	Tags_song     string `bson:"Tags_song"`
+	Artist_first  string `bson:"Artist_first"`
+	Album_first   string `bson:"Album_first"`
+	Song_first    string `bson:"Song_first"`
+	ThumbPath     string `bson:"ThumbPath"`
+	Play_length   string `bson:"Play_length"`
 }
 
 type JsonPage struct {

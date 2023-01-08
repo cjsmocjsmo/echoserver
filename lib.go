@@ -147,7 +147,7 @@ func UpdateMainDB(m2 JsonMP3, pagenum int) {
 	// Doko.Genre = m2["genre"]
 	Doko["Index"] = m2.Index
 	Doko["Play_length"] = m2.Play_length
-	Doko["Img_base64_str"] = "data:image/png;base64," + m2.Img_base64_str
+	Doko["ThumbPath"] = m2.ThumbPath
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
 	CheckError(err, "UpdateMainDB: Connections has failed")
 	defer Close(client, ctx, cancel)
@@ -299,7 +299,7 @@ func CreateRandomPicsDB() {
 		result["Jpg_width"] = v.Jpg_width
 		result["Jpg_height"] = v.Jpg_height
 		result["File_delem"] = v.File_delem
-		result["Img_base64_str"] = v.Img_base64_str
+		result["ThumbPath"] = v.ThumbPath
 		boo := strconv.Itoa(page)
 		result["Page"] = boo
 		// var iim Imageinfomap = create_image_info_map(i, v, page)

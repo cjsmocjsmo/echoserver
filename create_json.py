@@ -16,6 +16,7 @@ from pprint import pprint
 
 APATH = "/home/teresa/Music/music"
 METAPATH = "/home/teresa/Music/metadata/"
+THUMBPATH = "/home/teresa/PISTUFF/Thumbnails/"
 
 class MP3Tags:
 	Track = None
@@ -155,10 +156,14 @@ class MusicFiles:
             width, height = img_s.size
             return (width, height)
 
-    def img_to_base64(self, afile):
-        with open(afile, "rb") as img_file:
-            my_string = base64.b64encode(img_file.read())
-        return my_string.decode('utf-8')
+    # def img_to_base64(self, afile):
+    #     with open(afile, "rb") as img_file:
+    #         my_string = base64.b64encode(img_file.read())
+    #     return my_string.decode('utf-8')
+
+    def copy_thumbnail(self, newpath, afile):
+        with Image.open(afile) as image:
+            image.save(newpath)
 
     def calc_md5(self, afile):
         md5 = hashlib.md5(afile.encode('utf-8')).hexdigest()
@@ -206,7 +211,10 @@ class MusicFiles:
             meta['Jpg_width'] = str(width)
             meta['Jpg_height'] = str(height)
             meta['File_delem'] = "None"
-            meta["Img_base64_str"] = self.img_to_base64(afile)
+            newImagePath = THUMBPATH + dsplitlist[1] + "_-_" + dsplitlist[2] + ext
+            self.copy_thumbnail(newImagePath, afile)
+            meta['ThumbPath'] = "/root/static/" + dsplitlist[1] + "_-_" + dsplitlist[2] + ext
+            # meta["Img_base64_str"] = self.img_to_base64(afile)
             return meta
         else:
             acount += 1
@@ -233,12 +241,12 @@ class MusicFiles:
             meta['Album_first'] = tags.Album[:1]
             meta['Song_first'] = tags.Song[:1]
             meta['Play_length'] = str(self.play_length(afile))
-            boo = self.check_jpg(afile)
-            ppath = self.pic_path(afile)
-            if boo:
-                meta["Img_base64_str"] = self.img_to_base64(ppath)
-            else:
-                meta["Img_base64_str"] = "None"
+            # boo = self.check_jpg(afile)
+            # ppath = self.pic_path(afile)
+            # if boo:
+            #     meta["Img_base64_str"] = self.img_to_base64(ppath)
+            # else:
+            #     meta["Img_base64_str"] = "None"
         return meta
 
     def write_to_file(self, meta, acount):
