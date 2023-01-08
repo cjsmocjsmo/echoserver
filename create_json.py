@@ -198,7 +198,8 @@ class MusicFiles:
         meta['Dir_catagory'] = dsplitlist[0]
         meta['Dir_artist'] = dsplitlist[1]
         meta['Dir_album'] = dsplitlist[2]
-
+        newImagePath = THUMBPATH + dsplitlist[1] + "_-_" + dsplitlist[2] + ".png"
+        self.copy_thumbnail(newImagePath, afile)
         # meta['Index'] = str(acount)
         meta['Dir_delem'] = "/"
 
@@ -211,9 +212,8 @@ class MusicFiles:
             meta['Jpg_width'] = str(width)
             meta['Jpg_height'] = str(height)
             meta['File_delem'] = "None"
-            newImagePath = THUMBPATH + dsplitlist[1] + "_-_" + dsplitlist[2] + ".png"
-            self.copy_thumbnail(newImagePath, afile)
-            meta['ThumbPath'] = "/root/static/" + dsplitlist[1] + "_-_" + dsplitlist[2] + ".png"
+            
+            meta['ThumbPath'] = newImagePath
             # meta["Img_base64_str"] = self.img_to_base64(afile)
             return meta
         else:
@@ -241,6 +241,7 @@ class MusicFiles:
             meta['Album_first'] = tags.Album[:1]
             meta['Song_first'] = tags.Song[:1]
             meta['Play_length'] = str(self.play_length(afile))
+            meta['ThumbPath'] = newImagePath
             # boo = self.check_jpg(afile)
             # ppath = self.pic_path(afile)
             # if boo:
