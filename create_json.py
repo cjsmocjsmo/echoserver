@@ -163,6 +163,7 @@ class MusicFiles:
 
     def copy_thumbnail(self, newpath, afile):
         with Image.open(afile) as image:
+            image.convert("RGB")
             image.save(newpath, "JPEG")
 
     def calc_md5(self, afile):
