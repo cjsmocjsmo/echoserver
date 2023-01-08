@@ -199,7 +199,7 @@ class MusicFiles:
         meta['Dir_artist'] = dsplitlist[1]
         meta['Dir_album'] = dsplitlist[2]
         newImagePath = THUMBPATH + dsplitlist[1] + "_-_" + dsplitlist[2] + ".png"
-        self.copy_thumbnail(newImagePath, afile)
+        
         # meta['Index'] = str(acount)
         meta['Dir_delem'] = "/"
 
@@ -212,7 +212,7 @@ class MusicFiles:
             meta['Jpg_width'] = str(width)
             meta['Jpg_height'] = str(height)
             meta['File_delem'] = "None"
-            
+            self.copy_thumbnail(newImagePath, afile)
             meta['ThumbPath'] = newImagePath
             # meta["Img_base64_str"] = self.img_to_base64(afile)
             return meta
