@@ -163,7 +163,8 @@ class MusicFiles:
 
     def copy_thumbnail(self, newpath, afile):
         with Image.open(afile) as image:
-            image.save(newpath)
+            image.resize((128, 128))
+            image.save(newpath, format="webp")
 
     def calc_md5(self, afile):
         md5 = hashlib.md5(afile.encode('utf-8')).hexdigest()
@@ -198,8 +199,8 @@ class MusicFiles:
         meta['Dir_catagory'] = dsplitlist[0]
         meta['Dir_artist'] = dsplitlist[1]
         meta['Dir_album'] = dsplitlist[2]
-        newImagePath = PICPATH + dsplitlist[1] + "_-_" + dsplitlist[2] + ".png"
-        thumbhttppath = THUMBHTTPPATH + dsplitlist[1] + "_-_" + dsplitlist[2] + ".png"
+        newImagePath = PICPATH + dsplitlist[1] + "_-_" + dsplitlist[2] + ".webp"
+        thumbhttppath = THUMBHTTPPATH + dsplitlist[1] + "_-_" + dsplitlist[2] + ".webp"
         
         # meta['Index'] = str(acount)
         meta['Dir_delem'] = "/"
