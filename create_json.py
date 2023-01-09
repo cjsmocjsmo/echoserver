@@ -244,6 +244,7 @@ class MusicFiles:
             meta['Song_first'] = tags.Song[:1]
             meta['Play_length'] = str(self.play_length(afile))
             meta['ThumbPath'] = newImagePath
+            meta['ThumbHttpPath'] = thumbhttppath
             # boo = self.check_jpg(afile)
             # ppath = self.pic_path(afile)
             # if boo:
