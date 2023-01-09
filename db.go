@@ -257,3 +257,17 @@ func ArtViewFindOne(db string, coll string, filtertype string, filterstring stri
 	}
 	return results
 }
+
+func AlbViewFindOne(db string, coll string, filtertype string, filterstring string) AlbVieW2 {
+	filter := bson.M{filtertype: filterstring}
+	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
+	defer Close(client, ctx, cancel)
+	CheckError(err, "MongoDB connection has failed")
+	collection := client.Database(db).Collection(coll)
+	var results AlbVieW2
+	err = collection.FindOne(context.Background(), filter).Decode(&results)
+	if err != nil {
+		log.Println(err)
+	}
+	return results
+}

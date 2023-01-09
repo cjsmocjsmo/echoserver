@@ -223,8 +223,22 @@ func AlbumsForFirstLetterHandler(c echo.Context) error {
 	}
 	log.Println("AlbumForFirstLetterHandler")
 	log.Println(firstletter)
-	allAlbum := AmpgoFind("albumalpha", firstletter, "None", "None")
-	return c.JSON(http.StatusOK, allAlbum)
+	allAlbum := AmpgoFind("albumalpha", firstletter, "None", "None") //album && albumid
+	newalblist := make([]map[string]string, 1 ,1) 
+	for _, alb := range allAlbum {
+		albinfo := AlbViewFindOne("albumview", alb["albumid"], "None", "None")
+		nm := make(map[string]string)
+		nm["artist"] = albinfo.Artist
+		nm["artistID"] = albinfo.ArtistID
+		nm["album"] = albinfo.Album
+		nm["albumID"] = albinfo.AlbumID
+		nm["albumpage"] = albinfo.AlbumPage
+		nm["numsongs"] = albinfo.NumSongs
+		nm["thumbhttppath"] = albinfo.ThumbHttpPath
+		newalblist = append(newalblist, nm)
+
+	}
+	return c.JSON(http.StatusOK, newalblist)
 }
 
 func SongsForFirstLetterHandler(c echo.Context) error {
