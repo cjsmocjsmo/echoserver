@@ -148,6 +148,7 @@ func UpdateMainDB(m2 JsonMP3, pagenum int) {
 	Doko["Index"] = m2.Index
 	Doko["Play_length"] = m2.Play_length
 	Doko["ThumbPath"] = m2.ThumbPath
+	Doko["ThumbHttpPath"] = m2.ThumbHttpPath
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
 	CheckError(err, "UpdateMainDB: Connections has failed")
 	defer Close(client, ctx, cancel)
@@ -261,6 +262,7 @@ func AlbPipeline(DAlb map[string]string, page int, idx int) (MyAlbview AlbVieW2)
 	MyAlbview.AlbumID = DAlb["AlbumID"]
 	MyAlbview.NumSongs = strconv.Itoa(songcount)
 	MyAlbview.ThumbPath = DAlb["ThumbPath"]
+	MyAlbview.ThumbHttpPath = DAlb["ThumbHttpPath"]
 	MyAlbview.Songs = results
 	MyAlbview.AlbumPage = strconv.Itoa(page)
 	MyAlbview.Idx = strconv.Itoa(idx)

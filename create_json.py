@@ -15,7 +15,8 @@ from pprint import pprint
 
 APATH = "/home/teresa/Music/music"
 METAPATH = "/home/teresa/Music/metadata/"
-THUMBPATH = "/static/"
+PICPATH = "/home/teresa/PISTUFF/Thumbnails/"
+THUMBHTTPPATH = "/static/"
 
 class MP3Tags:
 	Track = None
@@ -197,7 +198,8 @@ class MusicFiles:
         meta['Dir_catagory'] = dsplitlist[0]
         meta['Dir_artist'] = dsplitlist[1]
         meta['Dir_album'] = dsplitlist[2]
-        newImagePath = THUMBPATH + dsplitlist[1] + "_-_" + dsplitlist[2] + ".png"
+        newImagePath = PICPATH + dsplitlist[1] + "_-_" + dsplitlist[2] + ".png"
+        thumbhttppath = THUMBHTTPPATH + dsplitlist[1] + "_-_" + dsplitlist[2] + ".png"
         
         # meta['Index'] = str(acount)
         meta['Dir_delem'] = "/"
@@ -213,6 +215,7 @@ class MusicFiles:
             meta['File_delem'] = "None"
             self.copy_thumbnail(newImagePath, afile)
             meta['ThumbPath'] = newImagePath
+            meta['ThumbHttpPath'] = thumbhttppath
             # meta["Img_base64_str"] = self.img_to_base64(afile)
             return meta
         else:

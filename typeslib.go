@@ -39,15 +39,16 @@ type ArtVieW2 struct {
 	Index    string              `bson:"idx"`
 }
 type AlbVieW2 struct {
-	Artist         string              `bson:"artist"`
-	ArtistID       string              `bson:"artistID"`
-	Album          string              `bson:"album"`
-	AlbumID        string              `bson:"albumID"`
-	Songs          []map[string]string `bson:"songs"`
-	AlbumPage      string              `bson:"albumpage"`
-	NumSongs       string              `bson:"numsongs"`
-	ThumbPath     string              `bson:"thumbpath"`
-	Idx            string              `bson:"idx"`
+	Artist    string              `bson:"artist"`
+	ArtistID  string              `bson:"artistID"`
+	Album     string              `bson:"album"`
+	AlbumID   string              `bson:"albumID"`
+	Songs     []map[string]string `bson:"songs"`
+	AlbumPage string              `bson:"albumpage"`
+	NumSongs  string              `bson:"numsongs"`
+	ThumbPath string              `bson:"thumbpath"`
+	ThumbHttpPath string `bson:"ThumbHttpPath"`
+	Idx       string              `bson:"idx"`
 	// PicHttpAddr string              `bson:"picHttpAddr"`
 }
 
@@ -92,6 +93,7 @@ type JsonJPG struct {
 	Jpg_height    string `bson:"Jpg_height"`
 	File_delem    string `bson:"File_delem"`
 	ThumbPath     string `bson:"ThumbPath"`
+	ThumbHttpPath string `bson:"ThumbHttpPath"`
 }
 
 type JsonMP3 struct {
@@ -119,6 +121,7 @@ type JsonMP3 struct {
 	Album_first   string `bson:"Album_first"`
 	Song_first    string `bson:"Song_first"`
 	ThumbPath     string `bson:"ThumbPath"`
+	ThumbHttpPath string `bson:"ThumbHttpPath"`
 	Play_length   string `bson:"Play_length"`
 }
 
