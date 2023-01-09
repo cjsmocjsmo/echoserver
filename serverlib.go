@@ -224,9 +224,13 @@ func AlbumsForFirstLetterHandler(c echo.Context) error {
 	log.Println("AlbumForFirstLetterHandler")
 	log.Println(firstletter)
 	allAlbum := AmpgoFind("albumalpha", firstletter, "None", "None") //album && albumid
+	log.Println("this is allAlbum")
+	log.Println(allAlbum)
 	var newalblist []AlbVieW
 	for _, alb := range allAlbum {
-		albinfo := AlbViewFindOne("albumview", alb["albumid"], "None", "None")
+		albinfo := AlbViewFindOne("albumview", alb["albumID"], "None", "None")
+		log.Println("this is albinfo")
+		log.Println(albinfo)
 		var nm AlbVieW
 		nm.Artist = albinfo.Artist
 		nm.ArtistID = albinfo.ArtistID
