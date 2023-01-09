@@ -16,7 +16,7 @@ from pprint import pprint
 APATH = "/home/teresa/Music/music"
 METAPATH = "/home/teresa/Music/metadata/"
 PICPATH = "/home/teresa/PISTUFF/Thumbnails/"
-THUMBHTTPPATH = "/static/"
+THUMBHTTPPATH = "http://192.168.0.34:9090/static/"
 
 class MP3Tags:
 	Track = None
