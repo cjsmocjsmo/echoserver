@@ -38,17 +38,29 @@ type ArtVieW2 struct {
 	Page     string              `bson:"page"`
 	Index    string              `bson:"idx"`
 }
-type AlbVieW2 struct {
-	Artist    string              `bson:"artist"`
-	ArtistID  string              `bson:"artistID"`
-	Album     string              `bson:"album"`
-	AlbumID   string              `bson:"albumID"`
-	Songs     []map[string]string `bson:"songs"`
-	AlbumPage string              `bson:"albumpage"`
-	NumSongs  string              `bson:"numsongs"`
-	ThumbPath string              `bson:"thumbpath"`
+
+type AlbVieW struct {
+	Artist        string `bson:"artist"`
+	ArtistID      string `bson:"artistID"`
+	Album         string `bson:"album"`
+	AlbumID       string `bson:"albumID"`
+	AlbumPage     string `bson:"albumpage"`
+	NumSongs      string `bson:"numsongs"`
+	ThumbPath     string `bson:"thumbpath"`
 	ThumbHttpPath string `bson:"thumbhttppath"`
-	Idx       string              `bson:"idx"`
+}
+
+type AlbVieW2 struct {
+	Artist        string              `bson:"artist"`
+	ArtistID      string              `bson:"artistID"`
+	Album         string              `bson:"album"`
+	AlbumID       string              `bson:"albumID"`
+	Songs         []map[string]string `bson:"songs"`
+	AlbumPage     string              `bson:"albumpage"`
+	NumSongs      string              `bson:"numsongs"`
+	ThumbPath     string              `bson:"thumbpath"`
+	ThumbHttpPath string              `bson:"thumbhttppath"`
+	Idx           string              `bson:"idx"`
 	// PicHttpAddr string              `bson:"picHttpAddr"`
 }
 
