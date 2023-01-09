@@ -5,7 +5,6 @@ import os
 import shutil
 import json
 import glob
-import base64
 
 from PIL import Image
 import mutagen
@@ -16,7 +15,7 @@ from pprint import pprint
 
 APATH = "/home/teresa/Music/music"
 METAPATH = "/home/teresa/Music/metadata/"
-THUMBPATH = "/home/teresa/PISTUFF/Thumbnails/"
+THUMBPATH = "/static/"
 
 class MP3Tags:
 	Track = None
