@@ -46,7 +46,7 @@ type AlbVieW2 struct {
 	Songs          []map[string]string `bson:"songs"`
 	AlbumPage      string              `bson:"albumpage"`
 	NumSongs       string              `bson:"numsongs"`
-	Thumb_path     string              `bson:"thumbpath"`
+	ThumbPath     string              `bson:"thumbpath"`
 	Idx            string              `bson:"idx"`
 	// PicHttpAddr string              `bson:"picHttpAddr"`
 }
