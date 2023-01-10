@@ -228,7 +228,8 @@ func AlbumsForFirstLetterHandler(c echo.Context) error {
 	log.Println(allAlbum)
 	var newalblist []AlbVieW
 	for _, alb := range allAlbum {
-		albinfo := AlbViewFindOne("albumview", alb["albumID"], "None", "None")
+		log.Println(alb["albumid"])
+		albinfo := AlbViewFindOne("albumview", alb["albumid"], "None", "None")
 		log.Println("this is albinfo")
 		log.Println(albinfo)
 		var nm AlbVieW
