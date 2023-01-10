@@ -98,7 +98,7 @@ func songsForAlbumHandler(c echo.Context) error {
 	var albumid string = c.QueryParam("selected")
 	fmt.Printf("%s this is albumid", albumid)
 	fmt.Printf("%T this is albumid type", albumid)
-	filter := bson.M{"albumID": albumid}
+	filter := bson.M{"AlbumID": albumid}
 	opts := options.Find()
 	opts.SetProjection(bson.M{"_id": 0})
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
