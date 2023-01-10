@@ -48,7 +48,6 @@ func albumInfoByPageHandler(c echo.Context) error {
 	if err = cur.All(context.TODO(), &allalbums); err != nil {
 		log.Println(err)
 	}
-	fmt.Printf("%s this is allalbums", allalbums)
 	return c.JSON(http.StatusOK, allalbums)
 }
 
@@ -67,15 +66,12 @@ func songInfoByPageHandler(c echo.Context) error {
 	if err = cur.All(context.TODO(), &songs); err != nil {
 		log.Println(err)
 	}
-	fmt.Printf("%s this is songs", songs)
 	return c.JSON(http.StatusOK, songs)
 }
 
 func albumsForArtistHandler(c echo.Context) error {
 	fmt.Println("Starting albumsForArtistHandler")
 	var artistid string = c.QueryParam("selected")
-	fmt.Printf("%s this is artistid", artistid)
-	fmt.Printf("%T this is artistid type", artistid)
 	filter := bson.M{"artistID": artistid}
 	opts := options.Find()
 	opts.SetProjection(bson.M{"_id": 0, "songs": 0})
@@ -89,15 +85,12 @@ func albumsForArtistHandler(c echo.Context) error {
 	if err = cur.All(context.TODO(), &allalbum); err != nil {
 		log.Println(err)
 	}
-	fmt.Printf("%s this is allalbum-", allalbum)
 	return c.JSON(http.StatusOK, allalbum)
 }
 
 func songsForAlbumHandler(c echo.Context) error {
 	fmt.Println("Starting songsForAlbumHandler")
 	var albumid string = c.QueryParam("selected")
-	fmt.Printf("%s this is albumid", albumid)
-	fmt.Printf("%T this is albumid type", albumid)
 	filter := bson.M{"AlbumID": albumid}
 	opts := options.Find()
 	opts.SetProjection(bson.M{"_id": 0})
@@ -111,7 +104,6 @@ func songsForAlbumHandler(c echo.Context) error {
 	if err = cur.All(context.TODO(), &allsongs); err != nil {
 		log.Println(err)
 	}
-	fmt.Printf("%s this is allalbum-", allsongs)
 	return c.JSON(http.StatusOK, allsongs)
 }
 
@@ -228,12 +220,7 @@ func AlbumsForFirstLetterHandler(c echo.Context) error {
 	log.Println(allAlbum)
 	var newalblist []AlbVieW
 	for _, alb := range allAlbum {
-		log.Println(alb["albumid"])
-		// albinfo := AlbViewFindOne("albumview", alb["album"], "None", "None")
 		albinfo := AlbViewFindOne("albumview", "albumview", "albumID", alb["albumid"])
-
-		log.Println("this is albinfo")
-		log.Println(albinfo)
 		var nm AlbVieW
 		nm.Artist = albinfo.Artist
 		nm.ArtistID = albinfo.ArtistID
@@ -243,7 +230,6 @@ func AlbumsForFirstLetterHandler(c echo.Context) error {
 		nm.NumSongs = albinfo.NumSongs
 		nm.ThumbHttpPath = albinfo.ThumbHttpPath
 		newalblist = append(newalblist, nm)
-
 	}
 	return c.JSON(http.StatusOK, newalblist)
 }

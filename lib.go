@@ -149,6 +149,7 @@ func UpdateMainDB(m2 JsonMP3, pagenum int) {
 	Doko["Play_length"] = m2.Play_length
 	Doko["ThumbPath"] = m2.ThumbPath
 	Doko["ThumbHttpPath"] = m2.ThumbHttpPath
+	Doko["MusicHttpPath"] = m2.MusicHttpPath
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
 	CheckError(err, "UpdateMainDB: Connections has failed")
 	defer Close(client, ctx, cancel)

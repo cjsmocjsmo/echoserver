@@ -132,6 +132,7 @@ func main() {
 	e.GET("/songY", SongYHandler)
 	e.GET("/songZ", SongZHandler)
 
-	e.Static("/static", "static")
+	e.Static("/static", "static") //for pics
+	e.Static("/music", "fsData/music") //for music
 	e.Logger.Fatal(e.Start(":9090"))
 }

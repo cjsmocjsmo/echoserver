@@ -5,6 +5,7 @@ import os
 import shutil
 import json
 import glob
+import string
 
 from PIL import Image
 import mutagen
@@ -17,6 +18,7 @@ APATH = "/home/teresa/Music/music"
 METAPATH = "/home/teresa/Music/metadata/"
 PICPATH = "/home/teresa/PISTUFF/Thumbnails/"
 THUMBHTTPPATH = "http://192.168.0.34:9090/static/"
+MUSICHTTPPATH = "http://192.168.0.34:9090/music"
 
 class MP3Tags:
 	Track = None
@@ -156,11 +158,6 @@ class MusicFiles:
             width, height = img_s.size
             return (width, height)
 
-    # def img_to_base64(self, afile):
-    #     with open(afile, "rb") as img_file:
-    #         my_string = base64.b64encode(img_file.read())
-    #     return my_string.decode('utf-8')
-
     def copy_thumbnail(self, newpath, afile):
         with Image.open(afile) as image:
             image.resize((128, 128))
@@ -176,6 +173,11 @@ class MusicFiles:
         length_in_secs = int(audio_info.length)
         length_in_mills = length_in_secs * 1000
         return length_in_mills
+
+    def get_music_http_path(self, apath):
+        fp = apath.split("/", 4)
+        return "/".join((MUSICHTTPPATH, fp[4])) 
+
 
     def metadata_from_file(self, afile, acount):
         meta = {}
@@ -246,12 +248,7 @@ class MusicFiles:
             meta['Play_length'] = str(self.play_length(afile))
             meta['ThumbPath'] = newImagePath
             meta['ThumbHttpPath'] = thumbhttppath
-            # boo = self.check_jpg(afile)
-            # ppath = self.pic_path(afile)
-            # if boo:
-            #     meta["Img_base64_str"] = self.img_to_base64(ppath)
-            # else:
-            #     meta["Img_base64_str"] = "None"
+            meta["MusicHttpPath"] = self.get_music_http_path(afile)
         return meta
 
     def write_to_file(self, meta, acount):

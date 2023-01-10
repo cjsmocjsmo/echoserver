@@ -134,6 +134,7 @@ type JsonMP3 struct {
 	ThumbPath     string `bson:"ThumbPath"`
 	ThumbHttpPath string `bson:"ThumbHttpPath"`
 	Play_length   string `bson:"Play_length"`
+	MusicHttpPath string `bson:"MusicHttpPath"`
 }
 
 type JsonPage struct {
