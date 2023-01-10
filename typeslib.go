@@ -61,7 +61,6 @@ type AlbVieW2 struct {
 	ThumbPath     string              `bson:"thumbpath"`
 	ThumbHttpPath string              `bson:"thumbhttppath"`
 	Idx           string              `bson:"idx"`
-	// PicHttpAddr string              `bson:"picHttpAddr"`
 }
 
 type AmpgoRandomPlaylistData struct {
