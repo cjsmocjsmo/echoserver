@@ -12,7 +12,7 @@ COPY go.sum .
 COPY server.go .
 COPY serverfirstlib.go .
 COPY serverlib.go .
-COPY typeslib .
+COPY typeslib.go .
 
 RUN export GOPATH=/go/src/ampgoserver
 RUN go get -v /go/src/ampgoserver
