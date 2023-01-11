@@ -269,7 +269,7 @@ func SongsForFirstLetterHandler(c echo.Context) error {
 //////////////////////////////////////////////////////////////
 
 func GetAlbumFirstLetterIDHandler(c echo.Context) error {
-	aflID := FrontMatterFindOne("frontmatter", "frontmatter", "FMID", "fm01")
+	aflID := FrontMatterFindOne("frontmatter", "frontmatter", "fmid", "fm01")
 	log.Println("this is aflID")
 	log.Println(aflID.AlbumFirstLetterID)
 	fmt.Println(aflID.AlbumFirstLetterID)
@@ -277,42 +277,42 @@ func GetAlbumFirstLetterIDHandler(c echo.Context) error {
 }
 
 func GetAlbumsForArtistURLHandler(c echo.Context) error {
-	url := FrontMatterFindOne("frontmatter", "frontmatter", "FMID", "fm01")
+	url := FrontMatterFindOne("frontmatter", "frontmatter", "fmid", "fm01")
 	log.Println(url.AlbumsForArtistURL)
 	log.Println(url.AlbumsForArtistURL)
 	return c.JSON(http.StatusOK, url.AlbumsForArtistURL)
 }
 
 func GetAlbumsForFirstLetterURLHandler(c echo.Context) error {
-	url := FrontMatterFindOne("frontmatter", "frontmatter", "FMID", "fm01")
+	url := FrontMatterFindOne("frontmatter", "frontmatter", "fmid", "fm01")
 	log.Println(url.AlbumsForFirstLetterURL)
 	log.Println(url.AlbumsForFirstLetterURL)
 	return c.JSON(http.StatusOK, url.AlbumsForFirstLetterURL)
 }
 
 func GetSelectedAlbumIDHandler(c echo.Context) error {
-	url := FrontMatterFindOne("frontmatter", "frontmatter", "FMID", "fm01")
+	url := FrontMatterFindOne("frontmatter", "frontmatter", "fmid", "fm01")
 	log.Println(url.SelectedAlbumID)
 	log.Println(url.SelectedAlbumID)
 	return c.JSON(http.StatusOK, url.SelectedAlbumID)
 }
 
 func GetArtistIDHandler(c echo.Context) error {
-	url := FrontMatterFindOne("frontmatter", "frontmatter", "FMID", "fm01")
+	url := FrontMatterFindOne("frontmatter", "frontmatter", "fmid", "fm01")
 	log.Println(url.ArtistID)
 	log.Println(url.ArtistID)
 	return c.JSON(http.StatusOK, url.ArtistID)
 }
 
 func GetArtistFirstLetterIDHandler(c echo.Context) error {
-	url := FrontMatterFindOne("frontmatter", "frontmatter", "FMID", "fm01")
+	url := FrontMatterFindOne("frontmatter", "frontmatter", "fmid", "fm01")
 	log.Println(url.ArtistFirstLetterID)
 	log.Println(url.ArtistFirstLetterID)
 	return c.JSON(http.StatusOK, url.ArtistFirstLetterID)
 }
 
 func GetArtistsForFirstLetterURLHandler(c echo.Context) error {
-	url := FrontMatterFindOne("frontmatter", "frontmatter", "FMID", "fm01")
+	url := FrontMatterFindOne("frontmatter", "frontmatter", "fmid", "fm01")
 	log.Println(url.ArtistsForFirstLetterURL)
 	log.Println(url.ArtistsForFirstLetterURL)
 	return c.JSON(http.StatusOK, url.ArtistsForFirstLetterURL)
@@ -323,12 +323,12 @@ func GetArtistsForFirstLetterURLHandler(c echo.Context) error {
 
 func UpdateAlbumFirstLetterIDHandler(c echo.Context) error {
 	param := c.QueryParam("albid")
-	filter := bson.D{{Key:"FMID", Value: "fm01"}}
+	filter := bson.M{"fmid": "fm01"}
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
 	defer Close(client, ctx, cancel)
 	CheckError(err, "MongoDB connection has failed GetArtistsForFirstLetterURL")
 	coll := client.Database("frontmatter").Collection("frontmatter")
-	update := bson.M{"$set": bson.M{"AlbumFirstLetterID":  param}}
+	update := bson.M{"$set": bson.M{"albumfirstletterid":  param}}
 	result, err2 := coll.UpdateOne(context.TODO(), filter, update)
 	log.Println(result)
 	CheckError(err2, "MongoDB connection has failed UpdateAlbumFirstLetterIDHandler")
@@ -342,7 +342,7 @@ func UpdateAlbumsForArtistURLHandler(c echo.Context) error {
 	defer Close(client, ctx, cancel)
 	CheckError(err, "MongoDB connection has failed UpdateAlbumsForArtistURLHandler")
 	coll := client.Database("frontmatter").Collection("frontmatter")
-	update := bson.D{{"$set", bson.D{{Key: "AlbumsForArtistURL", Value: param}}}}
+	update := bson.M{"$set": bson.M{"AlbumsForArtistURL": param}}
 	result, err2 := coll.UpdateOne(context.TODO(), filter, update)
 	CheckError(err2, "MongoDB connection has failed UpdateAlbumsForArtistURLHandler")
 	return c.JSON(http.StatusOK, result)
