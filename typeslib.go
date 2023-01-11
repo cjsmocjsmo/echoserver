@@ -142,16 +142,6 @@ type JsonPage struct {
 	PageList []JsonMP3 `bson:"PageList"`
 }
 
-// type Imageinfomap struct {
-// 	Dirpath       string `bson:"dirpath"`
-// 	Filename      string `bson:"filename"`
-// 	Imagesize     string `bson:"imagesize"`
-// 	ImageHttpAddr string `bson:"imageHttpAddr"`
-// 	Index         string `bson:"index"`
-// 	IType         string `bson:"itype"`
-// 	Page          string `bson:"page"`
-// }
-
 type Fjpg struct {
 	exists bool
 	path   string
@@ -162,4 +152,15 @@ type randDb struct {
 	PlayListID    string              `bson:"playlistID"`
 	PlayListCount string              `bson:"playlistcount"`
 	Playlist      []map[string]string `bson:"playlist"`
+}
+
+type FrontMatter struct {
+	FMID                     string `bson:"fmid"`
+	AlbumFirstLetterID       string `bson:"albumfirstletterid"`
+	AlbumsForArtistURL       string `bson:"albumforartisturl"`
+	AlbumsForFirstLetterURL  string `bson:"albumsforfirstletterurl"`
+	SelectedAlbumID          string `bson:"selectedalbumid"`
+	ArtistID                 string `bson:"artistid"`
+	ArtistFirstLetterID      string `bson:"artistfirstletterid"`
+	ArtistsForFirstLetterURL string `bson:"artistsforfirstletterurl"`
 }

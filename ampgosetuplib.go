@@ -354,6 +354,23 @@ func resizeImage(infile string, outfile string) string {
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
+func CreateFrontMatterDB() {
+	var FM FrontMatter
+	FM.FMID = "fm01"
+	FM.AlbumFirstLetterID = "empty"
+	FM.AlbumsForArtistURL = "empty"
+	FM.AlbumsForFirstLetterURL = "empty"
+	FM.SelectedAlbumID = "empty"
+	FM.ArtistID = "empty"
+	FM.ArtistFirstLetterID = "empty"
+	FM.ArtistsForFirstLetterURL = "empty"
+	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgo")
+	CheckError(err, "CreateFrontMatterDB: Connections has failed")
+	defer Close(client, ctx, cancel)
+	_, err2 := InsertOne(client, ctx, "frontmatter", "frontmatter", FM)
+	CheckError(err2, "CreateFrontMatterDB: frontmatter insertion has failed")
+}
+
 // func CreateRandomPlaylistDB() string {
 // 	var ranDBInfo randDb
 // 	var emptylist []map[string]string

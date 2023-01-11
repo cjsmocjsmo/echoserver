@@ -9,14 +9,30 @@ func main() {
 	SetUp()
 	e := echo.New()
 	e.Use(middleware.CORS())
-	e.GET("/artistInfoByPage", artistInfoByPageHandler)
-	e.GET("/albumInfoByPage", albumInfoByPageHandler)
-	e.GET("/songInfoByPage", songInfoByPageHandler)
+	e.GET("/artistInfoByPage", ArtistInfoByPageHandler)
+	e.GET("/albumInfoByPage", AlbumInfoByPageHandler)
+	e.GET("/songInfoByPage", SongInfoByPageHandler)
 
-	e.GET("/albumsForArtist", albumsForArtistHandler)
-	e.GET("/songsForAlbum", songsForAlbumHandler)
+	e.GET("/albumsForArtist", AlbumsForArtistHandler)
+	e.GET("/songsForAlbum", SongsForAlbumHandler)
 
-	e.GET("/randomPics", randomPicsHandler)
+	e.GET("/randomPics", RandomPicsHandler)
+
+	e.GET("/getalbumfirstletterid", GetAlbumFirstLetterIDHandler)
+	// e.GET("/getalbumsforartisturl", GetAlbumsForArtistURLHandler)
+	// e.GET("/getalbumsforfirstletterurl", GetAlbumsForFirstLetterURLHandler)
+	// e.GET("/getselectedalbumid", GetSelectedAlbumIDHandler)
+	// e.GET("/getartistid", GetArtistIDHandler)
+	// e.GET("/getartistfirstletterid", GetArtistFirstLetterIDHandler)
+	// e.GET("/getartistsforfirstletterurl", GetArtistsForFirstLetterURL)
+
+	// e.GET("/updatealbumfirstletterid", UpdateAlbumFirstLetterIDHandler)
+	// e.GET("/updatealbumsforartisturl", UpdateAlbumsForArtistURLHandler)
+	// e.GET("/updatealbumsforfirstletterurl", UpdateAlbumsForFirstLetterURLHandler)
+	// e.GET("/updateselectedalbumid", UpdateSelectedAlbumIDHandler)
+	// e.GET("/updateartistid", UpdateArtistIDHandler)
+	// e.GET("/updateartistfirstletterid", UpdateArtistFirstLetterIDHandler)
+	// e.GET("/updateartistsforfirstletterurl", UpdateArtistsForFirstLetterURL)
 
 	e.GET("/artistFirstLetter", ArtistFirstLetterHandler)
 	e.GET("/artistsForFirstLetter", ArtistsForFirstLetterHandler)
@@ -132,7 +148,7 @@ func main() {
 	e.GET("/songY", SongYHandler)
 	e.GET("/songZ", SongZHandler)
 
-	e.Static("/static", "static") //for pics
+	e.Static("/static", "static")      //for pics
 	e.Static("/music", "fsData/music") //for music
 	e.Logger.Fatal(e.Start(":9090"))
 }
