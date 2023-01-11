@@ -337,12 +337,12 @@ func UpdateAlbumFirstLetterIDHandler(c echo.Context) error {
 
 func UpdateAlbumsForArtistURLHandler(c echo.Context) error {
 	param := c.QueryParam("url")
-	filter := bson.D{{Key:"FMID", Value: "fm01"}}
+	filter := bson.M{"fmid": "fm01"}
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
 	defer Close(client, ctx, cancel)
 	CheckError(err, "MongoDB connection has failed UpdateAlbumsForArtistURLHandler")
 	coll := client.Database("frontmatter").Collection("frontmatter")
-	update := bson.M{"$set": bson.M{"AlbumsForArtistURL": param}}
+	update := bson.M{"$set": bson.M{"albumsforartisturl": param}}
 	result, err2 := coll.UpdateOne(context.TODO(), filter, update)
 	CheckError(err2, "MongoDB connection has failed UpdateAlbumsForArtistURLHandler")
 	return c.JSON(http.StatusOK, result)
@@ -350,12 +350,12 @@ func UpdateAlbumsForArtistURLHandler(c echo.Context) error {
 
 func UpdateAlbumsForFirstLetterURLHandler(c echo.Context) error {
 	param := c.QueryParam("url")
-	filter := bson.D{{Key:"FMID", Value: "fm01"}}
+	filter := bson.M{"fmid": "fm01"}
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
 	defer Close(client, ctx, cancel)
 	CheckError(err, "MongoDB connection has failed UpdateAlbumsForFirstLetterURLHandler")
 	coll := client.Database("frontmatter").Collection("frontmatter")
-	update := bson.D{{"$set", bson.D{{Key: "AlbumsForFirstLetterURL", Value: param}}}}
+	update := bson.M{"$set": bson.M{"albumsforfirstletterurl": param}}
 	result, err2 := coll.UpdateOne(context.TODO(), filter, update)
 	CheckError(err2, "MongoDB connection has failed UpdateAlbumsForFirstLetterURLHandler")
 	return c.JSON(http.StatusOK, result)
@@ -363,12 +363,12 @@ func UpdateAlbumsForFirstLetterURLHandler(c echo.Context) error {
 
 func UpdateSelectedAlbumIDHandler(c echo.Context) error {
 	param := c.QueryParam("selalbid")
-	filter := bson.D{{Key:"FMID", Value: "fm01"}}
+	filter := bson.M{"fmid": "fm01"}
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
 	defer Close(client, ctx, cancel)
 	CheckError(err, "MongoDB connection has failed UpdateSelectedAlbumIDHandler")
 	coll := client.Database("frontmatter").Collection("frontmatter")
-	update := bson.D{{"$set", bson.D{{Key: "SelectedAlbumID", Value: param}}}}
+	update := bson.M{"$set": bson.M{"selectedalbumid": param}}
 	result, err2 := coll.UpdateOne(context.TODO(), filter, update)
 	CheckError(err2, "MongoDB connection has failed UpdateSelectedAlbumIDHandler")
 	return c.JSON(http.StatusOK, result)
@@ -376,12 +376,12 @@ func UpdateSelectedAlbumIDHandler(c echo.Context) error {
 
 func UpdateArtistIDHandler(c echo.Context) error {
 	param := c.QueryParam("artid")
-	filter := bson.D{{Key:"FMID", Value: "fm01"}}
+	filter := bson.M{"fmid": "fm01"}
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
 	defer Close(client, ctx, cancel)
 	CheckError(err, "MongoDB connection has failed UpdateArtistIDHandler")
 	coll := client.Database("frontmatter").Collection("frontmatter")
-	update := bson.D{{"$set", bson.D{{Key: "ArtistID", Value: param}}}}
+	update := bson.M{"$set": bson.M{"artistid": param}}
 	result, err2 := coll.UpdateOne(context.TODO(), filter, update)
 	CheckError(err2, "MongoDB connection has failed UpdateArtistIDHandler")
 	return c.JSON(http.StatusOK, result)
@@ -389,12 +389,12 @@ func UpdateArtistIDHandler(c echo.Context) error {
 
 func UpdateArtistFirstLetterIDHandler(c echo.Context) error {
 	param := c.QueryParam("artflid")
-	filter := bson.D{{Key:"FMID", Value: "fm01"}}
+	filter := bson.M{"fmid": "fm01"}
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
 	defer Close(client, ctx, cancel)
 	CheckError(err, "MongoDB connection has failed UpdateArtistFirstLetterIDHandler")
 	coll := client.Database("frontmatter").Collection("frontmatter")
-	update := bson.D{{"$set", bson.D{{Key: "ArtistFirstLetterID", Value: param}}}}
+	update := bson.M{"$set": bson.M{"artistfirstletterid": param}}
 	result, err2 := coll.UpdateOne(context.TODO(), filter, update)
 	CheckError(err2, "MongoDB connection has failed UpdateArtistFirstLetterIDHandler")
 	return c.JSON(http.StatusOK, result)
@@ -402,12 +402,12 @@ func UpdateArtistFirstLetterIDHandler(c echo.Context) error {
 
 func UpdateArtistsForFirstLetterURLHandler(c echo.Context) error {
 	param := c.QueryParam("url")
-	filter := bson.D{{Key:"FMID", Value: "fm01"}}
+	filter := bson.M{"fmid": "fm01"}
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
 	defer Close(client, ctx, cancel)
 	CheckError(err, "MongoDB connection has failed UpdateArtistsForFirstLetterURLHandler")
 	coll := client.Database("frontmatter").Collection("frontmatter")
-	update := bson.D{{"$set", bson.D{{Key: "ArtistsForFirstLetterURL", Value: param}}}}
+	update := bson.M{"$set": bson.M{"artistforfirstletterurl": param}}
 	result, err2 := coll.UpdateOne(context.TODO(), filter, update)
 	CheckError(err2, "MongoDB connection has failed UpdateArtistsForFirstLetterURLHandler")
 	return c.JSON(http.StatusOK, result)
