@@ -407,7 +407,7 @@ func UpdateArtistsForFirstLetterURLHandler(c echo.Context) error {
 	defer Close(client, ctx, cancel)
 	CheckError(err, "MongoDB connection has failed UpdateArtistsForFirstLetterURLHandler")
 	coll := client.Database("frontmatter").Collection("frontmatter")
-	update := bson.M{"$set": bson.M{"artistforfirstletterurl": param}}
+	update := bson.M{"$set": bson.M{"artistsforfirstletterurl": param}}
 	result, err2 := coll.UpdateOne(context.TODO(), filter, update)
 	CheckError(err2, "MongoDB connection has failed UpdateArtistsForFirstLetterURLHandler")
 	return c.JSON(http.StatusOK, result)
