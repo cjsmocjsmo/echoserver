@@ -278,11 +278,11 @@ func FrontMatterFindOne(db string, coll string, filtertype string, filterstring 
 	defer Close(client, ctx, cancel)
 	CheckError(err, "FrontMatterFindOne: MongoDB connection has failed")
 	collection := client.Database(db).Collection(coll)
-	var results FrontMatter
-	err = collection.FindOne(context.Background(), filter).Decode(&results)
+	var fmresults FrontMatter
+	err = collection.FindOne(context.Background(), filter).Decode(&fmresults)
 	if err != nil {
 		fmt.Println("FrontMatterFindOne: find one has fucked up")
 		log.Println(err)
 	}
-	return results
+	return fmresults
 }

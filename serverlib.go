@@ -270,6 +270,7 @@ func SongsForFirstLetterHandler(c echo.Context) error {
 
 func GetAlbumFirstLetterIDHandler(c echo.Context) error {
 	aflID := FrontMatterFindOne("frontmatter", "frontmatter", "FMID", "fm01")
+	log.Println("this is aflID")
 	log.Println(aflID.AlbumFirstLetterID)
 	fmt.Println(aflID.AlbumFirstLetterID)
 	return c.JSON(http.StatusOK, aflID.AlbumFirstLetterID)
@@ -327,8 +328,9 @@ func UpdateAlbumFirstLetterIDHandler(c echo.Context) error {
 	defer Close(client, ctx, cancel)
 	CheckError(err, "MongoDB connection has failed GetArtistsForFirstLetterURL")
 	coll := client.Database("frontmatter").Collection("frontmatter")
-	update := bson.D{{"$set", bson.D{{Key: "AlbumFirstLetterID", Value: param}}}}
+	update := bson.M{"$set": bson.M{"AlbumFirstLetterID":  param}}
 	result, err2 := coll.UpdateOne(context.TODO(), filter, update)
+	log.Println(result)
 	CheckError(err2, "MongoDB connection has failed UpdateAlbumFirstLetterIDHandler")
 	return c.JSON(http.StatusOK, result)
 }
