@@ -509,7 +509,7 @@ func UpdateArtistIDHandler(c echo.Context) error {
 }
 
 func UpdateArtistFirstLetterIDHandler(c echo.Context) error {
-	param := c.QueryParam("artid")
+	param := c.QueryParam("artflid")
 	filter := bson.D{{Key:"FMID", Value: "fm01"}}
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
 	defer Close(client, ctx, cancel)
