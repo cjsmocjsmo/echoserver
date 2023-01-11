@@ -3,15 +3,16 @@ FROM golang:bullseye AS builder
 RUN mkdir /go/src/ampgoserver
 WORKDIR /go/src/ampgoserver
 
-COPY server.go .
 COPY ampgosetup.go .
+COPY ampgosetupfirstlib.go .
+COPY ampgosetuplib.go .
 COPY db.go .
-COPY lib.go .
-COPY firstlib.go .
-COPY typeslib.go .
-COPY serverlib.go .
 COPY go.mod .
 COPY go.sum .
+COPY server.go .
+COPY serverfirstlib.go .
+COPY serverlib.golang .
+COPY typeslib .
 
 RUN export GOPATH=/go/src/ampgoserver
 RUN go get -v /go/src/ampgoserver
