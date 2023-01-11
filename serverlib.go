@@ -269,155 +269,52 @@ func SongsForFirstLetterHandler(c echo.Context) error {
 //////////////////////////////////////////////////////////////
 
 func GetAlbumFirstLetterIDHandler(c echo.Context) error {
-	aflID := AmpgoFindOne("frontmatter", "frontmatter", "FMID", "fm01")
-	log.Println(aflID["albumfirstletterid"])
-	fmt.Println(aflID["albumfirstletterid"])
-	
-	return c.JSON(http.StatusOK, aflID["AlbumFirstLetterID"])
+	aflID := FrontMatterFindOne("frontmatter", "frontmatter", "FMID", "fm01")
+	log.Println(aflID.AlbumFirstLetterID)
+	fmt.Println(aflID.AlbumFirstLetterID)
+	return c.JSON(http.StatusOK, aflID.AlbumFirstLetterID)
 }
 
 func GetAlbumsForArtistURLHandler(c echo.Context) error {
-	filter := bson.M{"FMID": "fm01"}
-	opts := options.Find()
-	opts.SetProjection(bson.M{"_id": 0, 
-	"FMID":0,
-		"AlbumFirstLetterID":0,
-		"AlbumsForFirstLetterURL": 0, 
-		"SelectedAlbumID": 0, 
-		"ArtistID": 0, 
-		"ArtistFirstLetterID": 0, 
-		"ArtistsForFirstLetterURL": 0})
-	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
-	defer Close(client, ctx, cancel)
-	CheckError(err, "MongoDB connection has failed GetAlbumsForArtistURLHandler")
-	coll := client.Database("frontmatter").Collection("frontmatter")
-	cur, err := coll.Find(context.TODO(), filter, opts)
-	CheckError(err, "GetAlbumsForArtistURLHandler find has failed")
-	var frontmatter []map[string]string
-	if err = cur.All(context.TODO(), &frontmatter); err != nil {
-		log.Println(err)
-	}
-	return c.JSON(http.StatusOK, frontmatter)
+	url := FrontMatterFindOne("frontmatter", "frontmatter", "FMID", "fm01")
+	log.Println(url.AlbumsForArtistURL)
+	log.Println(url.AlbumsForArtistURL)
+	return c.JSON(http.StatusOK, url.AlbumsForArtistURL)
 }
 
 func GetAlbumsForFirstLetterURLHandler(c echo.Context) error {
-	filter := bson.M{"FMID": "fm01"}
-	opts := options.Find()
-	opts.SetProjection(bson.M{"_id": 0, 
-	"FMID":0,
-		"AlbumFirstLetterID":0,
-		"AlbumsForArtistURL": 0,  
-		"SelectedAlbumID": 0, 
-		"ArtistID": 0, 
-		"ArtistFirstLetterID": 0, 
-		"ArtistsForFirstLetterURL": 0})
-	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
-	defer Close(client, ctx, cancel)
-	CheckError(err, "MongoDB connection has failed AlbumsForFirstLetterURL")
-	coll := client.Database("frontmatter").Collection("frontmatter")
-	cur, err := coll.Find(context.TODO(), filter, opts)
-	CheckError(err, "AlbumsForFirstLetterURL find has failed")
-	var frontmatter []map[string]string
-	if err = cur.All(context.TODO(), &frontmatter); err != nil {
-		log.Println(err)
-	}
-	return c.JSON(http.StatusOK, frontmatter)
+	url := FrontMatterFindOne("frontmatter", "frontmatter", "FMID", "fm01")
+	log.Println(url.AlbumsForFirstLetterURL)
+	log.Println(url.AlbumsForFirstLetterURL)
+	return c.JSON(http.StatusOK, url.AlbumsForFirstLetterURL)
 }
 
 func GetSelectedAlbumIDHandler(c echo.Context) error {
-	filter := bson.M{"FMID": "fm01"}
-	opts := options.Find()
-	opts.SetProjection(bson.M{"_id": 0, 
-	"FMID":0,
-		"AlbumFirstLetterID":0,
-		"AlbumsForArtistURL": 0, 
-		"AlbumsForFirstLetterURL": 0, 
-		"ArtistID": 0, 
-		"ArtistFirstLetterID": 0, 
-		"ArtistsForFirstLetterURL": 0})
-	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
-	defer Close(client, ctx, cancel)
-	CheckError(err, "MongoDB connection has failed GetSelectedAlbumIDHandler")
-	coll := client.Database("frontmatter").Collection("frontmatter")
-	cur, err := coll.Find(context.TODO(), filter, opts)
-	CheckError(err, "GetSelectedAlbumIDHandler find has failed")
-	var frontmatter []map[string]string
-	if err = cur.All(context.TODO(), &frontmatter); err != nil {
-		log.Println(err)
-	}
-	return c.JSON(http.StatusOK, frontmatter)
+	url := FrontMatterFindOne("frontmatter", "frontmatter", "FMID", "fm01")
+	log.Println(url.SelectedAlbumID)
+	log.Println(url.SelectedAlbumID)
+	return c.JSON(http.StatusOK, url.SelectedAlbumID)
 }
 
 func GetArtistIDHandler(c echo.Context) error {
-	filter := bson.M{"FMID": "fm01"}
-	opts := options.Find()
-	opts.SetProjection(bson.M{"_id": 0, 
-	"FMID":0,
-		"AlbumFirstLetterID":0,
-		"AlbumsForArtistURL": 0, 
-		"AlbumsForFirstLetterURL": 0, 
-		"SelectedAlbumID": 0, 
-		"ArtistFirstLetterID": 0, 
-		"ArtistsForFirstLetterURL": 0})
-	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
-	defer Close(client, ctx, cancel)
-	CheckError(err, "MongoDB connection has failed GetArtistIDHandler")
-	coll := client.Database("frontmatter").Collection("frontmatter")
-	cur, err := coll.Find(context.TODO(), filter, opts)
-	CheckError(err, "GetArtistIDHandler find has failed")
-	var frontmatter []map[string]string
-	if err = cur.All(context.TODO(), &frontmatter); err != nil {
-		log.Println(err)
-	}
-	return c.JSON(http.StatusOK, frontmatter)
+	url := FrontMatterFindOne("frontmatter", "frontmatter", "FMID", "fm01")
+	log.Println(url.ArtistID)
+	log.Println(url.ArtistID)
+	return c.JSON(http.StatusOK, url.ArtistID)
 }
 
 func GetArtistFirstLetterIDHandler(c echo.Context) error {
-	filter := bson.M{"FMID": "fm01"}
-	opts := options.Find()
-	opts.SetProjection(bson.M{"_id": 0, 
-		"FMID":0,
-		"AlbumFirstLetterID":0,
-		"AlbumsForArtistURL": 0, 
-		"AlbumsForFirstLetterURL": 0, 
-		"SelectedAlbumID": 0, 
-		"ArtistID": 0, 
-		"ArtistsForFirstLetterURL": 0})
-	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
-	defer Close(client, ctx, cancel)
-	CheckError(err, "MongoDB connection has failed GetArtistFirstLetterIDHandler")
-	coll := client.Database("frontmatter").Collection("frontmatter")
-	cur, err := coll.Find(context.TODO(), filter, opts)
-	CheckError(err, "GetArtistFirstLetterIDHandler find has failed")
-	var frontmatter []map[string]string
-	if err = cur.All(context.TODO(), &frontmatter); err != nil {
-		log.Println(err)
-	}
-	return c.JSON(http.StatusOK, frontmatter)
+	url := FrontMatterFindOne("frontmatter", "frontmatter", "FMID", "fm01")
+	log.Println(url.ArtistFirstLetterID)
+	log.Println(url.ArtistFirstLetterID)
+	return c.JSON(http.StatusOK, url.ArtistFirstLetterID)
 }
 
-func GetArtistsForFirstLetterURL(c echo.Context) error {
-	filter := bson.M{"FMID": "fm01"}
-	opts := options.Find()
-	opts.SetProjection(bson.M{"_id": 0, 
-		"FMID":0,
-		"AlbumFirstLetterID":0,
-		"AlbumsForArtistURL": 0, 
-		"AlbumsForFirstLetterURL": 0, 
-		"SelectedAlbumID": 0, 
-		"ArtistID": 0, 
-		"ArtistFirstLetterID": 0})
-	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
-	defer Close(client, ctx, cancel)
-	CheckError(err, "MongoDB connection has failed GetArtistsForFirstLetterURL")
-	coll := client.Database("frontmatter").Collection("frontmatter")
-	cur, err := coll.Find(context.TODO(), filter, opts)
-	CheckError(err, "GetArtistsForFirstLetterURL find has failed")
-	var frontmatter []map[string]string
-	if err = cur.All(context.TODO(), &frontmatter); err != nil {
-		log.Println(err)
-	}
-	return c.JSON(http.StatusOK, frontmatter)
+func GetArtistsForFirstLetterURLHandler(c echo.Context) error {
+	url := FrontMatterFindOne("frontmatter", "frontmatter", "FMID", "fm01")
+	log.Println(url.ArtistsForFirstLetterURL)
+	log.Println(url.ArtistsForFirstLetterURL)
+	return c.JSON(http.StatusOK, url.ArtistsForFirstLetterURL)
 }
 
 //////////////////////////////////////////////////////////////

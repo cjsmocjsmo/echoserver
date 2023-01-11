@@ -271,3 +271,18 @@ func AlbViewFindOne(db string, coll string, filtertype string, filterstring stri
 	}
 	return results
 }
+
+func FrontMatterFindOne(db string, coll string, filtertype string, filterstring string) FrontMatter {
+	filter := bson.M{filtertype: filterstring}
+	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
+	defer Close(client, ctx, cancel)
+	CheckError(err, "FrontMatterFindOne: MongoDB connection has failed")
+	collection := client.Database(db).Collection(coll)
+	var results FrontMatter
+	err = collection.FindOne(context.Background(), filter).Decode(&results)
+	if err != nil {
+		fmt.Println("FrontMatterFindOne: find one has fucked up")
+		log.Println(err)
+	}
+	return results
+}

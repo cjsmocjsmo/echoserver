@@ -357,13 +357,13 @@ func resizeImage(infile string, outfile string) string {
 func CreateFrontMatterDB() {
 	var FM FrontMatter
 	FM.FMID = "fm01"
-	FM.AlbumFirstLetterID = "empty"
-	FM.AlbumsForArtistURL = "empty"
-	FM.AlbumsForFirstLetterURL = "empty"
-	FM.SelectedAlbumID = "empty"
-	FM.ArtistID = "empty"
-	FM.ArtistFirstLetterID = "empty"
-	FM.ArtistsForFirstLetterURL = "empty"
+	FM.AlbumFirstLetterID = "Ekco"
+	FM.AlbumsForArtistURL = "Ekco"
+	FM.AlbumsForFirstLetterURL = "Ekco"
+	FM.SelectedAlbumID = "Ekco"
+	FM.ArtistID = "Ekco"
+	FM.ArtistFirstLetterID = "Ekco"
+	FM.ArtistsForFirstLetterURL = "Ekco"
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgo")
 	CheckError(err, "CreateFrontMatterDB: Connections has failed")
 	defer Close(client, ctx, cancel)
@@ -373,14 +373,14 @@ func CreateFrontMatterDB() {
 
 // func CreateRandomPlaylistDB() string {
 // 	var ranDBInfo randDb
-// 	var emptylist []map[string]string
-// 	var emptyitem map[string]string = map[string]string{"None": "No Songs Found"}
-// 	emptylist = append(emptylist, emptyitem)
+// 	var Ekcolist []map[string]string
+// 	var Ekcoitem map[string]string = map[string]string{"None": "No Songs Found"}
+// 	Ekcolist = append(Ekcolist, Ekcoitem)
 // 	uuid, _ := UUID()
-// 	ranDBInfo.PlayListName = "EmptyRandomPlaylist"
+// 	ranDBInfo.PlayListName = "EkcoRandomPlaylist"
 // 	ranDBInfo.PlayListID = uuid
 // 	ranDBInfo.PlayListCount = "0"
-// 	ranDBInfo.Playlist = emptylist
+// 	ranDBInfo.Playlist = Ekcolist
 // 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgo")
 // 	CheckError(err, "CreateRandomPlaylistDB: Connections has failed")
 // 	defer Close(client, ctx, cancel)

@@ -24,7 +24,7 @@ func main() {
 	e.GET("/getselectedalbumid", GetSelectedAlbumIDHandler)
 	e.GET("/getartistid", GetArtistIDHandler)
 	e.GET("/getartistfirstletterid", GetArtistFirstLetterIDHandler)
-	e.GET("/getartistsforfirstletterurl", GetArtistsForFirstLetterURL)
+	e.GET("/getartistsforfirstletterurl", GetArtistsForFirstLetterURLHandler)
 
 	e.GET("/updatealbumfirstletterid", UpdateAlbumFirstLetterIDHandler)
 	e.GET("/updatealbumsforartisturl", UpdateAlbumsForArtistURLHandler)
