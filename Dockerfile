@@ -11,7 +11,7 @@ COPY go.mod .
 COPY go.sum .
 COPY server.go .
 COPY serverfirstlib.go .
-COPY serverlib.golang .
+COPY serverlib.go .
 COPY typeslib .
 
 RUN export GOPATH=/go/src/ampgoserver
