@@ -342,7 +342,7 @@ func UpdateAlbumsForArtistURLHandler(c echo.Context) error {
 	defer Close(client, ctx, cancel)
 	CheckError(err, "MongoDB connection has failed UpdateAlbumsForArtistURLHandler")
 	coll := client.Database("frontmatter").Collection("frontmatter")
-	update := bson.M{"$set": bson.M{"albumsforartisturl": param}}
+	update := bson.M{"$set": bson.M{"albumforartisturl": param}}
 	result, err2 := coll.UpdateOne(context.TODO(), filter, update)
 	CheckError(err2, "MongoDB connection has failed UpdateAlbumsForArtistURLHandler")
 	return c.JSON(http.StatusOK, result)
