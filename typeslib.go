@@ -1,27 +1,5 @@
 package main
 
-// type plist struct {
-// 	PLName string              `bson:"PLName"`
-// 	PLId   string              `bson:"PLId"`
-// 	Songs  []map[string]string `bson:"Songs"`
-// }
-
-// type iMgfa struct {
-// 	Album   string              `bson:"album"`
-// 	PicPath string              `bson:"picPath"`
-// 	Songs   []map[string]string `bson:"songs"`
-// }
-
-// type rAlbinfo struct {
-// 	Songs   []map[string]string `bson:"songs"`
-// 	HSImage string              `bson:"hsimage"`
-// }
-
-// type voodoo struct {
-// 	Playlists []map[string]string `bson:"playlists"`
-// }
-
-//ArtVIEW exported
 type ArtVIEW struct {
 	Artist   string              `bson:"artist"`
 	ArtistID string              `bson:"artistID"`
@@ -142,18 +120,6 @@ type JsonPage struct {
 	PageList []JsonMP3 `bson:"PageList"`
 }
 
-type Fjpg struct {
-	exists bool
-	path   string
-}
-
-type randDb struct {
-	PlayListName  string              `bson:"playlistname"`
-	PlayListID    string              `bson:"playlistID"`
-	PlayListCount string              `bson:"playlistcount"`
-	Playlist      []map[string]string `bson:"playlist"`
-}
-
 type FrontMatter struct {
 	FMID                     string `bson:"fmid"`
 	AlbumFirstLetterID       string `bson:"albumfirstletterid"`
@@ -163,4 +129,40 @@ type FrontMatter struct {
 	ArtistID                 string `bson:"artistid"`
 	ArtistFirstLetterID      string `bson:"artistfirstletterid"`
 	ArtistsForFirstLetterURL string `bson:"artistsforfirstletterurl"`
+	SongID                   string `bson:"songid"`
+	ThumbHttpPath            string `bson:"thumbhttppath"`
 }
+
+
+// type plist struct {
+// 	PLName string              `bson:"PLName"`
+// 	PLId   string              `bson:"PLId"`
+// 	Songs  []map[string]string `bson:"Songs"`
+// }
+
+// type iMgfa struct {
+// 	Album   string              `bson:"album"`
+// 	PicPath string              `bson:"picPath"`
+// 	Songs   []map[string]string `bson:"songs"`
+// }
+
+// type rAlbinfo struct {
+// 	Songs   []map[string]string `bson:"songs"`
+// 	HSImage string              `bson:"hsimage"`
+// }
+
+// type voodoo struct {
+// 	Playlists []map[string]string `bson:"playlists"`
+// }
+
+// type Fjpg struct {
+// 	exists bool
+// 	path   string
+// }
+
+// type randDb struct {
+// 	PlayListName  string              `bson:"playlistname"`
+// 	PlayListID    string              `bson:"playlistID"`
+// 	PlayListCount string              `bson:"playlistcount"`
+// 	Playlist      []map[string]string `bson:"playlist"`
+// }

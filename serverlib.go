@@ -318,6 +318,23 @@ func GetArtistsForFirstLetterURLHandler(c echo.Context) error {
 	return c.JSON(http.StatusOK, url.ArtistsForFirstLetterURL)
 }
 
+
+
+
+func GetSongIDHandler(c echo.Context) error {
+	url := FrontMatterFindOne("frontmatter", "frontmatter", "fmid", "fm01")
+	log.Println(url.SongID)
+	log.Println(url.SongID)
+	return c.JSON(http.StatusOK, url.SongID)
+}
+
+func GetThumbHttpPathHandler(c echo.Context) error {
+	url := FrontMatterFindOne("frontmatter", "frontmatter", "fmid", "fm01")
+	log.Println(url.ThumbHttpPath)
+	log.Println(url.ThumbHttpPath)
+	return c.JSON(http.StatusOK, url.ThumbHttpPath)
+}
+
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
@@ -413,3 +430,32 @@ func UpdateArtistsForFirstLetterURLHandler(c echo.Context) error {
 	return c.JSON(http.StatusOK, result)
 }
 
+
+
+
+
+func UpdateSongIDHandler(c echo.Context) error {
+	param := c.QueryParam("sid")
+	filter := bson.M{"fmid": "fm01"}
+	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
+	defer Close(client, ctx, cancel)
+	CheckError(err, "MongoDB connection has failed UpdateSongIDHandler")
+	coll := client.Database("frontmatter").Collection("frontmatter")
+	update := bson.M{"$set": bson.M{"songid": param}}
+	result, err2 := coll.UpdateOne(context.TODO(), filter, update)
+	CheckError(err2, "MongoDB connection has failed UpdateSongIDHandler")
+	return c.JSON(http.StatusOK, result)
+}
+
+func UpdateThumbHttpPathHandler(c echo.Context) error {
+	param := c.QueryParam("thumb")
+	filter := bson.M{"fmid": "fm01"}
+	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
+	defer Close(client, ctx, cancel)
+	CheckError(err, "MongoDB connection has failed UpdateThumbHttpPathHandler")
+	coll := client.Database("frontmatter").Collection("frontmatter")
+	update := bson.M{"$set": bson.M{"thumbhttppath": param}}
+	result, err2 := coll.UpdateOne(context.TODO(), filter, update)
+	CheckError(err2, "MongoDB connection has failed UpdateThumbHttpPathHandler")
+	return c.JSON(http.StatusOK, result)
+}

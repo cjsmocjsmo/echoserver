@@ -364,6 +364,8 @@ func CreateFrontMatterDB() {
 	FM.ArtistID = "Ekco"
 	FM.ArtistFirstLetterID = "Ekco"
 	FM.ArtistsForFirstLetterURL = "Ekco"
+	FM.SongID = "Ekco"
+	FM.ThumbHttpPath = "Ekco"
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgo")
 	CheckError(err, "CreateFrontMatterDB: Connections has failed")
 	defer Close(client, ctx, cancel)

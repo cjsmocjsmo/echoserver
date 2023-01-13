@@ -25,6 +25,8 @@ func main() {
 	e.GET("/getartistid", GetArtistIDHandler)
 	e.GET("/getartistfirstletterid", GetArtistFirstLetterIDHandler)
 	e.GET("/getartistsforfirstletterurl", GetArtistsForFirstLetterURLHandler)
+	e.GET("/getsongid", GetSongIDHandler)
+	e.GET("/getthumbhttppath", GetThumbHttpPathHandler)
 
 	e.GET("/updatealbumfirstletterid", UpdateAlbumFirstLetterIDHandler)
 	e.GET("/updatealbumsforartisturl", UpdateAlbumsForArtistURLHandler)
