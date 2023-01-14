@@ -538,7 +538,7 @@ func ArtistSearchFindHandler(c echo.Context) error {
 	coll := client.Database("artistview").Collection("artistview")
 	cur, err := coll.Find(context.TODO(), filter)
 	CheckError(err, "ArtistSearchFind: ArtistSearchFind find has failed")
-	var result ArtVieW2 //all albums for artist to include double entries
+	var result []ArtVieW2 //all albums for artist to include double entries
 	if err = cur.All(context.TODO(), &result); err != nil {
 		fmt.Println("ArtistSearchFind: cur.All has fucked up")
 		log.Println(err)
@@ -558,7 +558,7 @@ func AlbumSearchFindHandler(c echo.Context) error {
 	coll := client.Database("albumview").Collection("albumview")
 	cur, err := coll.Find(context.TODO(), filter)
 	CheckError(err, "AlbumSearchFind: AlbumSearchFind find has failed")
-	var results AlbVieW2 //all albums for artist to include double entries
+	var results []AlbVieW2 //all albums for artist to include double entries
 	if err = cur.All(context.TODO(), &results); err != nil {
 		fmt.Println("AlbumSearchFind: cur.All has fucked up")
 		log.Println(err)
