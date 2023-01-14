@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"os"
+	"reflect"
 
 	// "github.com/bogem/id3v2"
 	// "github.com/disintegration/imaging"
@@ -39,6 +41,36 @@ func Query(client *mongo.Client, ctx context.Context, dataBase, col string, quer
 	collection := client.Database(dataBase).Collection(col)
 	result, err = collection.Find(ctx, query, options.Find().SetProjection(field))
 	return
+}
+
+func CreateTextSearchIndexes(db string, coll string) {
+	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
+	defer Close(client, ctx, cancel)
+	CheckError(err, "AmpgoFindOne: MongoDB connection has failed")
+	collection := client.Database(db).Collection(coll)
+
+	mod := mongo.IndexModel{
+		Keys: bson.M{
+			"song":   "text",
+			"artist": "text",
+			"album":  "text",
+		},
+		Options: nil,
+	}
+
+	ind, err := collection.Indexes().CreateOne(ctx, mod)
+	if err != nil {
+		fmt.Println("Indexes().CreateOne() ERROR:", err)
+		log.Println("Indexes().CreateOne() ERROR:", err)
+		os.Exit(1) // exit in case of error
+	} else {
+		// API call returns string of the index name
+		fmt.Println("CreateOne() index:", ind)
+		fmt.Println("CreateOne() type:", reflect.TypeOf(ind))
+
+		log.Println("CreateOne() index:", ind)
+		log.Println("CreateOne() type:", reflect.TypeOf(ind))
+	}
 }
 
 func AmpgoFindOne(db string, coll string, filtertype string, filterstring string) map[string]string {

@@ -38,6 +38,14 @@ func main() {
 	e.GET("/updatesongid", UpdateSongIDHandler)
 	e.GET("/updatethumbhttppath", UpdateThumbHttpPathHandler)
 
+	e.GET("/getsearchartist", GetSearchArtistHandler)
+	e.GET("/getsearchalbum", GetSearchAlbumHandler)
+	e.GET("/getsearchsong", GetSearchSongHandler)
+	e.GET("/updatesearchartist", UpdateSearchArtistHandler)
+	e.GET("/updatesearchalbum", UpdateSearchAlbumHandler)
+	e.GET("/updatesearchsong", UpdateSearchSongHandler)
+
+
 	e.GET("/artistFirstLetter", ArtistFirstLetterHandler)
 	e.GET("/artistsForFirstLetter", ArtistsForFirstLetterHandler)
 	e.GET("/artist1", Artist1Handler)

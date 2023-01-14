@@ -318,9 +318,6 @@ func GetArtistsForFirstLetterURLHandler(c echo.Context) error {
 	return c.JSON(http.StatusOK, url.ArtistsForFirstLetterURL)
 }
 
-
-
-
 func GetSongIDHandler(c echo.Context) error {
 	url := FrontMatterFindOne("frontmatter", "frontmatter", "fmid", "fm01")
 	log.Println(url.SongID)
@@ -430,10 +427,6 @@ func UpdateArtistsForFirstLetterURLHandler(c echo.Context) error {
 	return c.JSON(http.StatusOK, result)
 }
 
-
-
-
-
 func UpdateSongIDHandler(c echo.Context) error {
 	param := c.QueryParam("sid")
 	filter := bson.M{"fmid": "fm01"}
@@ -457,5 +450,69 @@ func UpdateThumbHttpPathHandler(c echo.Context) error {
 	update := bson.M{"$set": bson.M{"thumbhttppath": param}}
 	result, err2 := coll.UpdateOne(context.TODO(), filter, update)
 	CheckError(err2, "MongoDB connection has failed UpdateThumbHttpPathHandler")
+	return c.JSON(http.StatusOK, result)
+}
+
+func GetSearchArtistHandler(c echo.Context) error {
+	url := FrontMatterFindOne("frontmatter", "frontmatter", "fmid", "fm01")
+	log.Println(url.SearchArtist)
+	log.Println(url.SearchArtist)
+	return c.JSON(http.StatusOK, url.SearchArtist)
+}
+
+func GetSearchAlbumHandler(c echo.Context) error {
+	url := FrontMatterFindOne("frontmatter", "frontmatter", "fmid", "fm01")
+	log.Println(url.SearchAlbum)
+	log.Println(url.SearchAlbum)
+	return c.JSON(http.StatusOK, url.SearchAlbum)
+}
+
+func GetSearchSongHandler(c echo.Context) error {
+	url := FrontMatterFindOne("frontmatter", "frontmatter", "fmid", "fm01")
+	log.Println(url.SearchSong)
+	log.Println(url.SearchSong)
+	return c.JSON(http.StatusOK, url.SearchSong)
+}
+
+
+
+
+
+func UpdateSearchArtistHandler(c echo.Context) error {
+	param := c.QueryParam("search")
+	filter := bson.M{"fmid": "fm01"}
+	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
+	defer Close(client, ctx, cancel)
+	CheckError(err, "MongoDB connection has failed UpdateSearchArtistHandler")
+	coll := client.Database("frontmatter").Collection("frontmatter")
+	update := bson.M{"$set": bson.M{"searchartist": param}}
+	result, err2 := coll.UpdateOne(context.TODO(), filter, update)
+	CheckError(err2, "MongoDB connection has failed UpdateSearchArtistHandler")
+	return c.JSON(http.StatusOK, result)
+}
+
+func UpdateSearchAlbumHandler(c echo.Context) error {
+	param := c.QueryParam("search")
+	filter := bson.M{"fmid": "fm01"}
+	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
+	defer Close(client, ctx, cancel)
+	CheckError(err, "MongoDB connection has failed UpdateSearchAlbumHandler")
+	coll := client.Database("frontmatter").Collection("frontmatter")
+	update := bson.M{"$set": bson.M{"searchalbum": param}}
+	result, err2 := coll.UpdateOne(context.TODO(), filter, update)
+	CheckError(err2, "MongoDB connection has failed UpdateSearchAlbumHandler")
+	return c.JSON(http.StatusOK, result)
+}
+
+func UpdateSearchSongHandler(c echo.Context) error {
+	param := c.QueryParam("search")
+	filter := bson.M{"fmid": "fm01"}
+	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
+	defer Close(client, ctx, cancel)
+	CheckError(err, "MongoDB connection has failed UpdateSearchSongHandler")
+	coll := client.Database("frontmatter").Collection("frontmatter")
+	update := bson.M{"$set": bson.M{"searchsong": param}}
+	result, err2 := coll.UpdateOne(context.TODO(), filter, update)
+	CheckError(err2, "MongoDB connection has failed UpdateSearchSongHandler")
 	return c.JSON(http.StatusOK, result)
 }
