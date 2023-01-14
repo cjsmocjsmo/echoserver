@@ -44,6 +44,26 @@ func Query(client *mongo.Client, ctx context.Context, dataBase, col string, quer
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 func CreateArtistSearchIndex(db string, coll string) {
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
 	defer Close(client, ctx, cancel)
@@ -52,7 +72,7 @@ func CreateArtistSearchIndex(db string, coll string) {
 
 	mod := mongo.IndexModel{
 		Keys: bson.M{
-			"Artist": "text",
+			"artist": "text",
 		},
 		Options: nil,
 	}

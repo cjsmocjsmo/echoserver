@@ -14,7 +14,7 @@ services:
       - 27017:27017
 
   ampgoserver:
-    image: ampgo:0.3.60
+    image: ampgo:0.3.62
     build: .
     environment:
       - AMPGO_SETUP=1
