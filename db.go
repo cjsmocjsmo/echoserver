@@ -43,6 +43,12 @@ func Query(client *mongo.Client, ctx context.Context, dataBase, col string, quer
 	return
 }
 
+
+
+
+
+
+
 func CreateTextSearchIndexes(db string, coll string) {
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
 	defer Close(client, ctx, cancel)
@@ -51,13 +57,12 @@ func CreateTextSearchIndexes(db string, coll string) {
 
 	mod := mongo.IndexModel{
 		Keys: bson.M{
-			"song":   "text",
-			"artist": "text",
-			"album":  "text",
+			"song": "text",
 		},
 		Options: nil,
 	}
 
+	// ind, err := collection.Indexes().CreateOne(ctx, mod)
 	ind, err := collection.Indexes().CreateOne(ctx, mod)
 	if err != nil {
 		fmt.Println("Indexes().CreateOne() ERROR:", err)
@@ -72,6 +77,27 @@ func CreateTextSearchIndexes(db string, coll string) {
 		log.Println("CreateOne() type:", reflect.TypeOf(ind))
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 func AmpgoFindOne(db string, coll string, filtertype string, filterstring string) map[string]string {
 	filter := bson.M{filtertype: filterstring}
