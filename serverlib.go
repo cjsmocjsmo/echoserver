@@ -516,3 +516,72 @@ func UpdateSearchSongHandler(c echo.Context) error {
 	CheckError(err2, "MongoDB connection has failed UpdateSearchSongHandler")
 	return c.JSON(http.StatusOK, result)
 }
+
+
+
+
+
+
+
+
+
+
+func ArtistSearchFindHandler(c echo.Context) error {
+	param := c.QueryParam("search")
+	searchstring := "\"\"" + param + "\"\""
+	log.Println("this is searchstring")
+	log.Println(searchstring)
+	filter := bson.M{"$text": bson.M{"$search": searchstring}}
+	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
+	defer Close(client, ctx, cancel)
+	CheckError(err, "ArtistSearchFind: MongoDB connection has failed")
+	coll := client.Database("artistview").Collection("artistview")
+	cur, err := coll.Find(context.TODO(), filter)
+	CheckError(err, "ArtistSearchFind: ArtistSearchFind find has failed")
+	var result ArtVieW2 //all albums for artist to include double entries
+	if err = cur.All(context.TODO(), &result); err != nil {
+		fmt.Println("ArtistSearchFind: cur.All has fucked up")
+		log.Println(err)
+	}
+	return c.JSON(http.StatusOK, result)
+}
+
+func AlbumSearchFindHandler(c echo.Context) error {
+	param := c.QueryParam("search")
+	searchstring := "\"\"" + param + "\"\""
+	log.Println("this is searchstring")
+	log.Println(searchstring)
+	filter := bson.M{"$text": bson.M{"$search": searchstring}}
+	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
+	defer Close(client, ctx, cancel)
+	CheckError(err, "AlbumSearchFind: MongoDB connection has failed")
+	coll := client.Database("albumview").Collection("albumview")
+	cur, err := coll.Find(context.TODO(), filter)
+	CheckError(err, "AlbumSearchFind: AlbumSearchFind find has failed")
+	var results AlbVieW2 //all albums for artist to include double entries
+	if err = cur.All(context.TODO(), &results); err != nil {
+		fmt.Println("AlbumSearchFind: cur.All has fucked up")
+		log.Println(err)
+	}
+	return c.JSON(http.StatusOK, results)
+}
+
+func SongSearchFindHandler(c echo.Context) error {
+	param := c.QueryParam("search")
+	searchstring := "\"\"" + param + "\"\""
+	log.Println("this is searchstring")
+	log.Println(searchstring)
+	filter := bson.M{"$text": bson.M{"$search": searchstring}}
+	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
+	defer Close(client, ctx, cancel)
+	CheckError(err, "SongSearchFind: MongoDB connection has failed")
+	coll := client.Database("maindb").Collection("maindb")
+	cur, err := coll.Find(context.TODO(), filter)
+	CheckError(err, "SongSearchFind: AlbumSearchFind find has failed")
+	var results []map[string]string //all albums for artist to include double entries
+	if err = cur.All(context.TODO(), &results); err != nil {
+		fmt.Println("SongSearchFind: cur.All has fucked up")
+		log.Println(err)
+	}
+	return c.JSON(http.StatusOK, results)
+}

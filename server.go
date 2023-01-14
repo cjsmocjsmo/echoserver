@@ -45,6 +45,9 @@ func main() {
 	e.GET("/updatesearchalbum", UpdateSearchAlbumHandler)
 	e.GET("/updatesearchsong", UpdateSearchSongHandler)
 
+	e.GET("/artistsearch", ArtistSearchFindHandler)
+	e.GET("/albumsearch", AlbumSearchFindHandler)
+	e.GET("/songsearch", SongSearchFindHandler)
 
 	e.GET("/artistFirstLetter", ArtistFirstLetterHandler)
 	e.GET("/artistsForFirstLetter", ArtistsForFirstLetterHandler)
