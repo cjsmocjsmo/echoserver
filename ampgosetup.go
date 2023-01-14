@@ -185,7 +185,9 @@ func SetUp() {
 	AlbumAlphaList()
 	SongAlphaList()
 	CreateFrontMatterDB()
-	CreateTextSearchIndexes("maindb", "maindb")
+	CreateArtistSearchIndex("artistview", "artistview")
+	CreateAlbumSearchIndex("albumview", "albumview")
+	CreateSongSearchIndex("maindb", "maindb")
 
 	// CreateRandomPlaylistDB()
 

@@ -44,12 +44,62 @@ func Query(client *mongo.Client, ctx context.Context, dataBase, col string, quer
 }
 
 
+func CreateArtistSearchIndex(db string, coll string) {
+	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
+	defer Close(client, ctx, cancel)
+	CheckError(err, "AmpgoFindOne: MongoDB connection has failed")
+	collection := client.Database(db).Collection(coll)
+
+	mod := mongo.IndexModel{
+		Keys: bson.M{
+			"Artist": "text",
+		},
+		Options: nil,
+	}
+	ind, err := collection.Indexes().CreateOne(ctx, mod)
+	if err != nil {
+		fmt.Println("Indexes().CreateOne() ERROR:", err)
+		log.Println("Indexes().CreateOne() ERROR:", err)
+		os.Exit(1) // exit in case of error
+	} else {
+		// API call returns string of the index name
+		fmt.Println("CreateOne() index:", ind)
+		fmt.Println("CreateOne() type:", reflect.TypeOf(ind))
+
+		log.Println("CreateOne() index:", ind)
+		log.Println("CreateOne() type:", reflect.TypeOf(ind))
+	}
+}
+
+func CreateAlbumSearchIndex(db string, coll string) {
+	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
+	defer Close(client, ctx, cancel)
+	CheckError(err, "AmpgoFindOne: MongoDB connection has failed")
+	collection := client.Database(db).Collection(coll)
+
+	mod := mongo.IndexModel{
+		Keys: bson.M{
+			"Album": "text",
+		},
+		Options: nil,
+	}
+	ind, err := collection.Indexes().CreateOne(ctx, mod)
+	if err != nil {
+		fmt.Println("Indexes().CreateOne() ERROR:", err)
+		log.Println("Indexes().CreateOne() ERROR:", err)
+		os.Exit(1) // exit in case of error
+	} else {
+		// API call returns string of the index name
+		fmt.Println("CreateOne() index:", ind)
+		fmt.Println("CreateOne() type:", reflect.TypeOf(ind))
+
+		log.Println("CreateOne() index:", ind)
+		log.Println("CreateOne() type:", reflect.TypeOf(ind))
+	}
+}
 
 
-
-
-
-func CreateTextSearchIndexes(db string, coll string) {
+func CreateSongSearchIndex(db string, coll string) {
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
 	defer Close(client, ctx, cancel)
 	CheckError(err, "AmpgoFindOne: MongoDB connection has failed")
@@ -61,8 +111,6 @@ func CreateTextSearchIndexes(db string, coll string) {
 		},
 		Options: nil,
 	}
-
-	// ind, err := collection.Indexes().CreateOne(ctx, mod)
 	ind, err := collection.Indexes().CreateOne(ctx, mod)
 	if err != nil {
 		fmt.Println("Indexes().CreateOne() ERROR:", err)
