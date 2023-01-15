@@ -48,7 +48,7 @@ func main() {
 	e.GET("/updatesongfirstletterid", UpdateSongFirstLetterIDHandler)
 
 	e.GET("/getsongsforfirstletterurl", GetSongsForFirstLetterURLHandler)
-	e.GET("/updatesongsforfirstletterurl", UpdateSongsForFirstLetterUrlHandler)
+	e.GET("/updatesongsforfirstletterurl", UpdateSongsForFirstLetterURLHandler)
 
 
 

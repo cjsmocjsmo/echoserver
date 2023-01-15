@@ -603,8 +603,8 @@ func GetSongsForFirstLetterURLHandler(c echo.Context) error {
 
 }
 
-func UpdateSongsForFirstLetterUrlHandler(c echo.Context) error {
-	param := c.QueryParam("sflid")
+func UpdateSongsForFirstLetterURLHandler(c echo.Context) error {
+	param := c.QueryParam("url")
 	filter := bson.M{"fmid": "fm01"}
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
 	defer Close(client, ctx, cancel)
