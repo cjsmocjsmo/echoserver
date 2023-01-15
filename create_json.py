@@ -204,6 +204,7 @@ class MusicFiles:
         meta['Dir'] = Dir
 
         dsplitlist = Dir.split("/")[1:]
+        print(dsplitlist)
         #meta['Dir_Split_List'] = dsplitlist
         meta['Dir_catagory'] = dsplitlist[0]
         meta['Dir_artist'] = dsplitlist[1]
