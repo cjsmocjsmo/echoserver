@@ -63,7 +63,7 @@ volumes:
       type: none
       # device: /media/charliepi/FOO/music/music
       # device: /home/teresa/Music/music
-      device: /home/pipi/Music/music
+      device: /home/pipi/Music/music/Z
       o: bind
 
   ampgometavol:
@@ -72,7 +72,7 @@ volumes:
       type: none
       # device: /media/teresa/FOO/music/metadata
       # device: /home/teresa/Music/metadata
-      device: /media/pipi/FOO/music/metadata
+      device: /home/pipi/Music/metadata
       o: bind
 
   ampgopicvol:
