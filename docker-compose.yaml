@@ -14,7 +14,7 @@ services:
       - 27017:27017
 
   ampgoserver:
-    image: ampgo:0.3.69
+    image: ampgo:0.3.70
     build: .
     environment:
       - AMPGO_SETUP=1
@@ -63,7 +63,7 @@ volumes:
       type: none
       # device: /media/charliepi/FOO/music/music
       # device: /home/teresa/Music/music
-      device: /media/pipi/FOO/music/music
+      device: /home/pipi/Music/music
       o: bind
 
   ampgometavol:
