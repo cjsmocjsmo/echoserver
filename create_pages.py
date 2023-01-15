@@ -8,8 +8,8 @@ from pprint import pprint
 # APATH = "/home/teresa/Music/music"
 # METAPATH = "/home/teresa/Music/metadata/"
 
-APATH = "/media/pipi/FOO/music/music"
-METAPATH = "/media/pipi/FOO/music/metadata/"
+APATH = "/home/pipi/Music/music/Z"
+METAPATH = "/home/pipi/Music/metadata/"
 
 
 class SortMusicFiles:
