@@ -578,7 +578,8 @@ func SongSearchFindHandler(c echo.Context) error {
 	coll := client.Database("maindb").Collection("maindb")
 	cur, err := coll.Find(context.TODO(), filter)
 	CheckError(err, "SongSearchFind: AlbumSearchFind find has failed")
-	var results []map[string]string //all albums for artist to include double entries
+	// var newmap []map[string]string
+	var results []MaindbDB//all albums for artist to include double entries
 	if err = cur.All(context.TODO(), &results); err != nil {
 		fmt.Println("SongSearchFind: cur.All has fucked up")
 		log.Println(err)

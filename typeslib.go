@@ -136,6 +136,30 @@ type FrontMatter struct {
 	SearchSong               string `bson:"searchsong"`
 }
 
+type MaindbDB struct {
+	File_id       string `bson:"file_id"`
+	Artist        string `bson:"artist"`
+	SongID        string `bson:"songid"`
+	Song          string `bson:"Song"`
+	ThumbHttpPath string `bson:"thumbhttppath"`
+	MusicHttpPath string `bson:"musichttppath"`
+	Page          string `bson:"page"`
+	Full_Filename string `bson:"full_filename"`
+	File_Size     string `bson:"file_size"`
+	AlbumID       string `bson:"albumid"`
+	Album_first   string `bson:"album_first"`
+	Ext           string `bson:"ext"`
+	ArtistID      string `bson:"artistid"`
+	Album         string `bson:"album"`
+	Play_length   string `bson:"play_length"`
+	ThumbPath     string `bson:"thumbpath"`
+	Dir           string `bson:"dir"`
+	Filename      string `bson:"filename"`
+	Artist_first  string `bson:"artist_first"`
+	Song_first    string `bson:"song_first"`
+	Index         string `bson:"index"`
+}
+
 
 // type plist struct {
 // 	PLName string              `bson:"PLName"`
