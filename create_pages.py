@@ -8,7 +8,7 @@ from pprint import pprint
 # APATH = "/home/teresa/Music/music"
 # METAPATH = "/home/teresa/Music/metadata/"
 
-APATH = "/home/pipi/Music/music/Z"
+APATH = "/home/pipi/Music/music/music/Z"
 METAPATH = "/home/pipi/Music/metadata/"
 
 

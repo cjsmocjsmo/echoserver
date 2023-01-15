@@ -20,7 +20,7 @@ from pprint import pprint
 # THUMBHTTPPATH = "http://192.168.0.34:9090/static/"
 # MUSICHTTPPATH = "http://192.168.0.34:9090/"
 
-APATH = "/home/pipi/Music/music/Z"
+APATH = "/home/pipi/Music/music/music/Z"
 METAPATH = "/home/pipi/Music/metadata/"
 PICPATH = "/home/pipi/PISTUFF/Thumbnails/"
 THUMBHTTPPATH = "http://192.168.0.91:9090/static/"
