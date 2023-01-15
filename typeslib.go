@@ -130,6 +130,9 @@ type FrontMatter struct {
 	ArtistFirstLetterID      string `bson:"artistfirstletterid"`
 	ArtistsForFirstLetterURL string `bson:"artistsforfirstletterurl"`
 	SongID                   string `bson:"songid"`
+	SongFirstLetterID        string `bson:"songfirstletterid"`
+	SongsForFirstLetterURL   string `bson:"songsforfirstletterurl"`
+
 	ThumbHttpPath            string `bson:"thumbhttppath"`
 	SearchArtist             string `bson:"searchartist"`
 	SearchAlbum              string `bson:"searchalbum"`

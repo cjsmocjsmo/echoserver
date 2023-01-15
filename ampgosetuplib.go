@@ -365,6 +365,8 @@ func CreateFrontMatterDB() {
 	FM.ArtistFirstLetterID = "Ekco"
 	FM.ArtistsForFirstLetterURL = "Ekco"
 	FM.SongID = "Ekco"
+	FM.SongFirstLetterID = "Ekco"
+	FM.SongsForFirstLetterURL = "Ekco"
 	FM.ThumbHttpPath = "Ekco"
 	FM.SearchAlbum = "Ekco"
 	FM.SearchArtist = "Ekco"

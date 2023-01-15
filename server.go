@@ -19,36 +19,56 @@ func main() {
 	e.GET("/randomPics", RandomPicsHandler)
 
 	e.GET("/getalbumfirstletterid", GetAlbumFirstLetterIDHandler)
-	e.GET("/getalbumsforartisturl", GetAlbumsForArtistURLHandler)
-	e.GET("/getalbumsforfirstletterurl", GetAlbumsForFirstLetterURLHandler)
-	e.GET("/getselectedalbumid", GetSelectedAlbumIDHandler)
-	e.GET("/getartistid", GetArtistIDHandler)
-	e.GET("/getartistfirstletterid", GetArtistFirstLetterIDHandler)
-	e.GET("/getartistsforfirstletterurl", GetArtistsForFirstLetterURLHandler)
-	e.GET("/getsongid", GetSongIDHandler)
-	e.GET("/getthumbhttppath", GetThumbHttpPathHandler)
-
 	e.GET("/updatealbumfirstletterid", UpdateAlbumFirstLetterIDHandler)
+
+	e.GET("/getalbumsforartisturl", GetAlbumsForArtistURLHandler)
 	e.GET("/updatealbumsforartisturl", UpdateAlbumsForArtistURLHandler)
+
+	e.GET("/getalbumsforfirstletterurl", GetAlbumsForFirstLetterURLHandler)
 	e.GET("/updatealbumsforfirstletterurl", UpdateAlbumsForFirstLetterURLHandler)
+
+	e.GET("/getselectedalbumid", GetSelectedAlbumIDHandler)
 	e.GET("/updateselectedalbumid", UpdateSelectedAlbumIDHandler)
+
+	e.GET("/getartistid", GetArtistIDHandler)
 	e.GET("/updateartistid", UpdateArtistIDHandler)
+
+	e.GET("/getartistfirstletterid", GetArtistFirstLetterIDHandler)
 	e.GET("/updateartistfirstletterid", UpdateArtistFirstLetterIDHandler)
+
+	e.GET("/getartistsforfirstletterurl", GetArtistsForFirstLetterURLHandler)
 	e.GET("/updateartistsforfirstletterurl", UpdateArtistsForFirstLetterURLHandler)
+
+	e.GET("/getsongid", GetSongIDHandler)
 	e.GET("/updatesongid", UpdateSongIDHandler)
+
+
+
+	e.GET("/getsongfirstletterid", GetSongFirstLetterIDHandler)
+	e.GET("/updatesongfirstletterid", UpdateSongFirstLetterIDHandler)
+
+	e.GET("/getsongsforfirstletterurl", GetSongsForFirstLetterURLHandler)
+	e.GET("/updatesongsforfirstletterurl", UpdateSongsForFirstLetterUrlHandler)
+
+
+
+
+
+
+
+	e.GET("/getthumbhttppath", GetThumbHttpPathHandler)
 	e.GET("/updatethumbhttppath", UpdateThumbHttpPathHandler)
 
 	e.GET("/getsearchartist", GetSearchArtistHandler)
-	e.GET("/getsearchalbum", GetSearchAlbumHandler)
-	e.GET("/getsearchsong", GetSearchSongHandler)
 	e.GET("/updatesearchartist", UpdateSearchArtistHandler)
+
+	e.GET("/getsearchalbum", GetSearchAlbumHandler)
 	e.GET("/updatesearchalbum", UpdateSearchAlbumHandler)
+
+	e.GET("/getsearchsong", GetSearchSongHandler)
 	e.GET("/updatesearchsong", UpdateSearchSongHandler)
 
 	e.GET("/artistsearch", ArtistSearchFindHandler)
-	e.GET("/albumsearch", AlbumSearchFindHandler)
-	e.GET("/songsearch", SongSearchFindHandler)
-
 	e.GET("/artistFirstLetter", ArtistFirstLetterHandler)
 	e.GET("/artistsForFirstLetter", ArtistsForFirstLetterHandler)
 	e.GET("/artist1", Artist1Handler)
@@ -87,6 +107,7 @@ func main() {
 	e.GET("/artistY", ArtistYHandler)
 	e.GET("/artistZ", ArtistZHandler)
 
+	e.GET("/albumsearch", AlbumSearchFindHandler)
 	e.GET("/albumFirstLetter", AlbumFirstLetterHandler)
 	e.GET("/albumsForFirstLetter", AlbumsForFirstLetterHandler)
 	e.GET("/album1", Album1Handler)
@@ -125,6 +146,7 @@ func main() {
 	e.GET("/albumY", AlbumYHandler)
 	e.GET("/albumZ", AlbumZHandler)
 
+	e.GET("/songsearch", SongSearchFindHandler)
 	e.GET("/songFirstLetter", SongFirstLetterHandler)
 	e.GET("/songsForFirstLetter", SongsForFirstLetterHandler)
 	e.GET("/song1", Song1Handler)
