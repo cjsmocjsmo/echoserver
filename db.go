@@ -127,7 +127,7 @@ func CreateSongSearchIndex(db string, coll string) {
 
 	mod := mongo.IndexModel{
 		Keys: bson.M{
-			"Song": "text",
+			"song": "text",
 		},
 		Options: nil,
 	}
