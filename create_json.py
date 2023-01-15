@@ -14,11 +14,18 @@ from mutagen.mp3 import MP3
 
 from pprint import pprint
 
-APATH = "/home/teresa/Music/music"
-METAPATH = "/home/teresa/Music/metadata/"
-PICPATH = "/home/teresa/PISTUFF/Thumbnails/"
-THUMBHTTPPATH = "http://192.168.0.34:9090/static/"
-MUSICHTTPPATH = "http://192.168.0.34:9090/"
+# APATH = "/home/teresa/Music/music"
+# METAPATH = "/home/teresa/Music/metadata/"
+# PICPATH = "/home/teresa/PISTUFF/Thumbnails/"
+# THUMBHTTPPATH = "http://192.168.0.34:9090/static/"
+# MUSICHTTPPATH = "http://192.168.0.34:9090/"
+
+APATH = "/media/pipi/FOO/music/music"
+METAPATH = "/media/pipi/FOO/music/metadata/"
+PICPATH = "/home/pipi/PISTUFF/Thumbnails/"
+THUMBHTTPPATH = "http://192.168.0.91:9090/static/"
+MUSICHTTPPATH = "http://192.168.0.91:9090/"
+
 
 class MP3Tags:
 	Track = None

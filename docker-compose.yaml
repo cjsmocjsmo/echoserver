@@ -14,7 +14,7 @@ services:
       - 27017:27017
 
   ampgoserver:
-    image: ampgo:0.3.68
+    image: ampgo:0.3.69
     build: .
     environment:
       - AMPGO_SETUP=1
@@ -53,7 +53,8 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/teresa/PISTUFF/Data/db
+      # device: /home/teresa/PISTUFF/Data/db
+      device: /home/pipi/PISTUFF/Data/db
       o: bind
 
   ampgovol:
@@ -61,7 +62,8 @@ volumes:
     driver_opts:
       type: none
       # device: /media/charliepi/FOO/music/music
-      device: /home/teresa/Music/music
+      # device: /home/teresa/Music/music
+      device: /media/pipi/FOO/music/music
       o: bind
 
   ampgometavol:
@@ -69,20 +71,23 @@ volumes:
     driver_opts:
       type: none
       # device: /media/teresa/FOO/music/metadata
-      device: /home/teresa/Music/metadata
+      # device: /home/teresa/Music/metadata
+      device: /media/pipi/FOO/music/metadata
       o: bind
 
   ampgopicvol:
     driver: local
     driver_opts:
       type: none
-      device: /home/teresa/PISTUFF/Thumbnails
+      # device: /home/teresa/PISTUFF/Thumbnails
+      device: /home/pipi/PISTUFF/Thumbnails
       o: bind
 
   ampgologvol:
     driver: local
     driver_opts:
       type: none
-      device: /home/teresa/PISTUFF/Ampgologs
+      # device: /home/teresa/PISTUFF/Ampgologs
+      device: /home/pipi/PISTUFF/Ampgologs
       o: bind
 
