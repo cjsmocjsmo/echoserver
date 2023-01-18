@@ -125,7 +125,7 @@ func RandomPicsHandler(c echo.Context) error {
 	coll := client.Database("coverart").Collection("coverartpages")
 	cur, err := coll.Find(context.TODO(), filter, opts)
 	CheckError(err, "RandomPicsHandler has failed")
-	var indexliststring []PicInfo
+	var indexliststring []map[string]string
 	if err = cur.All(context.TODO(), &indexliststring); err != nil {
 		log.Println(err)
 	}
@@ -133,11 +133,12 @@ func RandomPicsHandler(c echo.Context) error {
 	log.Println(indexliststring)
 	var num_list []int
 	for _, idx := range indexliststring {
-		indexx := idx.Index
+		indexx := idx["Index"]
 		index1, _ := strconv.Atoi(indexx)
 		num_list = append(num_list, index1)
 	}
 	shuffle(num_list)
+	log.Println(num_list)
 	var randpics []string
 	for _, f := range num_list[:12] {
 		ff := strconv.Itoa(f)
