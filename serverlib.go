@@ -666,7 +666,8 @@ func CreateEmptyPlaylist(c echo.Context) error {
 
 
 func CreateRandomPlaylist(c echo.Context) error {
-	
+	zoo := c.QueryParams()
+	log.Println(zoo)
 	playlistname := c.QueryParam("name")
 	neededSongCount := c.QueryParam("count")
 	countlist := maindbCountList()
