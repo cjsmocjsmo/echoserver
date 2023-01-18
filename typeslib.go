@@ -132,7 +132,6 @@ type FrontMatter struct {
 	SongID                   string `bson:"songid"`
 	SongFirstLetterID        string `bson:"songfirstletterid"`
 	SongsForFirstLetterURL   string `bson:"songsforfirstletterurl"`
-
 	ThumbHttpPath            string `bson:"thumbhttppath"`
 	SearchArtist             string `bson:"searchartist"`
 	SearchAlbum              string `bson:"searchalbum"`
@@ -163,7 +162,6 @@ type MaindbDB struct {
 	Index         string `bson:"index"`
 }
 
-
 // type plist struct {
 // 	PLName string              `bson:"PLName"`
 // 	PLId   string              `bson:"PLId"`
@@ -190,9 +188,30 @@ type MaindbDB struct {
 // 	path   string
 // }
 
-// type randDb struct {
-// 	PlayListName  string              `bson:"playlistname"`
-// 	PlayListID    string              `bson:"playlistID"`
-// 	PlayListCount string              `bson:"playlistcount"`
-// 	Playlist      []map[string]string `bson:"playlist"`
-// }
+type RandDb struct {
+	PlayListName  string              `bson:"playlistname"`
+	PlayListID    string              `bson:"playlistID"`
+	PlayListCount string              `bson:"playlistcount"`
+	PlaylistSongs []map[string]string `bson:"playlistsongs"`
+}
+
+type PicInfo struct {
+	File_Size     string `bson:"filesize"`
+	File_id       string `bson:"fileid"`
+	Jpg_height    string `bson:"jpgheight"`
+	Page          string `bson:"page"`
+	Dir_catagory  string `bson:"dircatagory"`
+	Index         string `bson:"index"`
+	Dir_delem     string `bson:"dirdelem"`
+	Full_Filename string `bson:"fullfilename"`
+	Ext           string `bson:"ext"`
+	Filename      string `bson:"filename"`
+	Jpg_width     string `bson:"jpgwidth"`
+	File_delem    string `bson:"filedelem"`
+	ThumbPath     string `bson:"thumbpath"`
+	ThumbHttpPath string `bson:"thumbhttppath"`
+	BaseDir       string `bson:"basedir"`
+	Dir_artist    string `bson:"dirartist"`
+	Dir_album     string `bson:"diralbum"`
+
+}

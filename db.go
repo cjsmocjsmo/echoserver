@@ -413,7 +413,13 @@ func FrontMatterFindOne(db string, coll string, filtertype string, filterstring 
 	return fmresults
 }
 
-
+func InsertPlaylist(db string, coll string, ablob RandDb) {
+	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
+	CheckError(err, "InsertArtistIDSJson: Connections has failed")
+	defer Close(client, ctx, cancel)
+	_, err2 := InsertOne(client, ctx, db, coll, ablob)
+	CheckError(err2, "InsertArtistIDSJson has failed")
+}
 
 
 

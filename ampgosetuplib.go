@@ -144,7 +144,7 @@ func UpdateMainDB(m2 JsonMP3, pagenum int) {
 	Doko["Song"] = m2.Tags_song
 	Doko["SongID"] = m2.File_id
 	Doko["Song_first"] = strings.ToUpper(m2.Song_first)
-	// Doko.Genre = m2["genre"]
+	// Doko.Genre = m2["genre
 	Doko["Index"] = m2.Index
 	Doko["Play_length"] = m2.Play_length
 	Doko["ThumbPath"] = m2.ThumbPath
@@ -267,7 +267,7 @@ func AlbPipeline(DAlb map[string]string, page int, idx int) (MyAlbview AlbVieW2)
 	MyAlbview.Songs = results
 	MyAlbview.AlbumPage = strconv.Itoa(page)
 	MyAlbview.Idx = strconv.Itoa(idx)
-	// MyAlbview.PicHttpAddr = DAlb["picHttpAddr"]
+	// MyAlbview.PicHttpAddr = DAlb["picHttpAddr
 	return
 }
 
@@ -276,9 +276,14 @@ func CreateRandomPicsDB() {
 
 	alljpgobj := GetAllJPGObjects()             //[]JsonJPG
 	numpics := os.Getenv("AMPGO_NUM_RAND_PICS") // AMPGO_NUM_RAND_PICS=25
+	myhttp := os.Getenv("AMPGO_SERVER_ADDRESS")
+	myport := os.Getenv("AMPGO_SERVER_PORT")
+	addr := myhttp + ":" + myport + "/static"
+
+	
 	npics, err := strconv.Atoi(numpics)
 	CheckError(err, "strconv numpics has failed")
-	result := make(map[string]string)
+	var result PicInfo 
 	var page int
 	for i, v := range alljpgobj {
 		if i < npics {
@@ -288,23 +293,27 @@ func CreateRandomPicsDB() {
 		} else {
 			page = page + 0
 		}
-		result["BasDir"] = v.BaseDir
-		result["Full_Filename"] = v.Full_Filename
-		result["File_Size"] = v.File_Size
-		result["Ext"] = v.Ext
-		result["Filename"] = v.Filename
-		result["Dir_catagory"] = v.Dir_catagory
-		result["Dir_artist"] = v.Dir_artist
-		result["Dir_album"] = v.Dir_album
-		result["Index"] = v.Index
-		result["Dir_delem"] = v.Dir_delem
-		result["File_id"] = v.File_id
-		result["Jpg_width"] = v.Jpg_width
-		result["Jpg_height"] = v.Jpg_height
-		result["File_delem"] = v.File_delem
-		result["ThumbPath"] = v.ThumbPath
+		mysplit := strings.Split(v.ThumbPath, "PISTUFF")
+		httpaddr := addr + mysplit[1]
+
+		result.BaseDir = v.BaseDir
+		result.Full_Filename = v.Full_Filename
+		result.File_Size = v.File_Size
+		result.Ext = v.Ext
+		result.Filename = v.Filename
+		result.Dir_catagory = v.Dir_catagory
+		result.Dir_artist = v.Dir_artist
+		result.Dir_album = v.Dir_album
+		result.Index = v.Index
+		result.Dir_delem = v.Dir_delem
+		result.File_id = v.File_id
+		result.Jpg_width = v.Jpg_width
+		result.Jpg_height = v.Jpg_height
+		result.File_delem = v.File_delem
+		result.ThumbPath = v.ThumbPath
+		result.ThumbHttpPath = httpaddr
 		boo := strconv.Itoa(page)
-		result["Page"] = boo
+		result.Page = boo
 		// var iim Imageinfomap = create_image_info_map(i, v, page)
 		// BulkImages = append(BulkImages, result)
 
@@ -378,22 +387,22 @@ func CreateFrontMatterDB() {
 	CheckError(err2, "CreateFrontMatterDB: frontmatter insertion has failed")
 }
 
-// func CreateRandomPlaylistDB() string {
-// 	var ranDBInfo randDb
-// 	var Ekcolist []map[string]string
-// 	var Ekcoitem map[string]string = map[string]string{"None": "No Songs Found"}
-// 	Ekcolist = append(Ekcolist, Ekcoitem)
-// 	uuid, _ := UUID()
-// 	ranDBInfo.PlayListName = "EkcoRandomPlaylist"
-// 	ranDBInfo.PlayListID = uuid
-// 	ranDBInfo.PlayListCount = "0"
-// 	ranDBInfo.Playlist = Ekcolist
-// 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgo")
-// 	CheckError(err, "CreateRandomPlaylistDB: Connections has failed")
-// 	defer Close(client, ctx, cancel)
-// 	_, err2 := InsertOne(client, ctx, "randplaylists", "randplaylists", ranDBInfo)
-// 	CheckError(err2, "CreateRandomPlaylistDB: randplaylists insertion has failed")
-// 	return "Created"
+// func CreateRandomPlaylistDB() {
+// 		var ranDBInfo RandDb
+// 		var Ekcolist []
+	// 	var Ekcoitem map[string]string = map[string]string{"None": "No Songs Found"}
+	// 	Ekcolist = append(Ekcolist, Ekcoitem)
+	// 	uuid, _ := UUID()
+	// 	ranDBInfo.PlayListName = "EkcoRandomPlaylist"
+	// 	ranDBInfo.PlayListID = uuid
+	// 	ranDBInfo.PlayListCount = "0"
+	// 	ranDBInfo.Playlist = Ekcolist
+	// 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgo")
+	// 	CheckError(err, "CreateRandomPlaylistDB: Connections has failed")
+	// 	defer Close(client, ctx, cancel)
+	// 	_, err2 := InsertOne(client, ctx, "randplaylists", "randplaylists", ranDBInfo)
+	// 	CheckError(err2, "CreateRandomPlaylistDB: randplaylists insertion has failed")
+	// 	return "Created"
 // }
 
 // func CreateCurrentPlayListNameDB() string {

@@ -125,13 +125,13 @@ func RandomPicsHandler(c echo.Context) error {
 	coll := client.Database("coverart").Collection("coverartpages")
 	cur, err := coll.Find(context.TODO(), filter, opts)
 	CheckError(err, "RandomPicsHandler has failed")
-	var indexliststring []map[string]string
+	var indexliststring []PicInfo
 	if err = cur.All(context.TODO(), &indexliststring); err != nil {
 		log.Println(err)
 	}
 	var num_list []int
 	for _, idx := range indexliststring {
-		indexx := idx["Index"]
+		indexx := idx.Index
 		index1, _ := strconv.Atoi(indexx)
 		num_list = append(num_list, index1)
 	}
@@ -144,12 +144,12 @@ func RandomPicsHandler(c echo.Context) error {
 		defer Close(client, ctx, cancel)
 		CheckError(err, "MongoDB connection has failed")
 		collection := client.Database("coverart").Collection("coverartpages")
-		var rpics map[string]string
+		var rpics PicInfo
 		err = collection.FindOne(context.Background(), filter).Decode(&rpics)
 		if err != nil {
 			log.Println(err)
 		}
-		randpics = append(randpics, rpics["Img_base64_str"])
+		randpics = append(randpics, rpics.ThumbHttpPath)
 	}
 	return c.JSON(http.StatusOK, randpics)
 }
@@ -616,4 +616,65 @@ func UpdateSongsForFirstLetterURLHandler(c echo.Context) error {
 	CheckError(err2, "MongoDB connection has failed UpdateSongsForFirstLetterUrlHandler")
 	return c.JSON(http.StatusOK, result)
 
+}
+
+func maindbCountList() []string {
+	filter := bson.D{{}}
+	opts := options.Find()
+	opts.SetProjection(bson.M{"_id": 0, "Index": 1})
+	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
+	defer Close(client, ctx, cancel)
+	CheckError(err, "MongoDB connection has failed")
+	coll := client.Database("maindb").Collection("maindb")
+	cur, err := coll.Find(context.TODO(), filter, opts)
+	CheckError(err, "RandomPicsHandler has failed")
+	var indexlist []string
+	if err = cur.All(context.TODO(), &indexlist); err != nil {
+		log.Println(err)
+	}
+	log.Println("this is index list")
+	log.Println(indexlist)
+	return indexlist
+}
+
+func getRandomList(objc int, nsc string) []int {
+	min := 1
+	max := objc
+	rand.Seed(time.Now().UnixNano())
+	var newlist []int
+	for _, num := range (nsc) {
+		fmt.Println(num)
+		newnum := rand.Intn(max - min) + min
+		newlist = append(newlist, newnum)
+	}
+	return newlist
+}
+
+// func CreateEmptyPlaylist(c echo.Context) error {
+
+// 	return c.JSON(http.StatusOK, result)
+// }
+
+func CreateRandomPlaylist(c echo.Context) error {
+	playlistname := c.QueryParam("name")
+	neededSongCount := c.QueryParam("count")
+	countlist := maindbCountList()
+	objcount := len(countlist)
+	uuid, err := UUID()
+	CheckError(err, "RandomPicsHandler has failed")
+	randomlist := getRandomList(objcount, neededSongCount)
+	var songmap []map[string]string
+	for _, idx := range(randomlist) {
+		idxx := strconv.Itoa(idx)
+		song := AmpgoFindOne("maindb", "maindb", "Index", idxx)
+		songmap = append(songmap, song)
+	}
+
+	var result RandDb
+	result.PlayListName = playlistname
+	result.PlayListCount = neededSongCount
+	result.PlayListID = uuid
+	result.PlaylistSongs = songmap
+	InsertPlaylist("playlistdb", "playlists", result)
+	return c.JSON(http.StatusOK, result)
 }
