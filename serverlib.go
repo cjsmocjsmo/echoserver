@@ -143,15 +143,15 @@ func RandomPicsHandler(c echo.Context) error {
 	log.Println((num_list))
 	shuffle(num_list)
 	log.Println(num_list)
-	var randpics []PicInfo
+	var randpics []JsonJPG
 	for _, f := range num_list[:12] {
 		ff := strconv.Itoa(f)
 		filter := bson.M{"Index": ff}
 		client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
 		defer Close(client, ctx, cancel)
 		CheckError(err, "MongoDB connection has failed")
-		collection := client.Database("coverart").Collection("coverartpages")
-		var rpics PicInfo
+		collection := client.Database("maindb").Collection("jpgs")
+		var rpics JsonJPG
 		err = collection.FindOne(context.Background(), filter).Decode(&rpics)
 		if err != nil {
 			log.Println(err)
