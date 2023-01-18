@@ -267,23 +267,17 @@ func AlbPipeline(DAlb map[string]string, page int, idx int) (MyAlbview AlbVieW2)
 	MyAlbview.Songs = results
 	MyAlbview.AlbumPage = strconv.Itoa(page)
 	MyAlbview.Idx = strconv.Itoa(idx)
-	// MyAlbview.PicHttpAddr = DAlb["picHttpAddr
 	return
 }
 
 func CreateRandomPicsDB() {
-	// var BulkImages []map[string]string = []map[string]string{}
-
 	alljpgobj := GetAllJPGObjects()             //[]JsonJPG
 	numpics := os.Getenv("AMPGO_NUM_RAND_PICS") // AMPGO_NUM_RAND_PICS=25
 	myhttp := os.Getenv("AMPGO_SERVER_ADDRESS")
 	myport := os.Getenv("AMPGO_SERVER_PORT")
 	addr := myhttp + ":" + myport + "/static"
-	log.Println(addr)
-
 	npics, err := strconv.Atoi(numpics)
 	CheckError(err, "strconv numpics has failed")
-
 	var page int
 	for i, v := range alljpgobj {
 		if i < npics {
@@ -295,7 +289,6 @@ func CreateRandomPicsDB() {
 		}
 		mysplit := strings.Split(v.ThumbPath, "PISTUFF")
 		httpaddr := addr + mysplit[1]
-
 		var result PicInfo
 		result.BaseDir = v.BaseDir
 		result.Full_Filename = v.Full_Filename
@@ -315,9 +308,6 @@ func CreateRandomPicsDB() {
 		result.ThumbHttpPath = httpaddr
 		boo := strconv.Itoa(page)
 		result.Page = boo
-		// var iim Imageinfomap = create_image_info_map(i, v, page)
-		// BulkImages = append(BulkImages, result)
-
 		client, ctx, cancel, err := Connect("mongodb://db:27017/ampgo")
 		CheckError(err, "CreateRandomPicsDB: Connections has failed")
 		defer Close(client, ctx, cancel)

@@ -129,20 +129,13 @@ func RandomPicsHandler(c echo.Context) error {
 	if err = cur.All(context.TODO(), &indexliststring); err != nil {
 		log.Println(err)
 	}
-
-
-
-	log.Println("this is indexliststring")
-	log.Println(indexliststring)
 	var num_list []int
 	for _, idx := range indexliststring {
 		indexx := idx["Index"]
 		index1, _ := strconv.Atoi(indexx)
 		num_list = append(num_list, index1)
 	}
-	log.Println((num_list))
 	shuffle(num_list)
-	log.Println(num_list)
 	var randpics []JsonJPG
 	for _, f := range num_list[:12] {
 		ff := strconv.Itoa(f)
@@ -640,37 +633,40 @@ func maindbCountList() []map[string]string {
 	if err = cur.All(context.TODO(), &indexlist); err != nil {
 		log.Println(err)
 	}
-	// log.Println("this is index list")
-	// log.Println(indexlist)
 	return indexlist
 }
 
 func getRandomList(objc int, nsc string) []int {
-	log.Println("starting getRandomList")
-	log.Println("this is nsc")
-	log.Println(nsc)
 	min := 1
 	max := objc
-	log.Println(max)
 	rand.Seed(time.Now().UnixNano())
 	var newlist []int
 	for _, num := range (nsc) {
 		fmt.Println(num)
 		newnum := rand.Intn(max - min) + min
-		log.Println(newnum)
 		newlist = append(newlist, newnum)
 	}
-	log.Println("this is newlist")
-	log.Println(newlist)
 	return newlist
 }
 
-// func CreateEmptyPlaylist(c echo.Context) error {
+func CreateEmptyPlaylist(c echo.Context) error {
+	playlistname := c.QueryParam("name")
+	songmap := []map[string]string{}
+	uuid, err := UUID()
+	CheckError(err, "CreateEmptyPlaylist has failed")
+	var result RandDb
+	result.PlayListName = playlistname
+	result.PlayListCount = "0"
+	result.PlayListID = uuid
+	result.PlaylistSongs = songmap
+	InsertPlaylist("playlistdb", "playlists", result)
+	return c.JSON(http.StatusOK, result)
+}
 
-// 	return c.JSON(http.StatusOK, result)
-// }
+
 
 func CreateRandomPlaylist(c echo.Context) error {
+	
 	playlistname := c.QueryParam("name")
 	neededSongCount := c.QueryParam("count")
 	countlist := maindbCountList()
@@ -685,7 +681,6 @@ func CreateRandomPlaylist(c echo.Context) error {
 		song := AmpgoFindOne("maindb", "maindb", "Index", idxx)
 		songmap = append(songmap, song)
 	}
-
 	var result RandDb
 	result.PlayListName = playlistname
 	result.PlayListCount = neededSongCount

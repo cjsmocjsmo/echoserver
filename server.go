@@ -18,7 +18,7 @@ func main() {
 	e.GET("/getthumbhttppath", GetThumbHttpPathHandler)
 	e.GET("/updatethumbhttppath", UpdateThumbHttpPathHandler)
 
-	// e.GET("/createplaylist", CreateEmptyPlaylist)
+	e.GET("/createplaylist", CreateEmptyPlaylist)
 	e.GET("/createrandomplaylist", CreateRandomPlaylist)
 
 
