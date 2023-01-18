@@ -116,24 +116,31 @@ func shuffle(slice []int) {
 }
 
 func RandomPicsHandler(c echo.Context) error {
-	filter := bson.D{{}}
-	opts := options.Find()
-	opts.SetProjection(bson.M{"_id": 0, "Index": 1})
-	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
-	defer Close(client, ctx, cancel)
-	CheckError(err, "MongoDB connection has failed")
-	coll := client.Database("coverart").Collection("coverartpages")
-	cur, err := coll.Find(context.TODO(), filter, opts)
-	CheckError(err, "RandomPicsHandler has failed")
-	var indexliststring []map[string]string
-	if err = cur.All(context.TODO(), &indexliststring); err != nil {
-		log.Println(err)
+	// filter := bson.D{{}}
+	// opts := options.Find()
+	// opts.SetProjection(bson.M{"_id": 0, "Index": 1})
+	// client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
+	// defer Close(client, ctx, cancel)
+	// CheckError(err, "MongoDB connection has failed")
+	// coll := client.Database("coverart").Collection("coverartpages")
+	// cur, err := coll.Find(context.TODO(), filter, opts)
+	// CheckError(err, "RandomPicsHandler has failed")
+	// var indexliststring []map[string]string
+	// if err = cur.All(context.TODO(), &indexliststring); err != nil {
+	// 	log.Println(err)
+	// }
+	var indexliststring []string
+	foo := AmpgoFind("converart", "coverartpages", "None", "None")
+	for _, ils := range(foo) {
+		indexliststring = append(indexliststring, ils["Index"])
 	}
+
+
 	log.Println("this is indexliststring")
 	log.Println(indexliststring)
 	var num_list []int
 	for _, idx := range indexliststring {
-		indexx := idx["Index"]
+		indexx := idx
 		index1, _ := strconv.Atoi(indexx)
 		num_list = append(num_list, index1)
 	}
