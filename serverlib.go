@@ -619,9 +619,10 @@ func UpdateSongsForFirstLetterURLHandler(c echo.Context) error {
 }
 
 func maindbCountList() []string {
+	log.Println("starting maindbCountList")
 	filter := bson.D{{}}
 	opts := options.Find()
-	opts.SetProjection(bson.M{"_id": 0, "Index": 1})
+	opts.SetProjection(bson.M{"Index": 1})
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
 	defer Close(client, ctx, cancel)
 	CheckError(err, "MongoDB connection has failed")
@@ -638,6 +639,7 @@ func maindbCountList() []string {
 }
 
 func getRandomList(objc int, nsc string) []int {
+	log.Println("starting getRandomList")
 	min := 1
 	max := objc
 	rand.Seed(time.Now().UnixNano())
@@ -647,6 +649,8 @@ func getRandomList(objc int, nsc string) []int {
 		newnum := rand.Intn(max - min) + min
 		newlist = append(newlist, newnum)
 	}
+	log.Println("this is newlist")
+	log.Println(newlist)
 	return newlist
 }
 

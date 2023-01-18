@@ -279,6 +279,7 @@ func CreateRandomPicsDB() {
 	myhttp := os.Getenv("AMPGO_SERVER_ADDRESS")
 	myport := os.Getenv("AMPGO_SERVER_PORT")
 	addr := myhttp + ":" + myport + "/static"
+	log.Println(addr)
 
 	
 	npics, err := strconv.Atoi(numpics)
@@ -322,6 +323,7 @@ func CreateRandomPicsDB() {
 		defer Close(client, ctx, cancel)
 		_, err2 := InsertOne(client, ctx, "coverart", "coverartpages", result)
 		CheckError(err2, "CreateRandomPicsDB: coverart insertion has failed")
+		log.Println(result)
 	}
 	return
 }
