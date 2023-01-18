@@ -281,10 +281,9 @@ func CreateRandomPicsDB() {
 	addr := myhttp + ":" + myport + "/static"
 	log.Println(addr)
 
-	
 	npics, err := strconv.Atoi(numpics)
 	CheckError(err, "strconv numpics has failed")
-	var result PicInfo 
+
 	var page int
 	for i, v := range alljpgobj {
 		if i < npics {
@@ -297,6 +296,7 @@ func CreateRandomPicsDB() {
 		mysplit := strings.Split(v.ThumbPath, "PISTUFF")
 		httpaddr := addr + mysplit[1]
 
+		var result PicInfo
 		result.BaseDir = v.BaseDir
 		result.Full_Filename = v.Full_Filename
 		result.File_Size = v.File_Size
@@ -392,19 +392,19 @@ func CreateFrontMatterDB() {
 // func CreateRandomPlaylistDB() {
 // 		var ranDBInfo RandDb
 // 		var Ekcolist []
-	// 	var Ekcoitem map[string]string = map[string]string{"None": "No Songs Found"}
-	// 	Ekcolist = append(Ekcolist, Ekcoitem)
-	// 	uuid, _ := UUID()
-	// 	ranDBInfo.PlayListName = "EkcoRandomPlaylist"
-	// 	ranDBInfo.PlayListID = uuid
-	// 	ranDBInfo.PlayListCount = "0"
-	// 	ranDBInfo.Playlist = Ekcolist
-	// 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgo")
-	// 	CheckError(err, "CreateRandomPlaylistDB: Connections has failed")
-	// 	defer Close(client, ctx, cancel)
-	// 	_, err2 := InsertOne(client, ctx, "randplaylists", "randplaylists", ranDBInfo)
-	// 	CheckError(err2, "CreateRandomPlaylistDB: randplaylists insertion has failed")
-	// 	return "Created"
+// 	var Ekcoitem map[string]string = map[string]string{"None": "No Songs Found"}
+// 	Ekcolist = append(Ekcolist, Ekcoitem)
+// 	uuid, _ := UUID()
+// 	ranDBInfo.PlayListName = "EkcoRandomPlaylist"
+// 	ranDBInfo.PlayListID = uuid
+// 	ranDBInfo.PlayListCount = "0"
+// 	ranDBInfo.Playlist = Ekcolist
+// 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgo")
+// 	CheckError(err, "CreateRandomPlaylistDB: Connections has failed")
+// 	defer Close(client, ctx, cancel)
+// 	_, err2 := InsertOne(client, ctx, "randplaylists", "randplaylists", ranDBInfo)
+// 	CheckError(err2, "CreateRandomPlaylistDB: randplaylists insertion has failed")
+// 	return "Created"
 // }
 
 // func CreateCurrentPlayListNameDB() string {

@@ -196,22 +196,21 @@ type RandDb struct {
 }
 
 type PicInfo struct {
-	File_Size     string `bson:"filesize"`
-	File_id       string `bson:"fileid"`
-	Jpg_height    string `bson:"jpgheight"`
-	Page          string `bson:"page"`
-	Dir_catagory  string `bson:"dircatagory"`
-	Index         string `bson:"index"`
-	Dir_delem     string `bson:"dirdelem"`
-	Full_Filename string `bson:"fullfilename"`
+	BaseDir       string `bson:"basedir"`
+	Full_Filename string `bson:"full_filename"`
+	File_Size     string `bson:"file_size"`
 	Ext           string `bson:"ext"`
 	Filename      string `bson:"filename"`
-	Jpg_width     string `bson:"jpgwidth"`
-	File_delem    string `bson:"filedelem"`
+	Dir_catagory  string `bson:"dir_catagory"`
+	Dir_artist    string `bson:"dir_artist"`
+	Dir_album     string `bson:"dir_album"`
+	Index         string `bson:"index"`
+	Dir_delem     string `bson:"dir_delem"`
+	File_id       string `bson:"file_id"`
+	Jpg_width     string `bson:"jpg_width"`
+	Jpg_height    string `bson:"jpg_height"`
+	File_delem    string `bson:"file_delem"`
 	ThumbPath     string `bson:"thumbpath"`
 	ThumbHttpPath string `bson:"thumbhttppath"`
-	BaseDir       string `bson:"basedir"`
-	Dir_artist    string `bson:"dirartist"`
-	Dir_album     string `bson:"diralbum"`
-
+	Page          string `bson:"page"`
 }
