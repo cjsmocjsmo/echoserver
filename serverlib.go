@@ -134,14 +134,15 @@ func RandomPicsHandler(c echo.Context) error {
 
 	log.Println("this is indexliststring")
 	log.Println(indexliststring)
-	// var num_list []int
-	// for _, idx := range indexliststring {
-	// 	indexx := idx
-	// 	index1, _ := strconv.Atoi(indexx)
-	// 	num_list = append(num_list, index1)
-	// }
-	// shuffle(num_list)
-	// log.Println(num_list)
+	var num_list []int
+	for _, idx := range indexliststring {
+		indexx := idx["Index"]
+		index1, _ := strconv.Atoi(indexx)
+		num_list = append(num_list, index1)
+	}
+	log.Println((num_list))
+	shuffle(num_list)
+	log.Println(num_list)
 	// var randpics []string
 	// for _, f := range num_list[:12] {
 	// 	ff := strconv.Itoa(f)
@@ -157,7 +158,7 @@ func RandomPicsHandler(c echo.Context) error {
 	// 	}
 	// 	randpics = append(randpics, rpics.ThumbHttpPath)
 	// }
-	return c.JSON(http.StatusOK, indexliststring)
+	return c.JSON(http.StatusOK, num_list)
 }
 
 ///////////////////////////////////////////////////
