@@ -131,7 +131,10 @@ func RandomPicsHandler(c echo.Context) error {
 	// }
 	var indexliststring []string
 	foo := AmpgoFind("converart", "coverartpages", "None", "None")
+	log.Println(foo)
 	for _, ils := range(foo) {
+		log.Println(ils)
+		log.Println(ils["Index"])
 		indexliststring = append(indexliststring, ils["Index"])
 	}
 
