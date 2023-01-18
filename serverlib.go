@@ -618,7 +618,7 @@ func UpdateSongsForFirstLetterURLHandler(c echo.Context) error {
 
 }
 
-func maindbCountList() []string {
+func maindbCountList() []map[string]string {
 	log.Println("starting maindbCountList")
 	filter := bson.D{{}}
 	opts := options.Find()
@@ -629,7 +629,7 @@ func maindbCountList() []string {
 	coll := client.Database("maindb").Collection("maindb")
 	cur, err := coll.Find(context.TODO(), filter, opts)
 	CheckError(err, "RandomPicsHandler has failed")
-	var indexlist []string
+	var indexlist []map[string]string
 	if err = cur.All(context.TODO(), &indexlist); err != nil {
 		log.Println(err)
 	}

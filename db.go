@@ -278,13 +278,10 @@ func GetAllJPGObjects() (Main2S []JsonJPG) {
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
 	defer Close(client, ctx, cancel)
 	CheckError(err, "GetAllJPGObjects: MongoDB connection has failed")
-	collection := client.Database("maindb").Collection("jpgs")
+	collection := client.Database("coverart").Collection("coverartpages")
 	cur, err := collection.Find(context.Background(), filter)
-	if err != nil {
-		log.Println(err)
-	}
 	if err = cur.All(context.Background(), &Main2S); err != nil {
-		fmt.Println("GetAllJPGObjects: cur.All has failed")
+		log.Println("GetAllJPGObjects: cur.All has failed")
 		log.Println(err)
 	}
 	return
