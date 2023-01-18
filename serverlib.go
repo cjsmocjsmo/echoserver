@@ -118,11 +118,11 @@ func shuffle(slice []int) {
 func RandomPicsHandler(c echo.Context) error {
 	filter := bson.D{{}}
 	opts := options.Find()
-	opts.SetProjection(bson.M{"index": 1})
+	opts.SetProjection(bson.M{"_id":0, "Index": 1})
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
 	defer Close(client, ctx, cancel)
 	CheckError(err, "MongoDB connection has failed")
-	coll := client.Database("coverart").Collection("coverartpages")
+	coll := client.Database("maindb").Collection("jpgs")
 	cur, err := coll.Find(context.TODO(), filter, opts)
 	CheckError(err, "RandomPicsHandler has failed")
 	var indexliststring []map[string]string
