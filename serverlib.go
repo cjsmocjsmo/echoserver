@@ -633,8 +633,8 @@ func maindbCountList() []map[string]string {
 	if err = cur.All(context.TODO(), &indexlist); err != nil {
 		log.Println(err)
 	}
-	log.Println("this is index list")
-	log.Println(indexlist)
+	// log.Println("this is index list")
+	// log.Println(indexlist)
 	return indexlist
 }
 
@@ -642,11 +642,13 @@ func getRandomList(objc int, nsc string) []int {
 	log.Println("starting getRandomList")
 	min := 1
 	max := objc
+	log.Println(max)
 	rand.Seed(time.Now().UnixNano())
 	var newlist []int
 	for _, num := range (nsc) {
 		fmt.Println(num)
 		newnum := rand.Intn(max - min) + min
+		log.Println(newnum)
 		newlist = append(newlist, newnum)
 	}
 	log.Println("this is newlist")
@@ -669,6 +671,7 @@ func CreateRandomPlaylist(c echo.Context) error {
 	randomlist := getRandomList(objcount, neededSongCount)
 	var songmap []map[string]string
 	for _, idx := range(randomlist) {
+		log.Println(idx)
 		idxx := strconv.Itoa(idx)
 		song := AmpgoFindOne("maindb", "maindb", "Index", idxx)
 		songmap = append(songmap, song)
