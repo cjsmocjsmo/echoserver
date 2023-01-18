@@ -125,7 +125,7 @@ func RandomPicsHandler(c echo.Context) error {
 	coll := client.Database("coverart").Collection("coverartpages")
 	cur, err := coll.Find(context.TODO(), filter, opts)
 	CheckError(err, "RandomPicsHandler has failed")
-	var indexliststring []PicInfo
+	var indexliststring []JsonJPG
 	if err = cur.All(context.TODO(), &indexliststring); err != nil {
 		log.Println(err)
 	}
