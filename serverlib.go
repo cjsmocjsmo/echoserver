@@ -640,6 +640,8 @@ func maindbCountList() []map[string]string {
 
 func getRandomList(objc int, nsc string) []int {
 	log.Println("starting getRandomList")
+	log.Println("this is nsc")
+	log.Panicln(nsc)
 	min := 1
 	max := objc
 	log.Println(max)
