@@ -129,6 +129,8 @@ func RandomPicsHandler(c echo.Context) error {
 	if err = cur.All(context.TODO(), &indexliststring); err != nil {
 		log.Println(err)
 	}
+	log.Println("this is indexliststring")
+	log.Println(indexliststring)
 	var num_list []int
 	for _, idx := range indexliststring {
 		indexx := idx.Index
