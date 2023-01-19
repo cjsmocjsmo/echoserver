@@ -666,12 +666,16 @@ func CreateEmptyPlaylist(c echo.Context) error {
 
 
 func CreateRandomPlaylist(c echo.Context) error {
+	// Query params must be if the format ?count=25/myplaylistname
 	log.Println("starting CreateRandomPlaylist")
-	zoo := c.QueryParams()
-	log.Println("this is QueryParams")
-	log.Println(zoo)
-	playlistname := c.QueryParam("name")
-	neededSongCount := c.QueryParam("count")
+	
+	
+	params := c.QueryParam("count")
+	pars := strings.Split(params, "/")
+	neededSongCount := pars[0]
+	playlistname := pars[1]
+
+
 	log.Println(playlistname)
 	log.Println(neededSongCount)
 	countlist := maindbCountList()
