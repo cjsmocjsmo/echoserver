@@ -455,10 +455,6 @@ func GetSearchSongHandler(c echo.Context) error {
 	return c.JSON(http.StatusOK, url.SearchSong)
 }
 
-
-
-
-
 func UpdateSearchArtistHandler(c echo.Context) error {
 	param := c.QueryParam("search")
 	filter := bson.M{"fmid": "fm01"}
@@ -497,15 +493,6 @@ func UpdateSearchSongHandler(c echo.Context) error {
 	CheckError(err2, "MongoDB connection has failed UpdateSearchSongHandler")
 	return c.JSON(http.StatusOK, result)
 }
-
-
-
-
-
-
-
-
-
 
 func ArtistSearchFindHandler(c echo.Context) error {
 	param := c.QueryParam("search")
@@ -559,7 +546,6 @@ func SongSearchFindHandler(c echo.Context) error {
 	coll := client.Database("maindb").Collection("maindb")
 	cur, err := coll.Find(context.TODO(), filter)
 	CheckError(err, "SongSearchFind: AlbumSearchFind find has failed")
-	// var newmap []map[string]string
 	var results []MaindbDB//all albums for artist to include double entries
 	if err = cur.All(context.TODO(), &results); err != nil {
 		fmt.Println("SongSearchFind: cur.All has fucked up")
@@ -567,12 +553,6 @@ func SongSearchFindHandler(c echo.Context) error {
 	}
 	return c.JSON(http.StatusOK, results)
 }
-
-
-
-
-
-
 
 func GetSongFirstLetterIDHandler(c echo.Context) error {
 	url := FrontMatterFindOne("frontmatter", "frontmatter", "fmid", "fm01")
@@ -600,7 +580,6 @@ func GetSongsForFirstLetterURLHandler(c echo.Context) error {
 	log.Println(url.SongsForFirstLetterURL)
 	log.Println(url.SongsForFirstLetterURL)
 	return c.JSON(http.StatusOK, url.SongsForFirstLetterURL)
-
 }
 
 func UpdateSongsForFirstLetterURLHandler(c echo.Context) error {
@@ -615,7 +594,6 @@ func UpdateSongsForFirstLetterURLHandler(c echo.Context) error {
 	log.Println(result)
 	CheckError(err2, "MongoDB connection has failed UpdateSongsForFirstLetterUrlHandler")
 	return c.JSON(http.StatusOK, result)
-
 }
 
 func maindbCountList() []map[string]string {
@@ -665,8 +643,6 @@ func CreateEmptyPlaylist(c echo.Context) error {
 	return c.JSON(http.StatusOK, result)
 }
 
-
-
 func CreateRandomPlaylist(c echo.Context) error {
 	// Query params must be if the format ?count=25/myplaylistname
 	// due to a bug in echos http package
@@ -693,5 +669,11 @@ func CreateRandomPlaylist(c echo.Context) error {
 	result.PlayListID = uuid
 	result.PlaylistSongs = songmap
 	InsertPlaylist("playlistdb", "playlists", result)
+	return c.JSON(http.StatusOK, result)
+}
+
+
+func AllPlaylistHandler(c echo.Context) error {
+	result := AllPlaylistsFind("playlistsdb", "playlists", "None", "None")
 	return c.JSON(http.StatusOK, result)
 }

@@ -21,6 +21,8 @@ func main() {
 
 	e.GET("/createplaylist", CreateEmptyPlaylist)
 	e.GET("/createrandomplaylist", CreateRandomPlaylist)
+	e.GET("/allplaylists", AllPlaylistHandler)
+	// e.GET("/deleteplaylist", DeletePlaylistHandler)
 
 
 
