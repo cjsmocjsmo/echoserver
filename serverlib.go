@@ -666,10 +666,14 @@ func CreateEmptyPlaylist(c echo.Context) error {
 
 
 func CreateRandomPlaylist(c echo.Context) error {
+	log.Println("starting CreateRandomPlaylist")
 	zoo := c.QueryParams()
+	log.Println("this is QueryParams")
 	log.Println(zoo)
 	playlistname := c.QueryParam("name")
 	neededSongCount := c.QueryParam("count")
+	log.Println(playlistname)
+	log.Println(neededSongCount)
 	countlist := maindbCountList()
 	objcount := len(countlist)
 	uuid, err := UUID()
