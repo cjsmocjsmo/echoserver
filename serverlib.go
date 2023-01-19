@@ -637,6 +637,7 @@ func maindbCountList() []map[string]string {
 }
 
 func getRandomList(objc int, nsc string) []int {
+	log.Println("starting getRandomList")
 	min := 1
 	max := objc
 	rand.Seed(time.Now().UnixNano())
@@ -650,6 +651,7 @@ func getRandomList(objc int, nsc string) []int {
 }
 
 func CreateEmptyPlaylist(c echo.Context) error {
+	log.Println("starting CreateEmptyPlaylist")
 	playlistname := c.QueryParam("name")
 	songmap := []map[string]string{}
 	uuid, err := UUID()
@@ -667,17 +669,12 @@ func CreateEmptyPlaylist(c echo.Context) error {
 
 func CreateRandomPlaylist(c echo.Context) error {
 	// Query params must be if the format ?count=25/myplaylistname
+	// due to a bug in echos http package
 	log.Println("starting CreateRandomPlaylist")
-	
-	
 	params := c.QueryParam("count")
 	pars := strings.Split(params, "/")
 	neededSongCount := pars[0]
 	playlistname := pars[1]
-
-
-	log.Println(playlistname)
-	log.Println(neededSongCount)
 	countlist := maindbCountList()
 	objcount := len(countlist)
 	uuid, err := UUID()
