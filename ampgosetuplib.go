@@ -49,6 +49,18 @@ func StartSetupLogging() string {
 	}
 	log.SetOutput(file)
 	fmt.Println("Logging started")
+	return "setup logging started"
+}
+
+func StartServerLogging() string {
+	logtxtfile := os.Getenv("AMPGO_SERVER_LOG_PATH")
+	// If the file doesn't exist, create it or append to the file
+	file, err := os.OpenFile(logtxtfile, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	if err != nil {
+		log.Println(err)
+	}
+	log.SetOutput(file)
+	fmt.Println("Logging started")
 	return "server logging started"
 }
 
@@ -313,7 +325,6 @@ func CreateRandomPicsDB() {
 		defer Close(client, ctx, cancel)
 		_, err2 := InsertOne(client, ctx, "coverart", "coverartpages", result)
 		CheckError(err2, "CreateRandomPicsDB: coverart insertion has failed")
-		log.Println(result)
 	}
 	return
 }

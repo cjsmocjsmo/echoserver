@@ -14,13 +14,12 @@ services:
       - 27017:27017
 
   ampgoserver:
-    image: ampgo:0.3.89
+    image: ampgo:0.3.90
     build: .
     environment:
       - AMPGO_SETUP=1
       - AMPGO_OFFSET=35
       - AMPGO_SETUP_LOG_PATH=/root/logs/ampgo_setup_log.txt
-      - AMPGO_LIB_LOG_PATH=/root/logs/ampgo_lib_log.txt
       - AMPGO_SERVER_LOG_PATH=/root/logs/ampgo_server_log.txt
       - AMPGO_AMPDB_ADDR=mongodb://db:27017/ampgodb
       - AMPGO_MONGODB_THUMB_ADDRESS=mongodb://db:27017/ampgothumb

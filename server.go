@@ -7,6 +7,7 @@ import (
 
 func main() {
 	SetUp()
+	StartServerLogging()
 	e := echo.New()
 	e.Use(middleware.CORS())
 	e.GET("/artistInfoByPage", ArtistInfoByPageHandler)
