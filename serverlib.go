@@ -631,7 +631,11 @@ func getRandomList(objc int, nsc string) []int {
 func CreateEmptyPlaylist(c echo.Context) error {
 	log.Println("starting CreateEmptyPlaylist")
 	playlistname := c.QueryParam("name")
-	songmap := []map[string]string{}
+	s := make(map[string]string)
+	s["Empty"] = "Empty"
+	var songmap []map[string]string
+	songmap = append(songmap, s)
+
 	uuid, err := UUID()
 	CheckError(err, "CreateEmptyPlaylist has failed")
 	var result RandDb
