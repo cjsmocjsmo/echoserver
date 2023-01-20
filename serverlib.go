@@ -628,13 +628,6 @@ func getRandomList(objc int, nsc string) []int {
 	return newlist
 }
 
-// func createEmptyMap() {
-// 	s := make(map[string]string)
-// 	s["Empty"] = "Empty"
-// 	var songmap []map[string]string
-// 	songmap = append(songmap, s)
-// }
-
 func AllPlaylistHandler(c echo.Context) error {
 	result := AmpgoFind("playlistdb", "playlists", "None", "None")
 	return c.JSON(http.StatusOK, result)
@@ -685,6 +678,18 @@ func CreateRandomPlaylist(c echo.Context) error {
 		song := AmpgoFindOne("maindb", "maindb", "Index", idxx)
 		song["PlaylistID"] = uuid
 		AmpgoInsertOne("playlistdb", "playlistsongs", song)
+	}
+	return c.JSON(http.StatusOK, result)
+}
+
+func DeletPlaylist(c echo.Context) error {
+	log.Println("starting DeletPlaylist")
+	ID := c.QueryParam("id")
+	r1 := DeletePlaylist("playlistdb", "playlists", "PlayListID", ID)
+	r2 := DeletePlaylist("playlistdb", "playlistsongs", "PlayListID", ID)
+	result := "Files have been deleted"
+	if (r1 < 1 && r2 < 1) {
+		result = "File deletion has failed"
 	}
 	return c.JSON(http.StatusOK, result)
 }
