@@ -636,18 +636,21 @@ func AllPlaylistHandler(c echo.Context) error {
 func CreateEmptyPlaylist(c echo.Context) error {
 	log.Println("starting CreateEmptyPlaylist")
 	playlistname := c.QueryParam("name")
-	uuid, err := UUID()
-	CheckError(err, "UUID hss failed")
 	result := make(map[string]string)
-	result["PlayListName"] = playlistname
-	result["PlayListCount"] = "0"
-	result["PlayListID"] = uuid
-	AmpgoInsertOne("playlistdb", "playlists", result)
+	if len(playlistname) != 0 {
+		uuid, err := UUID()
+		CheckError(err, "UUID hss failed")
+		
+		result["PlayListName"] = playlistname
+		result["PlayListCount"] = "0"
+		result["PlayListID"] = uuid
+		AmpgoInsertOne("playlistdb", "playlists", result)
 
-	s := make(map[string]string)
-	s["Empty"] = "Empty"
-	s["PlaylistID"] = uuid
-	AmpgoInsertOne("playlistdb", "playlistsongs", s)
+		s := make(map[string]string)
+		s["Empty"] = "Empty"
+		s["PlaylistID"] = uuid
+		AmpgoInsertOne("playlistdb", "playlistsongs", s)
+	}
 
 	return c.JSON(http.StatusOK, result)
 }
@@ -688,7 +691,7 @@ func DeletPlaylist(c echo.Context) error {
 	r1 := DeletePlaylist("playlistdb", "playlists", "PlayListID", ID)
 	r2 := DeletePlaylist("playlistdb", "playlistsongs", "PlayListID", ID)
 	result := "Files have been deleted"
-	if (r1 < 1 && r2 < 1) {
+	if r1 < 1 && r2 < 1 {
 		result = "File deletion has failed"
 	}
 	return c.JSON(http.StatusOK, result)
