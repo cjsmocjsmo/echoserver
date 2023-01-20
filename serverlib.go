@@ -633,7 +633,7 @@ func AllPlaylistHandler(c echo.Context) error {
 	return c.JSON(http.StatusOK, result)
 }
 
-func CreateEmptyPlaylist(c echo.Context) error {
+func CreateEmptyPlaylistHandler(c echo.Context) error {
 	log.Println("starting CreateEmptyPlaylist")
 	playlistname := c.QueryParam("name")
 	result := make(map[string]string)
@@ -655,7 +655,7 @@ func CreateEmptyPlaylist(c echo.Context) error {
 	return c.JSON(http.StatusOK, result)
 }
 
-func CreateRandomPlaylist(c echo.Context) error {
+func CreateRandomPlaylistHandler(c echo.Context) error {
 	// Query params must be if the format ?count=25/myplaylistname
 	// due to a bug in echos http package
 	log.Println("starting CreateRandomPlaylist")
@@ -685,11 +685,11 @@ func CreateRandomPlaylist(c echo.Context) error {
 	return c.JSON(http.StatusOK, result)
 }
 
-func DeletPlaylist(c echo.Context) error {
+func DeletePlaylistHandler(c echo.Context) error {
 	log.Println("starting DeletPlaylist")
 	ID := c.QueryParam("id")
-	r1 := DeletePlaylist("playlistdb", "playlists", "PlayListID", ID)
-	r2 := DeletePlaylist("playlistdb", "playlistsongs", "PlayListID", ID)
+	r1 := PlaylistDelete("playlistdb", "playlists", "PlayListID", ID)
+	r2 := PlaylistDelete("playlistdb", "playlistsongs", "PlayListID", ID)
 	result := "Files have been deleted"
 	if r1 < 1 && r2 < 1 {
 		result = "File deletion has failed"

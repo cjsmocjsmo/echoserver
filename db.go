@@ -388,7 +388,7 @@ func FrontMatterFindOne(db string, coll string, filtertype string, filterstring 
 	return fmresults
 }
 
-func DeletePlaylist(db string, coll string, filtertype string, filterstring string) int64 {
+func PlaylistDelete(db string, coll string, filtertype string, filterstring string) int64 {
 	filter := bson.M{filtertype: filterstring}
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
 	defer Close(client, ctx, cancel)
