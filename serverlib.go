@@ -118,7 +118,7 @@ func shuffle(slice []int) {
 func RandomPicsHandler(c echo.Context) error {
 	filter := bson.D{{}}
 	opts := options.Find()
-	opts.SetProjection(bson.M{"_id":0, "Index": 1})
+	opts.SetProjection(bson.M{"_id": 0, "Index": 1})
 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
 	defer Close(client, ctx, cancel)
 	CheckError(err, "MongoDB connection has failed")
@@ -323,7 +323,7 @@ func UpdateAlbumFirstLetterIDHandler(c echo.Context) error {
 	defer Close(client, ctx, cancel)
 	CheckError(err, "MongoDB connection has failed GetArtistsForFirstLetterURL")
 	coll := client.Database("frontmatter").Collection("frontmatter")
-	update := bson.M{"$set": bson.M{"albumfirstletterid":  param}}
+	update := bson.M{"$set": bson.M{"albumfirstletterid": param}}
 	result, err2 := coll.UpdateOne(context.TODO(), filter, update)
 	log.Println(result)
 	CheckError(err2, "MongoDB connection has failed UpdateAlbumFirstLetterIDHandler")
@@ -546,7 +546,7 @@ func SongSearchFindHandler(c echo.Context) error {
 	coll := client.Database("maindb").Collection("maindb")
 	cur, err := coll.Find(context.TODO(), filter)
 	CheckError(err, "SongSearchFind: AlbumSearchFind find has failed")
-	var results []MaindbDB//all albums for artist to include double entries
+	var results []MaindbDB //all albums for artist to include double entries
 	if err = cur.All(context.TODO(), &results); err != nil {
 		fmt.Println("SongSearchFind: cur.All has fucked up")
 		log.Println(err)
@@ -568,7 +568,7 @@ func UpdateSongFirstLetterIDHandler(c echo.Context) error {
 	defer Close(client, ctx, cancel)
 	CheckError(err, "MongoDB connection has failed UpdateSongFirstLetterIDHandler")
 	coll := client.Database("frontmatter").Collection("frontmatter")
-	update := bson.M{"$set": bson.M{"songfirstletterid":  param}}
+	update := bson.M{"$set": bson.M{"songfirstletterid": param}}
 	result, err2 := coll.UpdateOne(context.TODO(), filter, update)
 	log.Println(result)
 	CheckError(err2, "MongoDB connection has failed UpdateSongFirstLetterIDHandler")
@@ -589,7 +589,7 @@ func UpdateSongsForFirstLetterURLHandler(c echo.Context) error {
 	defer Close(client, ctx, cancel)
 	CheckError(err, "MongoDB connection has failed UpdateSongsForFirstLetterUrlHandler")
 	coll := client.Database("frontmatter").Collection("frontmatter")
-	update := bson.M{"$set": bson.M{"songsforfirstletterurl":  param}}
+	update := bson.M{"$set": bson.M{"songsforfirstletterurl": param}}
 	result, err2 := coll.UpdateOne(context.TODO(), filter, update)
 	log.Println(result)
 	CheckError(err2, "MongoDB connection has failed UpdateSongsForFirstLetterUrlHandler")
@@ -620,30 +620,42 @@ func getRandomList(objc int, nsc string) []int {
 	max := objc
 	rand.Seed(time.Now().UnixNano())
 	var newlist []int
-	for _, num := range (nsc) {
+	for _, num := range nsc {
 		fmt.Println(num)
-		newnum := rand.Intn(max - min) + min
+		newnum := rand.Intn(max-min) + min
 		newlist = append(newlist, newnum)
 	}
 	return newlist
 }
 
+// func createEmptyMap() {
+// 	s := make(map[string]string)
+// 	s["Empty"] = "Empty"
+// 	var songmap []map[string]string
+// 	songmap = append(songmap, s)
+// }
+
+func AllPlaylistHandler(c echo.Context) error {
+	result := AmpgoFind("playlistdb", "playlists", "None", "None")
+	return c.JSON(http.StatusOK, result)
+}
+
 func CreateEmptyPlaylist(c echo.Context) error {
+	uuid, err := UUID()
 	log.Println("starting CreateEmptyPlaylist")
 	playlistname := c.QueryParam("name")
 	s := make(map[string]string)
 	s["Empty"] = "Empty"
-	var songmap []map[string]string
-	songmap = append(songmap, s)
+	s["PlaylistID"] = uuid
+	AmpgoInsertOne("playlistdb", "playlistsongs", s)
 
-	uuid, err := UUID()
+	
 	CheckError(err, "CreateEmptyPlaylist has failed")
-	var result RandDb
-	result.PlayListName = playlistname
-	result.PlayListCount = "0"
-	result.PlayListID = uuid
-	result.PlaylistSongs = songmap
-	InsertPlaylist("playlistdb", "playlists", result)
+	var result map[string]string
+	result["PlayListName"] = playlistname
+	result["PlayListCount"] = "0"
+	result["PlayListID"] = uuid
+	AmpgoInsertOne("playlistdb", "playlists", result)
 	return c.JSON(http.StatusOK, result)
 }
 
@@ -660,24 +672,24 @@ func CreateRandomPlaylist(c echo.Context) error {
 	uuid, err := UUID()
 	CheckError(err, "RandomPicsHandler has failed")
 	randomlist := getRandomList(objcount, neededSongCount)
-	var songmap []map[string]string
-	for _, idx := range(randomlist) {
+	// var songmap []map[string]string
+	for _, idx := range randomlist {
 		log.Println(idx)
 		idxx := strconv.Itoa(idx)
 		song := AmpgoFindOne("maindb", "maindb", "Index", idxx)
-		songmap = append(songmap, song)
+		song["PlaylistID"] = uuid
+		AmpgoInsertOne("playlistdb", "playlistsongs", song)
 	}
-	var result RandDb
-	result.PlayListName = playlistname
-	result.PlayListCount = neededSongCount
-	result.PlayListID = uuid
-	result.PlaylistSongs = songmap
-	InsertPlaylist("playlistdb", "playlists", result)
+
+
+
+
+	var result map[string]string
+	result["PlayListName"] = playlistname
+	result["PlayListCount"] = neededSongCount
+	result["PlayListID"] = uuid
+	AmpgoInsertOne("playlistdb", "playlists", result)
 	return c.JSON(http.StatusOK, result)
 }
 
 
-func AllPlaylistHandler(c echo.Context) error {
-	result := AllPlaylistsFind("playlistsdb", "playlists", "None", "None")
-	return c.JSON(http.StatusOK, result)
-}

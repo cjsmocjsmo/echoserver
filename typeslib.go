@@ -41,12 +41,12 @@ type AlbVieW2 struct {
 	Idx           string              `bson:"idx"`
 }
 
-type AmpgoRandomPlaylistData struct {
-	PlayListName  string              `bson:"playlistname"`
-	PlayListID    string              `bson:"playlistID"`
-	PlayListCount string              `bson:"playlistcount"`
-	PlayList      []map[string]string `bson:"playlist"`
-}
+// type AmpgoRandomPlaylistData struct {
+// 	PlayListName  string              `bson:"playlistname"`
+// 	PlayListID    string              `bson:"playlistID"`
+// 	PlayListCount string              `bson:"playlistcount"`
+// 	PlayList      []map[string]string `bson:"playlist"`
+// }
 
 type ARID struct {
 	Artist   string `bson:"Artist"`
@@ -188,12 +188,12 @@ type MaindbDB struct {
 // 	path   string
 // }
 
-type RandDb struct {
-	PlayListName  string              `bson:"playlistname"`
-	PlayListID    string              `bson:"playlistID"`
-	PlayListCount string              `bson:"playlistcount"`
-	PlaylistSongs []map[string]string `bson:"playlistsongs"`
-}
+// type RandDb struct {
+// 	PlayListName  string              `bson:"playlistname"`
+// 	PlayListID    string              `bson:"playlistID"`
+// 	PlayListCount string              `bson:"playlistcount"`
+// 	PlaylistSongs []map[string]string `bson:"playlistsongs"`
+// }
 
 type PicInfo struct {
 	BaseDir       string `bson:"basedir"`

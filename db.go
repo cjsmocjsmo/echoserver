@@ -388,31 +388,28 @@ func FrontMatterFindOne(db string, coll string, filtertype string, filterstring 
 	return fmresults
 }
 
-func InsertPlaylist(db string, coll string, ablob RandDb) {
-	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
-	CheckError(err, "InsertArtistIDSJson: Connections has failed")
-	defer Close(client, ctx, cancel)
-	_, err2 := InsertOne(client, ctx, db, coll, ablob)
-	CheckError(err2, "InsertArtistIDSJson has failed")
-}
+// func InsertPlaylist(db string, coll string, ablob RandDb) {
+// 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
+// 	CheckError(err, "InsertArtistIDSJson: Connections has failed")
+// 	defer Close(client, ctx, cancel)
+// 	_, err2 := InsertOne(client, ctx, db, coll, ablob)
+// 	CheckError(err2, "InsertArtistIDSJson has failed")
+// }
 
 
-func AllPlaylistsFind(dbb string, collb string, filtertype string, filterstring string) []RandDb {
-	filter := bson.M{}
-	if filtertype != "None" && filterstring != "None" {
-		filter = bson.M{filtertype: filterstring}
-	}
-	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
-	defer Close(client, ctx, cancel)
-	CheckError(err, "AmpgoFind: MongoDB connection has failed")
-	coll := client.Database(dbb).Collection(collb)
-	cur, err := coll.Find(context.TODO(), filter)
-	CheckError(err, "AmpgoFind: ArtPipeline find has failed")
-	var results []RandDb //all albums for artist to include double entries
-	if err = cur.All(context.TODO(), &results); err != nil {
-		fmt.Println("AmpgoFind: cur.All has fucked up")
-		log.Println(err)
-	}
-	return results
-}
+// func AllPlaylistsFind(dbb string, collb string) []RandDb {
+// 	filter := bson.M{}
+// 	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
+// 	defer Close(client, ctx, cancel)
+// 	CheckError(err, "AmpgoFind: MongoDB connection has failed")
+// 	coll := client.Database(dbb).Collection(collb)
+// 	cur, err := coll.Find(context.TODO(), filter)
+// 	CheckError(err, "AmpgoFind: ArtPipeline find has failed")
+// 	var results []RandDb //all albums for artist to include double entries
+// 	if err = cur.All(context.TODO(), &results); err != nil {
+// 		fmt.Println("AmpgoFind: cur.All has fucked up")
+// 		log.Println(err)
+// 	}
+// 	return results
+// }
 
