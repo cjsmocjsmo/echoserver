@@ -646,7 +646,7 @@ func CreateEmptyPlaylist(c echo.Context) error {
 	log.Println("starting CreateEmptyPlaylist")
 	playlistname := c.QueryParam("name")
 
-	var result map[string]string
+	result := make(map[string]string)
 	result["PlayListName"] = playlistname
 	result["PlayListCount"] = "0"
 	result["PlayListID"] = uuid
@@ -675,9 +675,17 @@ func CreateRandomPlaylist(c echo.Context) error {
 	playlistname := pars[1]
 	countlist := maindbCountList()
 	objcount := len(countlist)
+	randomlist := getRandomList(objcount, neededSongCount)
 	uuid, err := UUID()
 	CheckError(err, "RandomPicsHandler has failed")
-	randomlist := getRandomList(objcount, neededSongCount)
+	
+
+	result := make(map[string]string)
+	result["PlayListName"] = playlistname
+	result["PlayListCount"] = neededSongCount
+	result["PlayListID"] = uuid
+	AmpgoInsertOne("playlistdb", "playlists", result)
+
 	// var songmap []map[string]string
 	for _, idx := range randomlist {
 		log.Println(idx)
@@ -686,15 +694,7 @@ func CreateRandomPlaylist(c echo.Context) error {
 		song["PlaylistID"] = uuid
 		AmpgoInsertOne("playlistdb", "playlistsongs", song)
 	}
-
-
-
-
-	var result map[string]string
-	result["PlayListName"] = playlistname
-	result["PlayListCount"] = neededSongCount
-	result["PlayListID"] = uuid
-	AmpgoInsertOne("playlistdb", "playlists", result)
+	
 	return c.JSON(http.StatusOK, result)
 }
 
