@@ -642,22 +642,28 @@ func AllPlaylistHandler(c echo.Context) error {
 
 func CreateEmptyPlaylist(c echo.Context) error {
 	uuid, err := UUID()
+	CheckError(err, "UUID hss failed")
 	log.Println("starting CreateEmptyPlaylist")
 	playlistname := c.QueryParam("name")
-	s := make(map[string]string)
-	s["Empty"] = "Empty"
-	s["PlaylistID"] = uuid
-	AmpgoInsertOne("playlistdb", "playlistsongs", s)
 
-	
-	CheckError(err, "CreateEmptyPlaylist has failed")
 	var result map[string]string
 	result["PlayListName"] = playlistname
 	result["PlayListCount"] = "0"
 	result["PlayListID"] = uuid
 	AmpgoInsertOne("playlistdb", "playlists", result)
+
+
+	s := make(map[string]string)
+	s["Empty"] = "Empty"
+	s["PlaylistID"] = uuid
+	AmpgoInsertOne("playlistdb", "playlistsongs", s)
+
+
+	
 	return c.JSON(http.StatusOK, result)
 }
+
+
 
 func CreateRandomPlaylist(c echo.Context) error {
 	// Query params must be if the format ?count=25/myplaylistname
