@@ -78,14 +78,10 @@ func CreateArtistSearchIndex(db string, coll string) {
 	}
 	ind, err := collection.Indexes().CreateOne(ctx, mod)
 	if err != nil {
-		fmt.Println("Indexes().CreateOne() ERROR:", err)
 		log.Println("Indexes().CreateOne() ERROR:", err)
 		os.Exit(1) // exit in case of error
 	} else {
 		// API call returns string of the index name
-		fmt.Println("CreateOne() index:", ind)
-		fmt.Println("CreateOne() type:", reflect.TypeOf(ind))
-
 		log.Println("CreateOne() index:", ind)
 		log.Println("CreateOne() type:", reflect.TypeOf(ind))
 	}
@@ -105,14 +101,10 @@ func CreateAlbumSearchIndex(db string, coll string) {
 	}
 	ind, err := collection.Indexes().CreateOne(ctx, mod)
 	if err != nil {
-		fmt.Println("Indexes().CreateOne() ERROR:", err)
 		log.Println("Indexes().CreateOne() ERROR:", err)
 		os.Exit(1) // exit in case of error
 	} else {
 		// API call returns string of the index name
-		fmt.Println("CreateOne() index:", ind)
-		fmt.Println("CreateOne() type:", reflect.TypeOf(ind))
-
 		log.Println("CreateOne() index:", ind)
 		log.Println("CreateOne() type:", reflect.TypeOf(ind))
 	}
@@ -133,14 +125,33 @@ func CreateSongSearchIndex(db string, coll string) {
 	}
 	ind, err := collection.Indexes().CreateOne(ctx, mod)
 	if err != nil {
-		fmt.Println("Indexes().CreateOne() ERROR:", err)
 		log.Println("Indexes().CreateOne() ERROR:", err)
 		os.Exit(1) // exit in case of error
 	} else {
 		// API call returns string of the index name
-		fmt.Println("CreateOne() index:", ind)
-		fmt.Println("CreateOne() type:", reflect.TypeOf(ind))
+		log.Println("CreateOne() index:", ind)
+		log.Println("CreateOne() type:", reflect.TypeOf(ind))
+	}
+}
 
+func CreatePlaylistIndex(db string, coll string) {
+	client, ctx, cancel, err := Connect("mongodb://db:27017/ampgodb")
+	defer Close(client, ctx, cancel)
+	CheckError(err, "AmpgoFindOne: MongoDB connection has failed")
+	collection := client.Database(db).Collection(coll)
+
+	mod := mongo.IndexModel{
+		Keys: bson.M{
+			"PlayListName": 1,
+		},
+		Options: options.Index().SetUnique(true),
+	}
+	ind, err := collection.Indexes().CreateOne(ctx, mod)
+	if err != nil {
+		log.Println("Indexes().CreateOne() ERROR:", err)
+		os.Exit(1) // exit in case of error
+	} else {
+		// API call returns string of the index name
 		log.Println("CreateOne() index:", ind)
 		log.Println("CreateOne() type:", reflect.TypeOf(ind))
 	}

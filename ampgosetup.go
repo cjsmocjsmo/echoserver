@@ -188,6 +188,7 @@ func SetUp() {
 	CreateArtistSearchIndex("artistview", "artistview")
 	CreateAlbumSearchIndex("albumview", "albumview")
 	CreateSongSearchIndex("maindb", "maindb")
+	CreatePlaylistIndex("playlistdb", "playlists")
 
 	// CreateRandomPlaylistDB()
 
