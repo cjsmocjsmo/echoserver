@@ -24,7 +24,7 @@ APATH = "/home/pipi/Music/music/music"
 METAPATH = "/home/pipi/Music/metadata/"
 PICPATH = "/home/pipi/PISTUFF/Thumbnails/"
 THUMBHTTPPATH = "http://192.168.0.91:9090/static/"
-MUSICHTTPPATH = "http://192.168.0.91:9090/"
+MUSICHTTPPATH = "http://192.168.0.91:9090"
 
 
 class MP3Tags:
